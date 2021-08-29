@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<!--Using the style element within a head element defines internal CSS-->
+        <style> 
+            body {
+                background-image: url("money2.gif");
+                background-size: 100% 100%;
+            }
+            h1 {
+                color: red;
+                font-family: Georgia, 'Times New Roman', Times, serif;
+            }
+            p {
+                text-align: center;
+                border: 2px dotted green;
+                padding: 20px;
+                margin: 50px;
+                width: 100px;
+            }
+            a {
+                background-color: red;
+                padding: 20px;
+                color: white;
+                text-align: center;
+                text-decoration: none;
+                border-radius: 6px;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            }
+
+            a:hover {
+                color:white-;
+                text-decoration: none;
+                background-color: green;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            }
+            table {
+                border: 3px solid black;
+                border-collapse: collapse;
+                border-spacing: 500px
+            }
+
+            th, td {
+                border: 1px solid black;
+
+            }
+
+            #menu ul{
+                float: left;
+                display: block;
+                text-align: center;
+                padding: 16px;
+                background-color: black;
+                color: white;
+                list-style:none;
+            }
+            
+            #menu li{
+                display:inline;
+            }
+
+            #menu:hover {
+                background-color: #FFFFFF;
+            }
+
+
+        </style>
+    </head>
+
+    <body>
+        <h1>Heading with Internal CSS
+            <!--img src="rose.jpg" alt="A red rose" title="A red rose" style="float: right; width: 420px; height: 420px;"--> 
+        </h1>
+        <br>
+        <div id="menu">
+        <ul id="#menuHover">
+            <li >Home</li>
+            <li>About</li>
+            <li>Products</li>
+            <li>Contact</li>
+        </ul>
+        </div>
+        <p>Paragraph with internal CSS</p>
+        <a href="Introduction to HTML.html">Back to the other page</a>
+        
+        <br><br><br>
+
+        <img src="rubiks.png" alt="Rubik's Cube" usemap="#cube">
+        <map name="cube">
+            <area alt="Yellow" title="Yellow" href="https://en.wikipedia.org/wiki/Yellow" coords="350,2,6,127,351,273,687,125" shape="poly">
+            <area alt="Red" title="Red" href="https://en.wikipedia.org/wiki/Red" coords="10,140,340,290,340,732,34,516" shape="poly">
+            <area alt="Green" title="Green" href="https://en.wikipedia.org/wiki/Green" coords="363,286,691,140,668,523,364,731" shape="poly">
+        </map>
+
+        <table>
+            <tr>
+                <th>Forename</th>
+                <th>Surname</th>
+                <th>Age</th>
+            </tr>
+            <tr>
+                <td>Ethan</td>
+                <td>Hawes</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>Euan</td>
+                <td>Hawes</td>
+                <td>15</td>
+            </tr>
+        </table>
+
+        <ul style="list-style-type: square;">
+            <li>Item 1</li>
+            <li>Item 2</li>
+                <ol>
+                    <li>A</li>
+                    <li>B</li>
+                    <li>C</li>
+                </ol>
+            <li>Item 3</li>
+        </ul>
+
+        <dl>
+            <dt>Ethan</dt>
+            <dd>Me</dd>
+            <dt>Tom</dt>
+            <dd>Cunt</dd>
+            <dt>Noah</dt>
+            <dd>Fat</dd>
+        </dl>
+
+    </body>
+</html>
