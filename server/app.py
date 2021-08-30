@@ -17,15 +17,15 @@ def register():
     if request.method == 'POST':
 
         # Call the register method and return the inserted row count
-        rowCount = dataAccess.dbRegister(request.form)
+        dataAccess.dbRegister(request.form)
 
         # If row count is less than 1, signup failed - redirect to registration form
-        if rowCount < 1:
-            return render_template('pages/register.html', message = "Signup unsuccessful. Please try again.")
+        # if rowCount < 1:
+        return render_template('pages/register.html', message = "")
 
-        # If row count is 1 or more, signup successful, return dashboard
-        else:
-            return render_template('pages/register.html', message = "")
+        # # If row count is 1 or more, signup successful, return dashboard
+        # else:
+        #     return render_template('pages/register.html', message = "")
 
     else:
         return render_template('pages/register.html', message = "")
