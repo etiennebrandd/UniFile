@@ -9,9 +9,28 @@
     padding-bottom: 0px;
 }
 
+#header-image {
+    height: 62px;
+}
+
+.navbar {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.nav-pills .nav-link {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 0;
+  }
+
 .nav-link {
     font-size:28px;
     color:grey
+}
+
+.nav-item {
+    overflow: hidden;
 }
 
 .nav-link:hover {
@@ -21,6 +40,15 @@
 .nav-item:hover {
     background-color: rgb(148,0,211)
 }
-.purple-bb {
-    border-bottom: 3px solid rgb(148,0,211);
+
+.welcome {
+    text-align: center;
+}
+
+h1 {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+h2 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
