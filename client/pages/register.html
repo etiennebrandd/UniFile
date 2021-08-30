@@ -5,11 +5,12 @@
 
         <!-- this link displays the icon in the search bar (placeholder) -->
         <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
     </head>
     <body>
         
-        <!-- made this lil form but feel free to change it all - hasnt been linked up to anything -->
-        <form>
+        <!-- made this lil form but feel free to change stlying etc-->
+        <form method="POST">
 
             <label for="firstName">First Name</label>
             <input type="text" name="firstName">
@@ -26,6 +27,7 @@
             <button type="submit">Sign-up</button>
 
         </form>
+        <p>{{ message }}</p>
 
 
     </body>
