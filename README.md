@@ -1,3 +1,3 @@
 # UniFile
 
-This is our project :)
+*START SERVER ON localhost:5000 BY RUNNING ``flask run`` INSIDE THE SERVER FOLDER*
