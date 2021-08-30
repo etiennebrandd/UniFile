@@ -7,6 +7,14 @@
             "password": "e6bf83c3fcc6f8ff09aa1e866a3e23d15b0513a95b7ae7377df82a8392382c1d",
             "salt": "8b7478bf80844bba86ede3f2add6b01c",
             "username": "ebrand"
+        },
+        {
+            "firstName": "Ethan",
+            "lastName": "Hawes",
+            "email": "e@h.com",
+            "password": "453faea294d72465d0d2f674eeb42c710a664ecd653520aee8ce969b25a8c655",
+            "salt": "34a98a40774f426fae61ecb6b3b5e22c",
+            "username": "ehawes"
         }
     ]
 }
