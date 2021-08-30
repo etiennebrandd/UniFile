@@ -1,8 +1,12 @@
 {
-    "firstName": "Etienne",
-    "lastName": "Brand",
-    "email": "e@b.com",
-    "password": "65678b315dd2f2f81a79fd73d35d087b28cbc70802318c997aeebefff9dd0b6c",
-    "salt": "bf6d54a85a0a40c6972aef8b39b007a3",
-    "username": "ebrand"
+    "users": [
+        {
+            "firstName": "Etienne",
+            "lastName": "Brand",
+            "email": "e@b.com",
+            "password": "e6bf83c3fcc6f8ff09aa1e866a3e23d15b0513a95b7ae7377df82a8392382c1d",
+            "salt": "8b7478bf80844bba86ede3f2add6b01c",
+            "username": "ebrand"
+        }
+    ]
 }

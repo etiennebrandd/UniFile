@@ -24,28 +24,22 @@ def dbRegister(user):
 
     user["username"] = user["firstName"][0].lower() + user["lastName"].lower()
 
-    userjson = json.dumps(user, indent=4)
-
-
-    f = open("../database/data.json", "a")
-    f.write(userjson)
-    f.close()
 
     f = open("../database/data.json", "r")
-    print(f.read())
+    data = json.loads(f.read())
+    f.close()
 
-    # connection = dbConnection()
-    # cursor = connection.cursor()
+    userData = data["users"]
 
-    # sql = "CALL myDB.Register(%s, %s, %s, %s, %s, %s)"
-    # values = (user["firstName"], user["lastName"], user["email"], user["username"], user["password"], user["salt"])
+    userData.append(user)
 
-    # try:
-    #     cursor.execute(sql, values)
-    #     connection.commit()
-    # except:
-    #     print("An error occurred during user signup")
+    data["users"] = userData
 
+    f = open("../database/data.json", "w")
+    newData = json.dumps(data, indent=4)
+    
+    f.write(newData)
+    f.close()
 
     return
 
