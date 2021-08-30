@@ -1,42 +1,49 @@
-from flask import request
-import mysql.connector
+import json
 import security
-
-# Creates a connection to the database
-def dbConnection():
-
-    # Database object containing connection details
-    mydb = mysql.connector.connect (
-        host = "82.39.201.74",
-        user = "admin",
-        password = "P455w0rd!",
-        database = "myDB"
-    )
-
-    # Return DB object for use elsewhere
-    return mydb
 
 
 def dbRegister(user):
 
+    # Prepare the user data - dictionary
     user = (user.to_dict())
     user["password"], user["salt"] = security.hash(user["password"], True, "")
-
     user["username"] = user["firstName"][0].lower() + user["lastName"].lower()
 
-    connection = dbConnection()
-    cursor = connection.cursor()
+    # Open the data file for reading and convert to dict
+    f = open("../database/data.json", "r")
+    data = json.loads(f.read())
+    f.close()
 
-    sql = "CALL myDB.Register(%s, %s, %s, %s, %s, %s)"
-    values = (user["firstName"], user["lastName"], user["email"], user["username"], user["password"], user["salt"])
+    # Extract the users data from dictionary - now a list
+    userData = data["users"]
+    print(userData)
 
-    try:
-        cursor.execute(sql, values)
-        connection.commit()
-    except:
-        print("An error occurred during user signup")
+    # Loop through existing user records to see if email exists
+    for i in userData:
+
+        print("\nUser Detail: ", i, "\n")
+        if i["email"] == user["email"]:
+            return False
+            
+        else:
+            continue
 
 
-    return cursor.rowcount
+    userData.append(user)
+
+    # Set the value of the users data to be the new list
+    data["users"] = userData
+
+    # Open data file for writing and convert dict to json
+    f = open("../database/data.json", "w")
+    newData = json.dumps(data, indent=4)
+            
+    # Overwrite the data file
+    f.write(newData)
+    f.close()
+
+    return True
+
+    
 
 
