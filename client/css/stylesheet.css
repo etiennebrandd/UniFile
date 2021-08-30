@@ -1,5 +1,26 @@
 #logo-text {
     color: rgb(148,0,211);
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 40px;
+    font-size: 28px;
+}
+
+#header {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.nav-link {
+    font-size:28px;
+    color:grey
+}
+
+.nav-link:hover {
+    color:white;
+}
+
+.nav-item:hover {
+    background-color: rgb(148,0,211)
+}
+.purple-bb {
+    border-bottom: 3px solid rgb(148,0,211);
 }
