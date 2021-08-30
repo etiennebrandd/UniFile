@@ -8,8 +8,8 @@ def dbConnection():
     # Database object containing connection details
     mydb = mysql.connector.connect (
         host = "localhost",
-        user = "root",
-        password = "Dinosaurking1",
+        user = "admin",
+        password = "P455w0rd!",
         database = "myDB"
     )
 
