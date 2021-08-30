@@ -1,12 +1,30 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Landing Page</title>
+        <title>UniFile</title>
+        <!--Bootstap Links-->
+            <!-- Latest compiled and minified CSS -->
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+            <!-- jQuery library -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+            <!-- Popper JS -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+            <!-- Latest compiled JavaScript -->
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
 
         <!-- this link displays the icon in the search bar (placeholder) -->
         <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+        <!--Stylesheet-->
+        <link rel="stylesheet" href="css/stylesheet.css">
     </head>
     <body>
-        <p>Hello world</p>
+        <!--Navbar at the top of the page-->
+        <nav class="navbar navbar-expand-sm bg-light navbar-dark">
+            <a class="navbar-brand" href="#"><span id="logo-text">UniFile</span></a>
+        </nav>
     </body>
 </html>
