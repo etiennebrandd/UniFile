@@ -7,7 +7,7 @@ def dbConnection():
 
     # Database object containing connection details
     mydb = mysql.connector.connect (
-        host = "localhost",
+        host = "82.39.201.74",
         user = "admin",
         password = "P455w0rd!",
         database = "myDB"
