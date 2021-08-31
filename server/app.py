@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, url_for
 import dataAccess
 
 # Configure server and folder to fetch pages from
@@ -6,29 +6,31 @@ app = Flask(__name__, template_folder='../client/')
 
 
 # Routes
-@app.route('/')
+@app.route('/', methods = ['GET', 'POST'])
 def index():
-    return render_template('index.html')
-
-@app.route('/register', methods = ['GET', 'POST'])
-def register():
-
     # If route receives a POST request (a user has registered)
     if request.method == 'POST':
 
         # Call the register method and return the inserted row count
-        register = dataAccess.dbRegister(request.form)
+        register, id = dataAccess.dbRegister(request.form)
 
         # If false returned, signup failed - redirect to registration form
         if register == False:
-            return render_template('pages/register.html', message = "Registration failed. Please try again")
+            return render_template('index.html', message = "Registration failed. Please try again")
 
         # # If true returned, signup successful, return dashboard
         else:
-            return render_template('pages/register.html', message = "")
+            return redirect(url_for('dashboard', user = id))
 
     else:
-        return render_template('pages/register.html', message = "")
+        return render_template('index.html', message = "")
+
+
+@app.route('/dashboard')
+def dashboard():
+
+    user = dataAccess.dbRetrieve(request.args.get('user'))
+    return render_template('pages/dashboard.html', firstName = user["firstName"])
 
 
 
