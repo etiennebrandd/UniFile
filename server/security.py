@@ -14,12 +14,19 @@ def hash(message, x, y):
         # Input is message concat w/ salt
         input = (message + salt).encode()
 
+        hash = hashlib.sha256(input).hexdigest()
+
+        return hash, salt
+
     elif(x == False and y != ""):
 
         # Passed in salt is the salt (duh)
         salt = y
         # Input is message concat w/ salt
         input = (message + salt).encode()
+
+        hash = hashlib.sha256(input).hexdigest()
+        return hash
 
     else:
 
@@ -29,10 +36,8 @@ def hash(message, x, y):
         # Input is just message
         input = message.encode()
 
-    # Generates SHA-256 hash of input
-    hash = hashlib.sha256(input).hexdigest()
-
-    return hash, salt
+        hash = hashlib.sha256(input).hexdigest()
+        return hash
 
 
 # Can be used to generate a UUID for salting or cookie

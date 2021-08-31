@@ -11,7 +11,7 @@ def dbRegister(user):
     user["id"] = security.uid()[:6]
 
     # Open the data file for reading and convert to dict
-    f = open("../database/data.json", "r")
+    f = open("../database/users.json", "r")
     data = json.loads(f.read())
     f.close()
 
@@ -34,7 +34,7 @@ def dbRegister(user):
     data["users"] = userData
 
     # Open data file for writing and convert dict to json
-    f = open("../database/data.json", "w")
+    f = open("../database/users.json", "w")
     newData = json.dumps(data, indent=4)
             
     # Overwrite the data file
@@ -44,9 +44,9 @@ def dbRegister(user):
     return True, user["id"]
 
 
-def dbRetrieve(userID):
+def dbRetrieveUserByID(userID):
 
-    f = open("../database/data.json", "r")
+    f = open("../database/users.json", "r")
     data = json.loads(f.read())
     f.close()
 
@@ -57,16 +57,49 @@ def dbRetrieve(userID):
     for user in userData:
 
         if userID == user["id"]:
-            print(user)
+            
             return user
             
         else:
             continue
 
 
+def dbLogin(credentials):
+
+    # Define credentials as variables
+    email = (credentials.to_dict()["email"])
+    password = (credentials.to_dict()["password"])
+    
+    # Open users file for reading and convert to dict
+    f = open("../database/users.json", "r")
+    data = json.loads(f.read())
+    f.close()
+
+    # Extract users
+    userData = data["users"]
+
+    # Iterate through each user object to see if credential email matches record
+    for user in userData:
+
+        if email == user["email"]:
+
+            # Hash the input password using the retrieved salt for found user
+            checkpwd = security.hash(password, False, user["salt"])
+
+            # Check hashed input password matches what is in database
+            if checkpwd == user["password"]:
+                
+                return True, user["id"]
+
+            else:
+                return False, ""
+
+        # Keep iterating if not match
+        else:
+            continue
+
+    return False, ""
 
 
 
     
-
-
