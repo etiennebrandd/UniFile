@@ -22,7 +22,7 @@ def dbRegister(user):
     for i in userData:
 
         if i["email"] == user["email"]:
-            return False
+            return False, ""
             
         else:
             continue
