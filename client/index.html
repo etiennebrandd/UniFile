@@ -19,7 +19,7 @@
         <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 
         <!--Stylesheet-->
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/stylesheet.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/stylesheet.css') }}">
     </head>
     <body>
         <!--Navbar at the top of the page-->
@@ -37,7 +37,30 @@
                     <a class="nav-link" href="#">Item 3</a>
                 </li>
             </ul>
+            <ul class="nav ml-auto">
+                <li>
+                    <a class="login-trigger" href="#" data-target="#login" data-toggle="modal">Login</a>
+                </li>
+            </ul>
         </nav>
+
+        <!--Login Modal-->
+        <div id="login" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <button data-dismiss="modal" class="close">&times;</button>
+                        <h4>Login</h4>
+                        <form>
+                            <input type="text" name="username" class="username form-control" placeholder="Username"/>
+                            <input type="password" name="password" class="password form-control" placeholder="Password"/>
+                            <input class="btn login" type="submit" value="Login" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
         <!--Section below navbar-->
         <div class="jumbotron mh-50">
