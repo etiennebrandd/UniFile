@@ -51,8 +51,8 @@
                     <div class="modal-body">
                         <button data-dismiss="modal" class="close">&times;</button>
                         <h4>Login</h4>
-                        <form>
-                            <input type="text" name="username" class="username form-control" placeholder="Username"/>
+                        <form method="POST", action="http://localhost:5000/login">
+                            <input type="text" name="email" class="username form-control" placeholder="Username"/>
                             <input type="password" name="password" class="password form-control" placeholder="Password"/>
                             <input class="btn login" type="submit" value="Login" />
                         </form>

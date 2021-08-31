@@ -12,10 +12,10 @@ def index():
     if request.method == 'POST':
 
         # Call the register method and return the inserted row count
-        register, id = dataAccess.dbRegister(request.form)
+        registered, id = dataAccess.dbRegister(request.form)
 
         # If false returned, signup failed - redirect to registration form
-        if register == False:
+        if registered == False:
             return render_template('index.html', message = "Registration failed. Please try again")
 
         # # If true returned, signup successful, return dashboard
@@ -26,10 +26,23 @@ def index():
         return render_template('index.html', message = "")
 
 
+@app.route('/login', methods = ['POST'])
+def login():
+    if request.method == 'POST':
+
+        loggedIn, id = dataAccess.dbLogin(request.form)  
+
+        if loggedIn == False:
+            return redirect(url_for('index'))
+
+        else:
+            return redirect(url_for('dashboard', user = id))
+
+
 @app.route('/dashboard')
 def dashboard():
 
-    user = dataAccess.dbRetrieve(request.args.get('user'))
+    user = dataAccess.dbRetrieveUserByID(request.args.get('user'))
     return render_template('pages/dashboard.html', firstName = user["firstName"])
 
 
