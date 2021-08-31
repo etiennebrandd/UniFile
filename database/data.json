@@ -4,17 +4,19 @@
             "firstName": "Etienne",
             "lastName": "Brand",
             "email": "e@b.com",
-            "password": "e6bf83c3fcc6f8ff09aa1e866a3e23d15b0513a95b7ae7377df82a8392382c1d",
-            "salt": "8b7478bf80844bba86ede3f2add6b01c",
-            "username": "ebrand"
+            "password": "e623e57a0d98fb5407223d27f4075658403b50613220718ede1f0b92893b9bee",
+            "salt": "bfbae173b91b4e559bf2e808baff524f",
+            "username": "ebrand",
+            "id": "38b9aa"
         },
         {
             "firstName": "Ethan",
             "lastName": "Hawes",
             "email": "e@h.com",
-            "password": "453faea294d72465d0d2f674eeb42c710a664ecd653520aee8ce969b25a8c655",
-            "salt": "34a98a40774f426fae61ecb6b3b5e22c",
-            "username": "ehawes"
+            "password": "8e225bab6c5e54dc488098dace7cd1391c673dbbf69b395e14d76177c2a8928d",
+            "salt": "115c90269158470fab2280215830ab8f",
+            "username": "ehawes",
+            "id": "0dc7aa"
         }
     ]
 }

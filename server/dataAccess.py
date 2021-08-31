@@ -8,6 +8,7 @@ def dbRegister(user):
     user = (user.to_dict())
     user["password"], user["salt"] = security.hash(user["password"], True, "")
     user["username"] = user["firstName"][0].lower() + user["lastName"].lower()
+    user["id"] = security.uid()[:6]
 
     # Open the data file for reading and convert to dict
     f = open("../database/data.json", "r")
@@ -16,12 +17,10 @@ def dbRegister(user):
 
     # Extract the users data from dictionary - now a list
     userData = data["users"]
-    print(userData)
 
     # Loop through existing user records to see if email exists
     for i in userData:
 
-        print("\nUser Detail: ", i, "\n")
         if i["email"] == user["email"]:
             return False
             
@@ -42,7 +41,31 @@ def dbRegister(user):
     f.write(newData)
     f.close()
 
-    return True
+    return True, user["id"]
+
+
+def dbRetrieve(userID):
+
+    f = open("../database/data.json", "r")
+    data = json.loads(f.read())
+    f.close()
+
+    # Extract the users data from dictionary - now a list
+    userData = data["users"]
+
+    # Loop through existing user records to see if email exists
+    for user in userData:
+
+        if userID == user["id"]:
+            print(user)
+            return user
+            
+        else:
+            continue
+
+
+
+
 
     
 
