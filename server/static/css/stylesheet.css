@@ -34,11 +34,6 @@
     background-color: rgb(148,0,211)
 }
 
-/*Aligns welcome text centrally*/
-.welcome {
-    text-align: center;
-    color: white;
-}
 
 /*Login button CSS*/
 .login-trigger {
@@ -121,15 +116,37 @@ h4 {
     background: linear-gradient(326deg, rgb(148,0,211) 0%, #5f0a87 74%);
 }
 
-/*Login form*/
+/*Aligns welcome text centrally*/
+.welcome {
+    text-align: center;
+    color: white;
+}
+
+/*Registration form*/
 .register-form {
     background-color: white;
+    box-shadow: 5px 5px 10px 20px rgba(0,0,0,0.25);
+    padding: 10px 0 10px 20px;
+    border-radius: 20px;
 }
 
 .register-form label {
     padding-right:10px;
     font-weight: bold;
     color: rgb(148,0,211);
+}
+
+.register-form button {
+    font-weight: bold;
+    background-color: white;
+    color: rgb(148,0,211);
+    border: 2px solid rgb(148,0,211);
+    border-radius:25px;
+    padding: 10px 20px 10px 20px;
+    position: relative;
+    float: right;
+    right: 20px;
+    bottom: 10px;
 }
 
 /*General headings*/
