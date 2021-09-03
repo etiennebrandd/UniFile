@@ -4,29 +4,30 @@
     height: 62px;
 }
 
-/*Other navbar CSS*/
+/*Navbar CSS*/
 .navbar {
     padding-top: 0;
     padding-bottom: 0;
 }
 
+/*Navbar Buttons*/
 .nav-pills .nav-link {
     padding-top: 15px;
     padding-bottom: 15px;
     border-radius: 0;
-  }
+}
 
 .nav-link {
     font-size:28px;
     color:grey
 }
 
-.nav-item {
-    overflow: hidden;
-}
-
 .nav-link:hover {
     color:white;
+}
+
+.nav-item {
+    overflow: hidden;
 }
 
 .nav-item:hover {
@@ -36,6 +37,11 @@
 /*Aligns welcome text centrally*/
 .welcome {
     text-align: center;
+    color: white;
+}
+
+.jumbotron {
+    background: url(/server/static/images/jumboimage.jpg);
 }
 
 /*Login button CSS*/
@@ -53,25 +59,26 @@
     background-color: rgb(118, 0, 168);
 }
 
-h4 {
-    font-weight: bold;
-    color:black;
-  }
-  .close {
-    color: black;
-    transform: scale(1.2)
-  }
-  .modal-content {
-    font-weight: bold;
-  }
-  .form-control {
+/*Login Form*/
+.form-control {
     margin: 1em 0;
-  }
-  .form-control:hover, .form-control:focus {
+}
+
+.form-control:hover, .form-control:focus {
     box-shadow: none;  
     border-color: #fff;
-  }
-  .username, .password {
+}
+
+.form-control::-webkit-input-placeholder {
+    color: #eee;  
+}
+  
+.form-control:focus::-webkit-input-placeholder {
+    font-weight: bold;
+    color: #fff;
+}
+
+.username, .password {
     border: none;
     border-radius: 0;
     box-shadow: none;
@@ -79,15 +86,10 @@ h4 {
     padding-left: 0;
     font-weight: normal;
     background: transparent;  
-  }
-  .form-control::-webkit-input-placeholder {
-    color: #eee;  
-  }
-  .form-control:focus::-webkit-input-placeholder {
-    font-weight: bold;
-    color: #fff;
-  }
-  .login {
+}
+
+/*Modal Content and Buttons*/
+.login {
     padding: 6px 20px;
     border-radius: 20px;
     background: none;
@@ -96,11 +98,43 @@ h4 {
     font-weight: bold;
     transition: all .5s;
     margin-top: 1em;
-  }
-  .login:hover {
+}
+
+.login:hover {
     background: rgb(148,0,211);
     color: #fff;
+}
+
+.modal-content {
+    font-weight: bold;
+}
+
+.close {
+    color: black;
+    transform: scale(1.2)
   }
+
+
+h4 {
+    font-weight: bold;
+    color:black;
+}
+
+/*Jumbotron*/
+.jumbotron {
+    background: linear-gradient(326deg, rgb(148,0,211) 0%, #5f0a87 74%);
+}
+
+/*Login form*/
+.register-form {
+    background-color: white;
+}
+
+.register-form label {
+    padding-right:10px;
+    font-weight: bold;
+    color: rgb(148,0,211);
+}
 
 /*General headings*/
 h1 {

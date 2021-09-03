@@ -21,6 +21,7 @@
         <!--Stylesheet-->
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/stylesheet.css') }}">
     </head>
+    
     <body>
         <!--Navbar at the top of the page-->
         <nav class="navbar navbar-expand-sm bg-light navbar-dark purple-bb" id="header">
@@ -69,26 +70,57 @@
                     <h1 class="welcome">Welcome to UniFile</h1>
                     <h2 class="welcome">The one-stop shop for all things Uni</h2>
                 </div>
-                <div class="col mh-50">
-                    <form method="POST">
-
-                        <label for="firstName">First Name</label>
-                        <input type="text" name="firstName"><br>
-                        
-                        <label for="lastName">Last Name</label>
-                        <input type="text" name="lastName"><br>
-            
-                        <label for="email">Email</label>
-                        <input type="email" name="email"><br>
-            
-                        <label for="password">Password</label>
-                        <input type="password" name="password">
-            
-                        <button type="submit">Sign-up</button>
-            
-                    </form>
-                    <p>{{ message }}</p>
-                </div>
+                    <div class="col mh-50 register-form">
+                        <form method="POST">
+                            <div class="form-group form-inline">
+                                <label class="control-label" for="firstName">
+                                    First Name
+                                  </label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <!--SVG Image Here-->
+                                    </div>
+                                <input type="text" name="firstName">
+                                </div>
+                            </div>
+                            <div class="form-group form-inline">
+                                <label class="control-label" for="lastName">
+                                    Last Name
+                                  </label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <!--SVG Image Here-->
+                                    </div>
+                                <input type="text" name="lastName">
+                                </div>
+                            </div>
+                            <div class="form-group form-inline">
+                                <label class="control-label" for="email">
+                                    Email
+                                  </label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <!--SVG Image Here-->
+                                    </div>
+                                <input type="email" name="email">
+                                </div>
+                            </div>
+                            <div class="form-group form-inline">
+                                <label class="control-label" for="password">
+                                    Password
+                                  </label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <!--SVG Image Here-->
+                                    </div>
+                                <input type="password" name="password">
+                                </div>
+                            </div>                
+                            <button type="submit">Sign-up</button>
+                
+                        </form>
+                        <p>{{ message }}</p>
+                    </div>
             </div>
         </div>
     </body>
