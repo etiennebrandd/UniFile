@@ -17,6 +17,15 @@
             "salt": "115c90269158470fab2280215830ab8f",
             "username": "ehawes",
             "id": "0dc7aa"
+        },
+        {
+            "firstName": "Ethan",
+            "lastName": "Hawes",
+            "email": "ethanhawes@outlook.com",
+            "password": "88e2a7319b274ed44cbc999587e649b918e501e44566f71dcc1bdc78eedf495d",
+            "salt": "5b3ee90743f7455e9bb122e73e073fc5",
+            "username": "ehawes",
+            "id": "0ddc57"
         }
     ]
 }
