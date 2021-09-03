@@ -40,10 +40,6 @@
     color: white;
 }
 
-.jumbotron {
-    background: url(/server/static/images/jumboimage.jpg);
-}
-
 /*Login button CSS*/
 .login-trigger {
     font-weight: bold;
