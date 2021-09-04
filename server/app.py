@@ -50,14 +50,11 @@ def dashboard():
 
 
 
-
-
-
 @app.route('/test')
 def test():
     return render_template('pages/testing.html')
 
-@app.route('/calendar', methods = ['POST'])
+@app.route('/calendar', methods = ['GET', 'POST'])
 def calendar():
 
     if request.method == "POST":
@@ -74,6 +71,9 @@ def calendar():
 
         calendarAPI.eventInsert(auth, "primary", False, eventData)
         return redirect(url_for('test'))
+
+    else:
+        return render_template("pages/calendar.html")
 
 
 # Starting the server
