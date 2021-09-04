@@ -1,3 +1,4 @@
+from re import A
 from threading import Event
 from googleapiclient.discovery import build
 from httplib2 import Http
@@ -25,9 +26,6 @@ def apiOAuth():
     service = build('calendar', 'v3', http=creds.authorize(Http()))
 
     return service
-
-
-s = apiOAuth()
 
 
 # Returns a list containing all of a user's calendars
@@ -89,7 +87,6 @@ def eventInsert(auth, calId, noti, event):
     auth.events().insert(calendarId = calId, sendNotifications = noti, body = event).execute()
 
 
-
 # Update an existing event with new information
 def eventUpdate(auth, calId, event):
 
@@ -118,9 +115,8 @@ def eventMove(auth, calId, eventId, destCalId):
 # GMTOffset = '+01:00'
 
 # eventData = {
+#     "id": "upqjigdujbgo1po7p901ms164g",
 #     "summary": "Test",
-#     "start": {"dateTime": "2021-09-03T13:00:00%s" % GMTOffset},
-#     "end": {"dateTime": "2021-09-03T16:00:00%s" % GMTOffset}
+#     "start": {"dateTime": "2021-09-03T15:00:00%s" % GMTOffset},
+#     "end": {"dateTime": "2021-09-03T18:00:00%s" % GMTOffset}
 # }
-
-
