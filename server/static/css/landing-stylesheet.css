@@ -1,0 +1,184 @@
+
+/*Unifile Image in Navbar*/
+#header-image {
+    height: 62px;
+}
+
+/*Navbar CSS*/
+.navbar {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+/*Navbar Buttons*/
+.nav-pills .nav-link {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 0;
+}
+
+.nav-link {
+    font-size:28px;
+    color:grey
+}
+
+.nav-link:hover {
+    color:white;
+}
+
+.nav-item {
+    overflow: hidden;
+}
+
+.nav-item:hover {
+    background-color: rgb(148,0,211)
+}
+
+
+/*Login button CSS*/
+.login-trigger {
+    font-weight: bold;
+    color: white;
+    background-color: rgb(148,0,211);
+    border-radius:25px;
+    padding: 10px 20px 10px 20px;
+}
+
+.login-trigger:hover {
+    text-decoration: none;
+    color: white;
+    background-color: rgb(118, 0, 168);
+}
+
+/*Login Form*/
+.form-control {
+    margin: 1em 0;
+}
+
+.form-control:hover, .form-control:focus {
+    box-shadow: none;  
+    border-color: #fff;
+}
+
+.form-control::-webkit-input-placeholder {
+    color: #eee;  
+}
+  
+.form-control:focus::-webkit-input-placeholder {
+    font-weight: bold;
+    color: #fff;
+}
+
+.username, .password {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    border-bottom: 2px solid #eee;
+    padding-left: 0;
+    font-weight: normal;
+    background: transparent;  
+}
+
+/*Modal Content and Buttons*/
+.login {
+    padding: 6px 20px;
+    border-radius: 20px;
+    background: none;
+    border: 2px solid rgb(148,0,211);
+    color: rgb(148,0,211);
+    font-weight: bold;
+    transition: all .5s;
+    margin-top: 1em;
+}
+
+.login:hover {
+    background: rgb(148,0,211);
+    color: #fff;
+}
+
+.modal-content {
+    font-weight: bold;
+}
+
+.close {
+    color: black;
+    transform: scale(1.2)
+  }
+
+
+h4 {
+    font-weight: bold;
+    color:black;
+}
+
+/*Jumbotron*/
+.jumbotron {
+    background: linear-gradient(326deg, rgb(148,0,211) 0%, #5f0a87 74%);
+}
+
+/*Aligns welcome text centrally*/
+.welcome {
+    text-align: center;
+    color: white;
+}
+
+/*Registration form*/
+.register-form {
+    background-color: white;
+    box-shadow: 5px 5px 10px 20px rgba(0,0,0,0.25);
+    padding: 10px 0 10px 20px;
+    border-radius: 20px;
+}
+
+.register-form label {
+    padding-right:10px;
+    font-weight: bold;
+    color: rgb(148,0,211);
+}
+
+.register-form button {
+    font-weight: bold;
+    background-color: white;
+    color: rgb(148,0,211);
+    border: 2px solid rgb(148,0,211);
+    border-radius:25px;
+    padding: 10px 20px 10px 20px;
+    position: relative;
+    float: right;
+    right: 20px;
+    bottom: 10px;
+}
+
+.col1-input-icon {
+    position: absolute;
+    left: 7px;
+    top: 7px;
+}
+
+.col2-input-icon {
+    position: absolute;
+    left: 177px;
+    top: 7px;
+}
+
+.register-form input {
+    margin-right: 10px;
+    padding-left: 30px;
+}
+
+.register-names input {
+    width: 160px;
+}
+
+.register-account input {
+    width: 330px;
+}
+
+/*General headings*/
+h1 {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+h2 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
