@@ -1,29 +1,21 @@
-from re import A
-from threading import Event
 from googleapiclient.discovery import build
-from httplib2 import Http
-from oauth2client import file, client, tools
+import pickle
+from google_auth_oauthlib.flow import InstalledAppFlow
 
 # Used for requests that require authorization
 # Returns an authorised object used for making API calls
 def apiOAuth():
 
-    try:
-        import argparse
-        flags = argparse.ArgumentParser(parents=[tools.argparser]).parse_args()
-    except ImportError:
-        flags = None
-
     SCOPES = "https://www.googleapis.com/auth/calendar"
-    store = file.Storage('storage.json')
-    creds = store.get()
+    flow = InstalledAppFlow.from_client_secrets_file("client_secret.json", scopes=SCOPES)
 
-    if not creds or creds.invalid:
-        flow = client.flow_from_clientsecrets('client_secret.json', SCOPES)
-        creds = tools.run_flow(flow, store, flags) \
-            if flags else tools.run(flow, store)
+    try:
+        creds = pickle.load(open("./tokens/calendarToken.pkl", "rb"))
+    except:
+        creds = flow.run_local_server()
+        pickle.dump(creds, open("./tokens/calendarToken.pkl", "wb"))
 
-    service = build('calendar', 'v3', http=creds.authorize(Http()))
+    service = build("calendar", "v3", credentials = creds)
 
     return service
 
