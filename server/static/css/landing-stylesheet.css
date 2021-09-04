@@ -114,6 +114,7 @@ h4 {
 /*Jumbotron*/
 .jumbotron {
     background: linear-gradient(326deg, rgb(148,0,211) 0%, #5f0a87 74%);
+    border-radius: 0px;
 }
 
 /*Aligns welcome text centrally*/
