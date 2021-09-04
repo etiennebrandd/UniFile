@@ -1,0 +1,28 @@
+/*Horizontal navbar*/
+#unifile-uf {
+    padding-right: 10px;
+    width: 85px;
+}
+
+.nav {
+    background-color: rgb(60,60,60);
+}
+
+.nav-link {
+    font-size:28px;
+    color: rgb(230, 230, 230);
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+}
+
+.nav-link:hover {
+    color:white;
+}
+
+.nav-item:hover {
+    color: white;
+    background-color: rgb(148,0,211);
+}
