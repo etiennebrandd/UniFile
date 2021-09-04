@@ -27,8 +27,37 @@
     background-color: rgb(148,0,211);
 }
 
+/*Profile and settings dropdown menu*/
 .profile-trigger {
     float: right;
     font-size: 50px;
     padding-right: 10px;
 }
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-dropdown-content {
+    display: none; /*Hidden by default*/
+    position: absolute;
+    right: 0;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.profile-dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.profile-dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .profile-dropdown-content {display: block;} /*Shows the dropdown menu when you hover*/
