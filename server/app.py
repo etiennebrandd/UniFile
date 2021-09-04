@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 import dataAccess
+import calendarAPI
 
 # Configure server and folder to fetch pages from
 app = Flask(__name__, template_folder='../client/')
@@ -45,6 +46,34 @@ def dashboard():
     user = dataAccess.dbRetrieveUserByID(request.args.get('user'))
     return render_template('pages/dashboard.html', firstName = user["firstName"])
 
+
+
+
+
+
+
+
+@app.route('/test')
+def test():
+    return render_template('pages/testing.html')
+
+@app.route('/calendar', methods = ['POST'])
+def calendar():
+
+    if request.method == "POST":
+        
+        auth = calendarAPI.apiOAuth()
+
+        GMTOffset = '+01:00'
+
+        eventData = {
+            "summary": "Test",
+            "start": {"dateTime": "2021-09-04T20:00:00%s" % GMTOffset},
+            "end": {"dateTime": "2021-09-04T21:00:00%s" % GMTOffset}
+        }
+
+        calendarAPI.eventInsert(auth, "primary", False, eventData)
+        return redirect(url_for('test'))
 
 
 # Starting the server
