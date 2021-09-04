@@ -1,0 +1,36 @@
+/*Horizontal navbar*/
+#unifile-uf {
+    padding-right: 10px;
+    width: 70px;
+}
+
+.nav {
+    background-color: rgb(60,60,60);
+}
+
+.nav-link {
+    font-size:28px;
+    color: rgb(230, 230, 230);
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+}
+
+.nav-link:hover {
+    color:rgb(230, 230, 230);
+}
+
+.nav-item:hover {
+    color: white;
+    background-color: rgb(148,0,211);
+}
+
+/*Profile and settings dropdown trigger*/
+.profile-trigger {
+    float: right;
+    font-size: 50px;
+    padding-right: 10px;
+    cursor: pointer;
+}
