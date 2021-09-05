@@ -32,7 +32,7 @@
                     <img id="unifile-uf" src="{{ url_for('static', filename='images/logos/UIWhite.png') }}">
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="dashboard">Dashboard</a>
+                    <a class="nav-link" href="{{ url_for('dashboard', user = liUser) }}">Dashboard</a>
                 </li> 
                 <li class="nav-item">
                     <a class="nav-link" href="#">Calendar</a>
@@ -58,7 +58,18 @@
                 </li>
             </ul>
         </nav>
+        
+        <iframe src="https://calendar.google.com/calendar/embed?src={{calendar}}&ctz=Europe%2FLondon" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
 
+        <form action="http://localhost:5000/calendar?user={{liUser}}&action=changeCalendar" method="POST">
+            <button>Change Calendar</button>
+        </form>
+        <form action="http://localhost:5000/calendar?user={{liUser}}&action=createEvent" method="POST">
+            <button>Create Event</button>
+        </form>
+        <form action="http://localhost:5000/calendar?user={{liUser}}&action=createRecurringEvent" method="POST">
+            <button>Create Recurring Event</button>
+        </form>
     </body>
 </html>
 
