@@ -74,8 +74,9 @@ def calendar():
         return redirect(url_for('test'))
 
     else:
-        # user = dataAccess.dbRetrieveUserByID(request.args.get("user"))
-        return render_template("pages/calendar.html")
+
+        user = dataAccess.dbRetrieveUserByID(request.args.get("user"))
+        return render_template("pages/calendar.html", liUser = user["id"])
 
 
 # Starting the server
