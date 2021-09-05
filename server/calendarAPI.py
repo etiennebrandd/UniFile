@@ -1,21 +1,31 @@
 from googleapiclient.discovery import build
-import pickle
+import os.path
 from google_auth_oauthlib.flow import InstalledAppFlow
+from google.auth.transport.requests import Request
+from google.oauth2.credentials import Credentials
 
 # Used for requests that require authorization
 # Returns an authorised object used for making API calls
 def apiOAuth():
 
-    SCOPES = "https://www.googleapis.com/auth/calendar"
-    flow = InstalledAppFlow.from_client_secrets_file("client_secret.json", scopes=SCOPES)
+    SCOPES = ["https://www.googleapis.com/auth/calendar"]
 
-    try:
-        creds = pickle.load(open("./tokens/calendarToken.pkl", "rb"))
-    except:
-        creds = flow.run_local_server()
-        pickle.dump(creds, open("./tokens/calendarToken.pkl", "wb"))
+    creds = None
 
-    # print(creds)
+    if os.path.exists("./tokens/calendarToken.json"):
+        creds = Credentials.from_authorized_user_file('./tokens/calendarToken.json', scopes=SCOPES)
+
+    if not creds or not creds.valid:
+
+        if creds and creds.expired and creds.refresh_token:
+            creds.refresh(Request())
+        else:
+            flow = InstalledAppFlow.from_client_secrets_file("client_secret.json", scopes=SCOPES)
+            creds = flow.run_local_server()
+
+        with open('./tokens/calendarToken.json', 'w') as token:
+            token.write(creds.to_json())
+
     service = build("calendar", "v3", credentials = creds)
 
     return service
