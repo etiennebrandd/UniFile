@@ -15,6 +15,7 @@ def apiOAuth():
         creds = flow.run_local_server()
         pickle.dump(creds, open("./tokens/calendarToken.pkl", "wb"))
 
+    # print(creds)
     service = build("calendar", "v3", credentials = creds)
 
     return service

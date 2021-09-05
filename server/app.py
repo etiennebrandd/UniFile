@@ -44,7 +44,7 @@ def login():
 def dashboard():
 
     user = dataAccess.dbRetrieveUserByID(request.args.get('user'))
-    return render_template('pages/dashboard.html', firstName = user["firstName"])
+    return render_template('pages/dashboard.html', firstName = user["firstName"], liUser = user["id"])
 
 
 
@@ -53,6 +53,7 @@ def dashboard():
 @app.route('/test')
 def test():
     return render_template('pages/testing.html')
+
 
 @app.route('/calendar', methods = ['GET', 'POST'])
 def calendar():
@@ -73,6 +74,7 @@ def calendar():
         return redirect(url_for('test'))
 
     else:
+        # user = dataAccess.dbRetrieveUserByID(request.args.get("user"))
         return render_template("pages/calendar.html")
 
 
