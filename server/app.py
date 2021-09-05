@@ -58,25 +58,33 @@ def test():
 @app.route('/calendar', methods = ['GET', 'POST'])
 def calendar():
 
+    user = dataAccess.dbRetrieveUserByID(request.args.get("user"))
+    auth = calendarAPI.apiOAuth()
+    cal = calendarAPI.calendarListGet(auth, "primary")
+    print(cal["id"])
+
     if request.method == "POST":
+
+        args = request.args.to_dict()
         
-        auth = calendarAPI.apiOAuth()
+        if args["action"] == "createEvent":
+            
+            GMTOffset = '+01:00'
 
-        GMTOffset = '+01:00'
+            eventData = {
+                "summary": "Test",
+                "start": {"dateTime": "2021-09-04T20:00:00%s" % GMTOffset},
+                "end": {"dateTime": "2021-09-04T21:00:00%s" % GMTOffset}
+            }
 
-        eventData = {
-            "summary": "Test",
-            "start": {"dateTime": "2021-09-04T20:00:00%s" % GMTOffset},
-            "end": {"dateTime": "2021-09-04T21:00:00%s" % GMTOffset}
-        }
-
-        calendarAPI.eventInsert(auth, "primary", False, eventData)
-        return redirect(url_for('test'))
+            calendarAPI.eventInsert(auth, "primary", False, eventData)
+        
+        return redirect(url_for('calendar', user = user["id"]))
 
     else:
 
-        user = dataAccess.dbRetrieveUserByID(request.args.get("user"))
-        return render_template("pages/calendar.html", liUser = user["id"])
+    
+        return render_template("pages/calendar.html", liUser = user["id"], calendar = cal["id"])
 
 
 # Starting the server

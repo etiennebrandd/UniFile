@@ -59,10 +59,17 @@
             </ul>
         </nav>
         
-        <!-- <form action="http://localhost:5000/calendar" method="POST">
-            <button type="submit">Calendar</button>
-        </form> -->
+        <iframe src="https://calendar.google.com/calendar/embed?src={{calendar}}&ctz=Europe%2FLondon" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
 
+        <form action="http://localhost:5000/calendar?user={{liUser}}&action=changeCalendar" method="POST">
+            <button>Change Calendar</button>
+        </form>
+        <form action="http://localhost:5000/calendar?user={{liUser}}&action=createEvent" method="POST">
+            <button>Create Event</button>
+        </form>
+        <form action="http://localhost:5000/calendar?user={{liUser}}&action=createRecurringEvent" method="POST">
+            <button>Create Recurring Event</button>
+        </form>
     </body>
 </html>
 
