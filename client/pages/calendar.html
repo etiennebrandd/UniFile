@@ -58,9 +58,23 @@
                 </li>
             </ul>
         </nav>
-        
+
+        <!--Sidebar-->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Calendar Controls</h3>
+            </div>
+
+            <ul class="sidebar-contents">
+                <a href="#">Anchor 1</a>
+                <a href="#">Anchor 2</a>
+                <a href="#">ANchor 3</a>
+            </ul>
+        </nav>
+        <!--iFrame for calendar-->
         <iframe src="https://calendar.google.com/calendar/embed?src={{calendar}}&ctz=Europe%2FLondon" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
 
+        <!--Buttons for the calendar-->
         <form action="http://localhost:5000/calendar?user={{liUser}}&action=changeCalendar" method="POST">
             <button>Change Calendar</button>
         </form>
@@ -72,11 +86,3 @@
         </form>
     </body>
 </html>
-
-<!--
-TODO:
-
-3. Format the welcome title
-4. Figure out nav font
-
--->
