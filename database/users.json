@@ -26,6 +26,15 @@
             "salt": "5b3ee90743f7455e9bb122e73e073fc5",
             "username": "ehawes",
             "id": "0ddc57"
+        },
+        {
+            "firstName": "Ethan",
+            "lastName": "Admin",
+            "email": "e@admin.com",
+            "password": "9cf01b86e6cfb3bc1a7645a494c2ceb379cc1aee5bd5f3eabe24d2c038dddefb",
+            "salt": "75b873bfb2504f20a1129abf75aadf30",
+            "username": "eadmin",
+            "id": "efbc91"
         }
     ]
 }

@@ -32,10 +32,10 @@
                     <img id="unifile-uf" src="{{ url_for('static', filename='images/logos/UIWhite.png') }}">
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{ url_for('dashboard', user = liUser) }}">Dashboard</a>
+                    <a class="nav-link" href="#">Dashboard</a>
                 </li> 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Calendar</a>
+                    <a class="nav-link" href="{{ url_for('calendar', user = liUser) }}">Calendar</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Budget</a>
@@ -46,6 +46,7 @@
                 <li class="ml-auto my-auto">
                     <div class="dropdown" style="float: right;">
                         <span class="iconify profile-trigger dropdown-toggle"id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-icon="octicon:person-24" style="color: #e6e6e6;"></span>
+                        
                         <!--Content of the dropdown menu-->
                         <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" href="#">Profile</a>
@@ -58,31 +59,32 @@
                 </li>
             </ul>
         </nav>
+        <div id="main">
+            <div class="row">
+                <!--iFrame for calendar-->
+                <div class="col-9">
+                    <iframe id="calendar" src="https://calendar.google.com/calendar/embed?src={{calendar}}&ctz=Europe%2FLondon" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+                </div>
 
-        <!--Sidebar-->
-        <nav id="sidebar">
-            <div class="sidebar-header">
-                <h3>Calendar Controls</h3>
+                <!--Sidebar-->
+
+                <div class="col-3" id="calendar-controls">
+                        <div class="sidebar-header">
+                            <h3>Calendar Controls</h3>
+                        </div>
+                        <div class="sidebar-contents">
+                            <form action="http://localhost:5000/calendar?user={{liUser}}&action=changeCalendar" method="POST">
+                                <button class="btn btn-secondary cal-btn">Change Calendar</button>
+                            </form>
+                            <form action="http://localhost:5000/calendar?user={{liUser}}&action=createEvent" method="POST">
+                                <button class="btn btn-secondary cal-btn">Create Event</button>
+                            </form>
+                            <form action="http://localhost:5000/calendar?user={{liUser}}&action=createRecurringEvent" method="POST">
+                                <button class="btn btn-secondary cal-btn">Create Recurring Event</button>
+                            </form>
+                        </div>
+                </div>
             </div>
-
-            <ul class="sidebar-contents">
-                <a href="#">Anchor 1</a>
-                <a href="#">Anchor 2</a>
-                <a href="#">ANchor 3</a>
-            </ul>
-        </nav>
-        <!--iFrame for calendar-->
-        <iframe src="https://calendar.google.com/calendar/embed?src={{calendar}}&ctz=Europe%2FLondon" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
-
-        <!--Buttons for the calendar-->
-        <form action="http://localhost:5000/calendar?user={{liUser}}&action=changeCalendar" method="POST">
-            <button>Change Calendar</button>
-        </form>
-        <form action="http://localhost:5000/calendar?user={{liUser}}&action=createEvent" method="POST">
-            <button>Create Event</button>
-        </form>
-        <form action="http://localhost:5000/calendar?user={{liUser}}&action=createRecurringEvent" method="POST">
-            <button>Create Recurring Event</button>
-        </form>
+        </div>
     </body>
 </html>
