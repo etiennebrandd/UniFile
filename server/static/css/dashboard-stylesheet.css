@@ -1,3 +1,9 @@
+/*Fixing page alignment*/
+#cal-main .row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
 /*Horizontal navbar*/
 #unifile-uf {
     padding-right: 10px;
