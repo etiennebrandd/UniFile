@@ -58,32 +58,49 @@ def test():
 @app.route('/calendar', methods = ['GET', 'POST'])
 def calendar():
 
+    # Retrive a users ID
     user = dataAccess.dbRetrieveUserByID(request.args.get("user"))
+
+    # Retrieve access token or direct user through auth flow
     auth = calendarAPI.apiOAuth()
+
+    # Fetch the user's primary calendar for initial display
     cal = calendarAPI.calendarListGet(auth, "primary")
     print(cal["id"])
 
     if request.method == "POST":
 
+        # Retrive query params
         args = request.args.to_dict()
         
+        # If request to create event
         if args["action"] == "createEvent":
             
             GMTOffset = '+01:00'
 
+            # Retrieve event creation form data
+            data = request.form
+
+            # Create event object using form data
             eventData = {
-                "summary": "Test",
-                "start": {"dateTime": "2021-09-04T20:00:00%s" % GMTOffset},
-                "end": {"dateTime": "2021-09-04T21:00:00%s" % GMTOffset}
+                "summary": data["summary"],
+                "description": data["description"],
+                "start": {
+                    "dateTime": data["startDate"] + "T" + data["startTime"] + ":00" + "%s" % GMTOffset
+                },
+                "end": {
+                    "dateTime": data["endDate"] + "T" + data["endTime"] + ":00" + "%s" % GMTOffset
+                }
             }
 
+            # Call API to insert event
             calendarAPI.eventInsert(auth, "primary", False, eventData)
         
         return redirect(url_for('calendar', user = user["id"]))
 
     else:
 
-    
+        # Render calendar.html with user and calendar variables for DOM
         return render_template("pages/calendar.html", liUser = user["id"], calendar = cal["id"])
 
 
