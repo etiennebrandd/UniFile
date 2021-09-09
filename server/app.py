@@ -1,12 +1,17 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session
 import dataAccess
 import calendarAPI
 
 # Configure server and folder to fetch pages from
 app = Flask(__name__, template_folder='../client/')
+app.secret_key = "4d148eb6ddb34438a07fcb3d3c054bc9"
 
 
 # Routes
+
+############################################################
+## Route logic for landing page
+############################################################
 @app.route('/', methods = ['GET', 'POST'])
 def index():
     # If route receives a POST request (a user has registered)
@@ -27,6 +32,9 @@ def index():
         return render_template('index.html', message = "")
 
 
+############################################################
+## Route logic for when login button is clicked
+############################################################
 @app.route('/login', methods = ['POST'])
 def login():
     if request.method == 'POST':
@@ -37,36 +45,48 @@ def login():
             return redirect(url_for('index'))
 
         else:
+            session["userID"] = id
+            print("Login: ", session["userID"])
             return redirect(url_for('dashboard', user = id))
 
 
+############################################################
+## Route logic for dashboard page
+############################################################
 @app.route('/dashboard')
 def dashboard():
 
-    user = dataAccess.dbRetrieveUserByID(request.args.get('user'))
-    return render_template('pages/dashboard.html', firstName = user["firstName"], liUser = user["id"])
+    print("Dash: ", session["userID"])
+
+    if session["userID"]:
+
+        user = dataAccess.dbRetrieveUserByID(request.args.get('user'))
+        return render_template('pages/dashboard.html', firstName = user["firstName"], liUser = user["id"])
+    
+    else: return redirect(url_for('index'))
 
 
-
-
-
-@app.route('/test')
-def test():
-    return render_template('pages/testing.html')
-
-
+############################################################
+## Route logic for calendar page
+############################################################
 @app.route('/calendar', methods = ['GET', 'POST'])
 def calendar():
+
+    if not request.args:
+        return redirect(url_for('index'))
+        
 
     # Retrive a users ID
     user = dataAccess.dbRetrieveUserByID(request.args.get("user"))
 
     # Retrieve access token or direct user through auth flow
-    auth = calendarAPI.apiOAuth()
+    try:
+        auth = calendarAPI.apiOAuth(request.args.get("user"))
+        cal = calendarAPI.calendarListGet(auth, "primary")
 
-    # Fetch the user's primary calendar for initial display
-    cal = calendarAPI.calendarListGet(auth, "primary")
-    print(cal["id"])
+    except:
+        print("** ERROR: OAUTH AUTHENTICATION FAILED **")
+
 
     if request.method == "POST":
 
@@ -94,7 +114,9 @@ def calendar():
             }
 
             # Call API to insert event
-            calendarAPI.eventInsert(auth, "primary", False, eventData)
+            try:
+                calendarAPI.eventInsert(auth, "primary", False, eventData)
+            except: print("** ERROR: EXCEPTION WHEN TRYING TO CREATE EVENT **")
         
         return redirect(url_for('calendar', user = user["id"]))
 
@@ -102,6 +124,22 @@ def calendar():
 
         # Render calendar.html with user and calendar variables for DOM
         return render_template("pages/calendar.html", liUser = user["id"], calendar = cal["id"])
+
+
+############################################################
+## Route logic for logout button is clicked
+############################################################
+@app.route('/logout')
+def logout():
+
+    print("Logout: ", session["userID"])
+    session.pop("userID", None)
+    
+    return redirect(url_for('index'))
+
+
+
+
 
 
 # Starting the server

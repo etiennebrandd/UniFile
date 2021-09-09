@@ -1,19 +1,22 @@
 from googleapiclient.discovery import build
-import os.path
+import os
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 
 # Used for requests that require authorization
 # Returns an authorised object used for making API calls
-def apiOAuth():
+def apiOAuth(userID):
 
     SCOPES = ["https://www.googleapis.com/auth/calendar"]
 
     creds = None
 
-    if os.path.exists("./tokens/calendarToken.json"):
-        creds = Credentials.from_authorized_user_file('./tokens/calendarToken.json', scopes=SCOPES)
+    file = "../database/calendarTokens/" + userID + ".json"
+
+    if os.path.exists(file) and os.stat(file).st_size != 0:
+        creds = Credentials.from_authorized_user_file(file, scopes=SCOPES)
+
 
     if not creds or not creds.valid:
 
@@ -23,7 +26,7 @@ def apiOAuth():
             flow = InstalledAppFlow.from_client_secrets_file("client_secret.json", scopes=SCOPES)
             creds = flow.run_local_server()
 
-        with open('./tokens/calendarToken.json', 'w') as token:
+        with open("../database/calendarTokens/" + userID + ".json", 'w') as token:
             token.write(creds.to_json())
 
     service = build("calendar", "v3", credentials = creds)
