@@ -1,10 +1,9 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for
 import dataAccess
 import calendarAPI
 
 # Configure server and folder to fetch pages from
 app = Flask(__name__, template_folder='../client/')
-app.secret_key = "4d148eb6ddb34438a07fcb3d3c054bc9"
 
 
 # Routes
@@ -39,15 +38,13 @@ def index():
 def login():
     if request.method == 'POST':
 
-        loggedIn, id = dataAccess.dbLogin(request.form)  
+        loggedIn, id, token = dataAccess.dbLogin(request.form)  
 
-        if loggedIn == False:
+        if loggedIn == False or token == "":
             return redirect(url_for('index'))
 
         else:
-            session["userID"] = id
-            print("Login: ", session["userID"])
-            return redirect(url_for('dashboard', user = id))
+            return redirect(url_for('dashboard', user = id, csrf = token))
 
 
 ############################################################
@@ -56,14 +53,17 @@ def login():
 @app.route('/dashboard')
 def dashboard():
 
-    print("Dash: ", session["userID"])
+    # print("Dash: ", session["userID"])
 
-    if session["userID"]:
+    # if session["userID"]:
 
-        user = dataAccess.dbRetrieveUserByID(request.args.get('user'))
-        return render_template('pages/dashboard.html', firstName = user["firstName"], liUser = user["id"])
+    user = dataAccess.dbRetrieveUserByID(request.args.get('user'))
+    return render_template('pages/dashboard.html',
+        firstName = user["firstName"],
+        liUser = user["id"],
+        csrf = request.args.get('csrf'))
     
-    else: return redirect(url_for('index'))
+    # else: return redirect(url_for('index'))
 
 
 ############################################################
@@ -131,9 +131,7 @@ def calendar():
 ############################################################
 @app.route('/logout')
 def logout():
-
-    print("Logout: ", session["userID"])
-    session.pop("userID", None)
+    
     
     return redirect(url_for('index'))
 

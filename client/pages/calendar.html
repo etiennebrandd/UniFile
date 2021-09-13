@@ -115,6 +115,9 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <div class="form-group">
+                                                        <!-- Hidden input for CSRF token -->
+                                                        <input type="hidden" value="{{ csrf_token }}">
+
                                                         <label for="summary">Summary</label>
                                                         <input type="text" id="summary" name="summary">
                                                     </div>
