@@ -89,17 +89,95 @@ def dbLogin(credentials):
             # Check hashed input password matches what is in database
             if checkpwd == user["password"]:
                 
-                return True, user["id"]
+                csrf = dbSession(user["id"])
+                return True, user["id"], csrf
 
             else:
-                return False, ""
+                return False, "", ""
 
         # Keep iterating if not match
         else:
             continue
 
-    return False, ""
+    return False, "", ""
 
 
+def dbSession(id):
 
+    f = open("../database/sessions.json", "r")
+    data = json.loads(f.read())
+    f.close()
+
+    sessionData = data["sessions"]
+
+    try:
+        for i in sessionData:
+
+            if i["user_id"] == id:
+                sessionData.pop(sessionData.index(i))
+                break
+    except Exception: 
+        pass
+
+    csrf = security.uid()
+
+    sesh = {
+        "user_id": id,
+        "csrf_token": csrf
+    }
+        
+    sessionData.append(sesh)
+            
+
+    data["sessions"] = sessionData
+
+    f = open("../database/sessions.json", "w")
+    newData = json.dumps(data, indent=4)
     
+    f.write(newData)
+    f.close()
+
+    return sesh["csrf_token"]
+
+
+def dbCheckToken(id):
+    
+    f = open("../database/sessions.json", "r")
+    data = json.loads(f.read())
+    f.close()
+
+    sessionData = data["sessions"]
+
+    for i in sessionData:
+
+        if i["user_id"] == id:
+            if i["csrf_token"]:
+
+                return True
+
+            else: return False
+        
+    else: return False
+
+
+def dbLogout(id):
+
+    f = open("../database/sessions.json", "r")
+    data = json.loads(f.read())
+    f.close()
+
+    sessionData = data["sessions"]
+
+    for i in sessionData:
+
+        if i["user_id"] == id:
+            sessionData.pop(sessionData.index(i))
+            break
+
+    data["sessions"] = sessionData
+
+    f = open("../database/sessions.json", "w")
+    newData = json.dumps(data, indent=4)
+    
+    f.write(newData)
+    f.close()

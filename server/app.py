@@ -1,10 +1,9 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for
 import dataAccess
 import calendarAPI
 
 # Configure server and folder to fetch pages from
 app = Flask(__name__, template_folder='../client/')
-app.secret_key = "4d148eb6ddb34438a07fcb3d3c054bc9"
 
 
 # Routes
@@ -39,15 +38,14 @@ def index():
 def login():
     if request.method == 'POST':
 
-        loggedIn, id = dataAccess.dbLogin(request.form)  
+        loggedIn, id, token = dataAccess.dbLogin(request.form)  
 
-        if loggedIn == False:
+        if loggedIn == False or token == "":
             return redirect(url_for('index'))
 
         else:
-            session["userID"] = id
-            print("Login: ", session["userID"])
             return redirect(url_for('dashboard', user = id))
+
 
 
 ############################################################
@@ -56,14 +54,22 @@ def login():
 @app.route('/dashboard')
 def dashboard():
 
-    print("Dash: ", session["userID"])
+    # Retrive ID of user
+    id = request.args.get("user")
 
-    if session["userID"]:
+    # Check the user is authenticated by validating token exists
+    x = dataAccess.dbCheckToken(id)
 
-        user = dataAccess.dbRetrieveUserByID(request.args.get('user'))
-        return render_template('pages/dashboard.html', firstName = user["firstName"], liUser = user["id"])
+    if not request.args or x == False:
+        return redirect(url_for('index'))
+
+    user = dataAccess.dbRetrieveUserByID(id)
+    return render_template('pages/dashboard.html',
+        firstName = user["firstName"],
+        liUser = user["id"]
+    )
     
-    else: return redirect(url_for('index'))
+    # else: return redirect(url_for('index'))
 
 
 ############################################################
@@ -72,16 +78,20 @@ def dashboard():
 @app.route('/calendar', methods = ['GET', 'POST'])
 def calendar():
 
-    if not request.args:
+    id = request.args.get("user")
+
+    x = dataAccess.dbCheckToken(id)
+
+    if not request.args or x == False:
         return redirect(url_for('index'))
         
 
     # Retrive a users ID
-    user = dataAccess.dbRetrieveUserByID(request.args.get("user"))
+    user = dataAccess.dbRetrieveUserByID(id)
 
     # Retrieve access token or direct user through auth flow
     try:
-        auth = calendarAPI.apiOAuth(request.args.get("user"))
+        auth = calendarAPI.apiOAuth(id)
         cal = calendarAPI.calendarListGet(auth, "primary")
 
     except:
@@ -131,10 +141,8 @@ def calendar():
 ############################################################
 @app.route('/logout')
 def logout():
-
-    print("Logout: ", session["userID"])
-    session.pop("userID", None)
     
+    dataAccess.dbLogout(request.args.get("user"))
     return redirect(url_for('index'))
 
 

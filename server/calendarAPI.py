@@ -109,20 +109,3 @@ def eventDelete(auth, calId, eventId):
 def eventMove(auth, calId, eventId, destCalId):
 
     auth.events().move(calendarId = calId, eventId = eventId, destination = destCalId).execute()
-
-
-
-
-
-
-
-
-
-# GMTOffset = '+01:00'
-
-# eventData = {
-#     "id": "upqjigdujbgo1po7p901ms164g",
-#     "summary": "Test",
-#     "start": {"dateTime": "2021-09-03T15:00:00%s" % GMTOffset},
-#     "end": {"dateTime": "2021-09-03T18:00:00%s" % GMTOffset}
-# }
