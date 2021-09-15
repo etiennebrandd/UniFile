@@ -35,7 +35,7 @@
                     <a class="nav-link" href="#">Dashboard</a>
                 </li> 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('calendar', user = liUser, csrf_token = csrf) }}">Calendar</a>
+                    <a class="nav-link" href="{{ url_for('calendar', user = liUser) }}">Calendar</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Budget</a>
@@ -53,7 +53,7 @@
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Integrations</a>
                             <a class="dropdown-item" href="#">Settings</a>
-                            <a class="dropdown-item" href="{{ url_for('logout') }}">Log out</a>
+                            <a class="dropdown-item" href="{{ url_for('logout', user = liUser) }}">Log out</a>
                         </div>
                     </div>
                 </li>

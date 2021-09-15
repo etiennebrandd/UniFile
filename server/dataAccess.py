@@ -138,9 +138,46 @@ def dbSession(id):
     f.close()
 
     return sesh["csrf_token"]
-        
 
-    # f.write()
+
+def dbCheckToken(id):
     
-    # return cookie
+    f = open("../database/sessions.json", "r")
+    data = json.loads(f.read())
+    f.close()
+
+    sessionData = data["sessions"]
+
+    for i in sessionData:
+
+        if i["user_id"] == id:
+            if i["csrf_token"]:
+
+                return True
+
+            else: return False
+        
+    else: return False
+
+
+def dbLogout(id):
+
+    f = open("../database/sessions.json", "r")
+    data = json.loads(f.read())
+    f.close()
+
+    sessionData = data["sessions"]
+
+    for i in sessionData:
+
+        if i["user_id"] == id:
+            sessionData.pop(sessionData.index(i))
+            break
+
+    data["sessions"] = sessionData
+
+    f = open("../database/sessions.json", "w")
+    newData = json.dumps(data, indent=4)
     
+    f.write(newData)
+    f.close()

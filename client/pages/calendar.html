@@ -32,10 +32,10 @@
                     <img id="unifile-uf" src="{{ url_for('static', filename='images/logos/UIWhite.png') }}">
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Dashboard</a>
+                    <a class="nav-link" href="{{ url_for('dashboard', user = liUser) }}">Dashboard</a>
                 </li> 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('calendar', user = liUser) }}">Calendar</a>
+                    <a class="nav-link" href="#">Calendar</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Budget</a>
@@ -53,7 +53,7 @@
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Integrations</a>
                             <a class="dropdown-item" href="#">Settings</a>
-                            <a class="dropdown-item" href="{{ url_for('logout') }}">Log out</a>
+                            <a class="dropdown-item" href="{{ url_for('logout', user = liUser) }}">Log out</a>
                         </div>
                     </div>
                 </li>
@@ -73,7 +73,6 @@
                             <h3>Calendar Controls</h3>
                         </div>
                         <div class="sidebar-contents">
-                            <!--<form action="http://localhost:5000/calendar?user={{liUser}}&action=changeCalendar" method="POST">-->
                                 <button class="btn btn-secondary cal-btn" data-toggle="modal" data-target="#changeCalendar">Change Calendar</button>
 
                                 <!--Modal-->
@@ -98,8 +97,6 @@
                                 </div>
                                 <br>
 
-
-                            <!--<form action="http://localhost:5000/calendar?user={{liUser}}&action=createEvent" method="POST">-->
                                 <button class="btn btn-secondary cal-btn" data-toggle="modal" data-target="#createEvent">Create Event</button>
                                 
                                 <!--Modal-->
@@ -115,7 +112,8 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <div class="form-group">
-                                                        <!-- Hidden input for CSRF token -->
+
+                                                        <!-- Hidden input for CSRF token **DON'T DELETE WIP** -->
                                                         <input type="hidden" value="{{ csrf_token }}">
 
                                                         <label for="summary">Summary</label>
