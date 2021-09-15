@@ -1,3 +1,18 @@
+/*Importing Rubik Fonts*/
+@font-face {
+    font-family: 'Rubik-Light';
+    src: url(../fonts/Rubik-Light.ttf)
+}
+
+@font-face {
+    font-family: 'Rubik-Regular';
+    src: url(../fonts/Rubik-Regular.ttf)
+}
+
+@font-face {
+    font-family: 'Rubik-SemiBold';
+    src: url(../fonts/Rubik-SemiBold.ttf)
+}
 
 /*Unifile Image in Navbar*/
 #header-image {
@@ -111,16 +126,31 @@ h4 {
     color:black;
 }
 
-/*Jumbotron*/
+/*Jumbotron and text contents*/
 .jumbotron {
     background: linear-gradient(326deg, rgb(148,0,211) 0%, #5f0a87 74%);
     border-radius: 0px;
 }
 
-/*Aligns welcome text centrally*/
-.welcome {
+.jumbo-title {
     text-align: center;
     color: white;
+    font-family: Rubik-regular;
+    font-size: 56px;
+}
+
+.jumbo-tag {
+    text-align: center;
+    color: white;
+    font-family: Rubik-light;
+    font-size: 38px;
+}
+
+.jumbo-p {
+    text-align: center;
+    color: white;
+    font-family: Rubik-light;
+    font-size: 18px;
 }
 
 /*Registration form*/
