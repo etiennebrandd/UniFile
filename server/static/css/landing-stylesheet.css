@@ -130,6 +130,7 @@ h4 {
 .jumbotron {
     background: linear-gradient(326deg, rgb(148,0,211) 0%, #5f0a87 74%);
     border-radius: 0px;
+    margin-bottom: 0px;
 }
 
 .jumbo-title {
@@ -205,11 +206,45 @@ h4 {
     width: 330px;
 }
 
-/*General headings*/
-h1 {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+/*Landing slide text*/
+.slide-title {
+    text-align: center;
+    font-family: Rubik-regular;
+    font-size: 56px;
 }
 
-h2 {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+.slide-tag {
+    text-align: center;
+    font-family: Rubik-light;
+    font-size: 38px;
+}
+
+.slide-p {
+    text-align: center;
+    font-family: Rubik-light;
+    font-size: 18px;
+}
+
+/*Landing white slides*/
+.white-slide {
+    padding: 1rem;
+}
+
+
+.landing-features {
+    text-align: center;
+    font-size: 20px;
+}
+
+/*Landing purple slides*/
+.purple-slide {
+    background: linear-gradient(326deg, rgb(148,0,211) 0%, #5f0a87 74%);
+    padding: 1rem;
+}
+
+/*Slide images*/
+.slide-img {
+    max-width: 100%;
+    height: auto;
+    background-color: white;
 }
