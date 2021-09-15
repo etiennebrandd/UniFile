@@ -70,40 +70,115 @@
         <div class="jumbotron mh-50">
             <div class="row">
                 <div class="col mh-50 my-auto">
-                    <h1 class="welcome">Welcome to UniFile</h1>
-                    <h2 class="welcome">The one-stop shop for all things Uni</h2>
-                    <p class="welcome">A bespoke application which manages all aspects of university life. From timetabling, to budgeting, and even meal prepping, UniFile takes care of the planning, so you can use more of your brain for what matters.</p>
+                    <h1 class="jumbo-title">Welcome to UniFile</h1>
+                    <h2 class="jumbo-tag">The one-stop shop for all things Uni</h2>
+                    <p class="jumbo-p">A bespoke application which manages all aspects of university life. From timetabling, to budgeting, and even meal prepping, UniFile takes care of the planning, so you can use more of your brain for what matters.</p>
                 </div>
-                    <div class="col mh-50 mx-auto register-form">
-                        <h2>Start Today. For Free.</h2>
-                        <p>Register for a free UniFile account to get started.</p>
-                        <!--Form to Register-->
-                        <form method="POST">
-                            <div class="form-group">
-                                <div class="input-group register-names">
-                                    <span class="iconify col1-input-icon" data-icon="octicon:person-24" style="color: darkviolet;"></span>
-                                    <input type="text" name="firstName" placeholder="First Name">
-                                    <span class="iconify col2-input-icon" data-icon="octicon:person-24" style="color: darkviolet;"></span>
-                                    <input type="text" name="lastName" placeholder="Last Name">
-                                </div>
+                <div class="col mh-50 mx-auto register-form">
+                    <h2>Start Today. For Free.</h2>
+                    <p>Register for a free UniFile account to get started.</p>
+                    <!--Form to Register-->
+                    <form method="POST">
+                        <div class="form-group">
+                            <div class="input-group register-names">
+                                <span class="iconify col1-input-icon" data-icon="octicon:person-24" style="color: darkviolet;"></span>
+                                <input type="text" name="firstName" placeholder="First Name">
+                                <span class="iconify col2-input-icon" data-icon="octicon:person-24" style="color: darkviolet;"></span>
+                                <input type="text" name="lastName" placeholder="Last Name">
                             </div>
-                            <div class="form-group register-account">
-                                <div class="input-group">
-                                    <span class="iconify col1-input-icon" data-icon="octicon:mail-24" style="color: darkviolet;"></span>
-                                    <input type="email" name="email" placeholder="Email">
-                                </div>
+                        </div>
+                        <div class="form-group register-account">
+                            <div class="input-group">
+                                <span class="iconify col1-input-icon" data-icon="octicon:mail-24" style="color: darkviolet;"></span>
+                                <input type="email" name="email" placeholder="Email">
                             </div>
-                            <div class="form-group register-account">
-                                <div class="input-group">
-                                    <span class="iconify col1-input-icon" data-icon="octicon:lock-24" style="color: darkviolet;"></span>
-                                    <input type="password" name="password" placeholder="Password">
-                                </div>
-                            </div>                
-                            <button type="submit">Sign-up</button>
-                
-                        </form>
-                        <p>{{ message }}</p>
+                        </div>
+                        <div class="form-group register-account">
+                            <div class="input-group">
+                                <span class="iconify col1-input-icon" data-icon="octicon:lock-24" style="color: darkviolet;"></span>
+                                <input type="password" name="password" placeholder="Password">
+                            </div>
+                        </div>                
+                        <button type="submit">Sign-up</button>
+            
+                    </form>
+                    <p>{{ message }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!--Overview slide (1)-->
+        <div class="white-slide">
+            <div class="row">
+                <div class="col">
+                    <img class="slide-img" src="{{ url_for('static', filename='images/wireframes/dashboard-wireframe.png') }}">
+                </div>
+                <div class="col mx-auto my-auto">
+                    <h1 class="slide-title">Regain Clarity</h1>
+                    <p class="slide-p">University is a very stressful time. Having to manage deadlines, money, independancy and a social life can be very difficult. Unifile gives you the tools to take some of that stress away, so you can start to enjoy your UniLife</p>
+                    <div class="row">
+                        <div class="col landing-features">
+                            <ul>
+                                <li>Dashboard</li>
+                                <li>Budget Tracker and Planner</li>
+                                <li>To-Do List</li>
+                            </ul>
+                        </div>
+
+                        <div class="col landing-features">
+                            <ul>
+                                <li>Calendar</li>
+                                <li>Meal Planner</li>
+                                <li>Integrations</li>
+                            </ul>
+                        </div>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Calendar slide (2)-->
+        <div class="purple-slide">
+            <div class="row">
+                <div class="col mx-auto my-auto">
+                    <h1 class="jumbo-title">Calendar</h1>
+                    <p class="jumbo-p">With so many things going on at university, it is difficult to keep on top of things. With UniFiles calendar, you are able to keep track of all those classes, exams and events in one place, so you'll never miss a deadline</p>
+                    <p class="jumbo-p">UniFile's calendar also supports integration with Google Calendar, with Outlook Calendar integration in the works. This means that you can have all of your calendars and timetables in one place - no more jumping between apps to see your classes!</p>
+                </div>
+
+                <div class="col">
+                    <img class="slide-img" src="{{ url_for('static', filename='images/wireframes/calendar-wireframe.png') }}">
+                </div>
+            </div>
+        </div>
+
+        <!--Budgeting slide (3)-->
+        <div class="white-slide">
+            <div class="row">
+                <div class="col">
+                    <img class="slide-img" src="{{ url_for('static', filename='images/wireframes/budget-wireframe.png') }}">
+                </div>
+                <div class="col mx-auto my-auto">
+                    <h1 class="slide-title">Budgeting</h1>
+                    <p class="slide-p">Most apps nowadays simply track your budget. You manually put in what you spend, and it tells you how much you have left for the week.</p>
+                    <p class="slide-p">UniFile takes a different approach by doing the planning for you. We give you a range of categories and you rank them from most important to least. Have an expensive degree which requires specialised equipment? We'll deduct money from the least important priority to cover the expense</p>
+                    <p class="slide-p">With integration across the rest of UniFile, and banking integration in the works, you can sleep easy knowing UniFIle has you covered</p>
+                </div>
+            </div>
+        </div>
+
+        <!--Meal slide (4)-->
+        <div class="purple-slide">
+            <div class="row">
+                <div class="col mx-auto my-auto">
+                    <h1 class="jumbo-title">Meal Planning</h1>
+                    <p class="jumbo-p">For a lot of people, university is the first time they will be cooking for themselves. We take a lot of the guesswork out of it by planning the weeks meals for you, in co-operation with our budget app.</p>
+                    <p class="jumbo-p">There is also the option to input a few of the odd ingredients you have spare in the cupboard to make an entirely new dish!</p>
+                </div>
+
+                <div class="col">
+                    <img class="slide-img" src="{{ url_for('static', filename='images/wireframes/meal-wireframe.png') }}">
+                </div>
             </div>
         </div>
     </body>
