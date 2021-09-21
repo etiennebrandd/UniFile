@@ -146,10 +146,6 @@ def logout():
     return redirect(url_for('index'))
 
 
-
-
-
-
 # Starting the server
 if __name__ == '__main__':
     app.run()
