@@ -37,38 +37,6 @@
 .profile-trigger {
     float: right;
     font-size: 50px;
+    padding-right: 10px;
     cursor: pointer;
-}
-
-/*Sidebar*/
-#food-sidebar {
-    padding-top: 1rem;
-    background-color: rgb(80, 80, 80);
-}
-
-#food-sidebar h2 {
-    color: white;
-}
-#food-sidebar h3 {
-    color: white;
-}
-
-#food-search {
-    border-radius: 25px;
-    padding-left: 8px;
-    margin-top: 0.7rem;
-    border: 0.5px solid black;
-    outline: 0;
-}
-
-#food-categories {
-    margin-top: 5px;
-    border-radius: 25px;
-    padding-left: 6px;
-    max-width: 100%;
-    outline: 0;
-}
-
-.recipe-parameters {
-    color: green;
 }
