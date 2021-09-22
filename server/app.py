@@ -136,6 +136,12 @@ def calendar():
         return render_template("pages/calendar.html", liUser = user["id"], calendar = cal["id"])
 
 
+@app.route('/recipes', methods = ["GET", "POST"])
+def recipes():
+
+    return render_template('pages/meals.html')
+
+
 ############################################################
 ## Route logic for logout button is clicked
 ############################################################

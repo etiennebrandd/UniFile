@@ -166,6 +166,8 @@ def dbLogout(id):
     data = json.loads(f.read())
     f.close()
 
+    
+
     sessionData = data["sessions"]
 
     for i in sessionData:
