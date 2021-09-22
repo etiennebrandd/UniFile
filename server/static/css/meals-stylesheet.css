@@ -1,3 +1,23 @@
+/*Importing Rubik Fonts*/
+@font-face {
+    font-family: 'Rubik-Light';
+    src: url(../fonts/Rubik-Light.ttf)
+}
+
+@font-face {
+    font-family: 'Rubik-Regular';
+    src: url(../fonts/Rubik-Regular.ttf)
+}
+
+@font-face {
+    font-family: 'Rubik-SemiBold';
+    src: url(../fonts/Rubik-SemiBold.ttf)
+}
+
+html, body {
+    height: 100vh;
+}
+
 /*Fixing page alignment*/
 #cal-main .row {
     margin-left: 0px;
@@ -43,32 +63,43 @@
 /*Sidebar*/
 #food-sidebar {
     padding-top: 1rem;
-    background-color: rgb(80, 80, 80);
+    background-color: rgb(90, 90, 90);
+    border-left: 1px solid rgb(60,60,60); 
+    height: 100%;
 }
 
 #food-sidebar h2 {
-    color: white;
-}
-#food-sidebar h3 {
+    font-family: Rubik-Regular;
     color: white;
 }
 
-#food-search {
-    border-radius: 25px;
-    padding-left: 8px;
-    margin-top: 0.7rem;
-    border: 0.5px solid black;
+#food-sidebar p {
+    font-family: Rubik-Light;
+    color: white;
+    font-size: 15px;
+}
+
+#search-form label {
+    font-size: 18px;
+    font-family: Rubik-Light;
+    color: white
+}
+
+#search-form input{
+    border-radius: 20px;
+    padding-left: 10px;
     outline: 0;
 }
 
-#food-categories {
-    margin-top: 5px;
-    border-radius: 25px;
-    padding-left: 6px;
-    max-width: 100%;
-    outline: 0;
-}
-
-#search-form label{
-    color: red;
+#search-form button {
+    font-weight: bold;
+    background-color: rgb(148,0,211);
+    color: white;
+    border: 2px solid rgb(148,0,211);
+    border-radius:25px;
+    padding: 10px 20px 10px 20px;
+    position: relative;
+    float: right;
+    right: 20px;
+    bottom: 10px;
 }
