@@ -22,7 +22,7 @@
             <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
     
             <!--Stylesheet-->
-            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dashboard-stylesheet.css') }}">
+            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/meals-stylesheet.css') }}">
     </head>
     <body>
         <!--Horizontal Navbar-->
@@ -65,29 +65,29 @@
             </div>
 
             <div class="col-3" id="food-sidebar">
-                <h2>Recipe Search</h2>
-                <p>Fill some of the boxes out below and get a list of recipes!</p>
+                <div id="search-form">
+                    <h2>Recipe Search</h2>
+                    <p>Fill some of the boxes out below and get a list of recipes!</p>
 
-                <label for="query">Search All</label><br>
-                <input class="recipe-parameters" type="text" id="query" name="query" placeholder="Spaghetti Bolognase"><br><br>
+                    <label for="query">Search All</label><br>
+                    <input type="text" id="query" name="query" placeholder= 'e.g. "Spaghetti Bolognase"'><br><br>
 
-                <label for="mealType">Meal Type</label><br>
-                <input class="recipe-parameters" type="text" id="mealType" name="mealType" placeholder="Main, Dessert"><br><br>
+                    <label for="mealType">Meal Type</label><br>
+                    <input type="text" id="mealType" name="mealType" placeholder='e.g. "Main" or "Dessert"'><br><br>
 
-                <label for="ingredient">Ingredients</label><br>
-                <input class="recipe-parameters" type="text" id="ingredient" name="ingredient" placeholder="Chicken, Pasta"><br><br>
+                    <label for="ingredient">Ingredients</label><br>
+                    <input type="text" id="ingredient" name="ingredient" placeholder='e.g. "Chicken" or "Pasta"'><br><br>
 
-                <label for="cuisine">Cuisine</label><br>
-                <input class="recipe-parameters" type="text" id="cuisine" name="cuisine" placeholder="Chinese, Indian"><br><br>
-                
-                <label for="diet">Diet</label><br>
-                <input class="recipe-parameters" type="text" id="diet" name="diet" placeholder="Vegetarian, Keto, Paleo"><br><br>
+                    <label for="cuisine">Cuisine</label><br>
+                    <input type="text" id="cuisine" name="cuisine" placeholder='e.g. "Chinese" or "Indian"'><br><br>
+                    
+                    <label for="diet">Diet</label><br>
+                    <input type="text" id="diet" name="diet" placeholder='e.g. "Vegetarian", "Keto" or "Paleo"'><br><br>
 
-                <label for="intolerance">Intolerance</label><br>
-                <input class="recipe-parameters" type="text" id="intolerance" name="intolerance" placeholder="Gluten, Nuts"><br><br>
-
+                    <label for="intolerance">Intolerance</label><br>
+                    <input type="text" id="intolerance" name="intolerance" placeholder='"Gluten" or "Nuts"'><br><br>
+                </div>
             </div>
         </div>
-
     </body>
 </html>
