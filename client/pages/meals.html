@@ -23,6 +23,9 @@
     
             <!--Stylesheet-->
             <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/meals-stylesheet.css') }}">
+
+            <!--Unicode-->
+            <meta charset="utf-8"/>    
     </head>
     <body>
         <!--Horizontal Navbar-->
@@ -59,36 +62,64 @@
             </ul>
         </nav>
         <div class="container-fluid h-100">
-            <div class="row h-100">
-                <div class="col-9 h-100">
-                    <p>results</p>
+            <div class="row flex-grow-1">
+                
+                <!--Secondary navbar below header navbar-->
+                <div class="col-10 h-100 nogap">
+                    <nav id="food-nav" class="sticky-top">
+                        <div class="row">
+                            <div class="col my-auto">
+                                <p id="results-found" class="h-100 my-auto">XXX Results Found</p>
+                            </div>
+
+                            <div class="col my-auto">
+                                <p id="recipe-sort" class="my-auto">&#x25BC; Sort</p>
+                            </div>
+                        </div>
+                    </nav>
+                    <p style="font-size: 72px;">1</p>
+                    <p style="font-size: 72px;">1</p>
+                    <p style="font-size: 72px;">1</p>
+                    <p style="font-size: 72px;">1</p>
+                    <p style="font-size: 72px;">1</p>
+                    <p style="font-size: 72px;">1</p>
+                    <p style="font-size: 72px;">1</p>
+                    <p style="font-size: 72px;">1</p><p style="font-size: 72px;">1</p>
+                    <p style="font-size: 72px;">1</p>
+                    <p style="font-size: 72px;">1</p>
+                    <p style="font-size: 72px;">1</p>
+                    <p style="font-size: 72px;">1</p>
+
                 </div>
 
-                <div class="col-3 h-100" id="food-sidebar">
-                    <div id="search-form">
-                        <h2>Recipe Search</h2>
-                        <p>Fill some of the boxes out below and get a list of recipes!</p>
+                <!--Search sidebar-->
+                <div class="col-2">
+                    <div id="food-sidebar-wrapper">
+                        <div id="food-sidebar-content">
+                            <h2>Recipe Search</h2>
+                            <p>Fill some of the boxes out below and get a list of recipes!</p>
+                            <hr>
 
-                        <label for="query">Search All</label><br>
-                        <input type="text" id="query" name="query" placeholder= 'e.g. "Spaghetti Bolognase"'><br><br>
+                            <label for="query">Search All</label><br>
+                            <input type="text" id="query" name="query" placeholder= 'e.g. "Spaghetti Bolognase"'><br><br>
 
-                        <label for="mealType">Meal Type</label><br>
-                        <input type="text" id="mealType" name="mealType" placeholder='e.g. "Main" or "Dessert"'><br><br>
+                            <label for="mealType">Meal Type</label><br>
+                            <input type="text" id="mealType" name="mealType" placeholder='e.g. "Main" or "Dessert"'><br><br>
 
-                        <label for="ingredient">Ingredients</label><br>
-                        <input type="text" id="ingredient" name="ingredient" placeholder='e.g. "Chicken" or "Pasta"'><br><br>
+                            <label for="ingredient">Ingredients</label><br>
+                            <input type="text" id="ingredient" name="ingredient" placeholder='e.g. "Chicken" or "Pasta"'><br><br>
 
-                        <label for="cuisine">Cuisine</label><br>
-                        <input type="text" id="cuisine" name="cuisine" placeholder='e.g. "Chinese" or "Indian"'><br><br>
-                        
-                        <label for="diet">Diet</label><br>
-                        <input type="text" id="diet" name="diet" placeholder='e.g. "Vegetarian" or "Keto"'><br><br>
+                            <label for="cuisine">Cuisine</label><br>
+                            <input type="text" id="cuisine" name="cuisine" placeholder='e.g. "Chinese" or "Indian"'><br><br>
+                            
+                            <label for="diet">Diet</label><br>
+                            <input type="text" id="diet" name="diet" placeholder='e.g. "Vegetarian" or "Keto"'><br><br>
 
-                        <label for="intolerance">Intolerance</label><br>
-                        <input type="text" id="intolerance" name="intolerance" placeholder='"Gluten" or "Nuts"'><br><br>
-                        
-                        <button type="submit">Search</button>
-                    
+                            <label for="intolerance">Intolerance</label><br>
+                            <input type="text" id="intolerance" name="intolerance" placeholder='"Gluten" or "Nuts"'><br><br>
+                            
+                            <button type="submit">Search</button>
+                        </div>
                     </div>
                 </div>
             </div>
