@@ -3,7 +3,8 @@ import uuid
 from cryptography.fernet import Fernet
 
 # Generate a  for any encryption
-key = Fernet.generate_key()
+# key = Fernet.generate_key()
+key = b'LPltkdHU304flx_T9Jlx1VYJpGmycdardnH4itSspP0='
 fernet = Fernet(key)
 
 # Can be used to return a SHA-256 hash of input
