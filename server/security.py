@@ -1,5 +1,11 @@
 import hashlib
 import uuid
+from cryptography.fernet import Fernet
+
+# Generate a  for any encryption
+# key = Fernet.generate_key()
+key = b'LPltkdHU304flx_T9Jlx1VYJpGmycdardnH4itSspP0='
+fernet = Fernet(key)
 
 # Can be used to return a SHA-256 hash of input
 # X (bool) used to indicate salt should be generated
@@ -46,3 +52,18 @@ def uid():
     id = uuid.uuid4()
     
     return id.hex
+
+
+# Encrypt a plaintext
+def encrypt(plaintext):
+    
+    ciphertext = fernet.encrypt(str.encode(plaintext))
+    return ciphertext
+
+
+# Decrypt a ciphertext
+def decrypt(ciphertext):
+
+    plaintext = fernet.decrypt(ciphertext).decode()
+    return plaintext
+

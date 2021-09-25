@@ -15,8 +15,20 @@ def dbRegister(user):
     data = json.loads(f.read())
     f.close()
 
-    # Extract the users data from dictionary - now a list
+    # Extract and decrypt the users data from dictionary - now a list
     userData = data["users"]
+
+    for us in userData:
+
+        encoded = str.encode(us)
+        decrypted = security.decrypt(encoded)
+
+        x = decrypted.replace("'", "\"")
+        decrypted = json.loads(x)
+
+        i = userData.index(us)
+        userData[i] = decrypted
+
 
     # Loop through existing user records to see if email exists
     for i in userData:
@@ -29,6 +41,13 @@ def dbRegister(user):
 
 
     userData.append(user)
+
+    for user in userData:
+
+        encrypted = security.encrypt(str(user))
+        decoded = encrypted.decode()
+        i = userData.index(user)
+        userData[i] = decoded
 
     # Set the value of the users data to be the new list
     data["users"] = userData
@@ -52,6 +71,17 @@ def dbRetrieveUserByID(userID):
 
     # Extract the users data from dictionary - now a list
     userData = data["users"]
+
+    for user in userData:
+
+        encoded = str.encode(user)
+        decrypted = security.decrypt(encoded)
+
+        x = decrypted.replace("'", "\"")
+        decrypted = json.loads(x)
+
+        i = userData.index(user)
+        userData[i] = decrypted
 
     # Loop through existing user records to see if email exists
     for user in userData:
@@ -77,6 +107,17 @@ def dbLogin(credentials):
 
     # Extract users
     userData = data["users"]
+
+    for user in userData:
+
+        encoded = str.encode(user)
+        decrypted = security.decrypt(encoded)
+
+        x = decrypted.replace("'", "\"")
+        decrypted = json.loads(x)
+
+        i = userData.index(user)
+        userData[i] = decrypted
 
     # Iterate through each user object to see if credential email matches record
     for user in userData:
@@ -104,18 +145,32 @@ def dbLogin(credentials):
 
 def dbSession(id):
 
+    # Decrypt Sessions within File
     f = open("../database/sessions.json", "r")
     data = json.loads(f.read())
     f.close()
 
     sessionData = data["sessions"]
+    
+    for session in sessionData:
 
+        encoded = str.encode(session)
+        decrypted = security.decrypt(encoded)
+
+        x = decrypted.replace("'", "\"")
+        decrypted = json.loads(x)
+
+        i = sessionData.index(session)
+        sessionData[i] = decrypted
+
+    # Check if session already exists and overwrite or add
     try:
         for i in sessionData:
 
             if i["user_id"] == id:
                 sessionData.pop(sessionData.index(i))
                 break
+
     except Exception: 
         pass
 
@@ -127,27 +182,44 @@ def dbSession(id):
     }
         
     sessionData.append(sesh)
-            
+
+    # Encrypt and write back to file
+    for session in sessionData:
+
+        encrypted = security.encrypt(str(session))
+        decoded = encrypted.decode()
+        i = sessionData.index(session)
+        sessionData[i] = decoded
 
     data["sessions"] = sessionData
-
-    f = open("../database/sessions.json", "w")
     newData = json.dumps(data, indent=4)
     
+    f = open("../database/sessions.json", "w")
     f.write(newData)
     f.close()
-
-    return sesh["csrf_token"]
 
 
 def dbCheckToken(id):
     
+    # Get encrypted sessions and decrypt
     f = open("../database/sessions.json", "r")
     data = json.loads(f.read())
     f.close()
 
     sessionData = data["sessions"]
+    
+    for session in sessionData:
 
+        encoded = str.encode(session)
+        decrypted = security.decrypt(encoded)
+
+        x = decrypted.replace("'", "\"")
+        decrypted = json.loads(x)
+
+        i = sessionData.index(session)
+        sessionData[i] = decrypted
+
+    # Check if the token exists for the user
     for i in sessionData:
 
         if i["user_id"] == id:
@@ -162,22 +234,42 @@ def dbCheckToken(id):
 
 def dbLogout(id):
 
+    # Get encrypted sessions and decrypt
     f = open("../database/sessions.json", "r")
     data = json.loads(f.read())
     f.close()
 
     sessionData = data["sessions"]
+    
+    for session in sessionData:
 
+        encoded = str.encode(session)
+        decrypted = security.decrypt(encoded)
+
+        x = decrypted.replace("'", "\"")
+        decrypted = json.loads(x)
+
+        i = sessionData.index(session)
+        sessionData[i] = decrypted
+
+    # Loop through each session and delete the appropriate session
     for i in sessionData:
 
         if i["user_id"] == id:
             sessionData.pop(sessionData.index(i))
             break
 
-    data["sessions"] = sessionData
+    # Encrypt remaining sessions and write back to file
+    for session in sessionData:
 
-    f = open("../database/sessions.json", "w")
+        encrypted = security.encrypt(str(session))
+        decoded = encrypted.decode()
+        i = sessionData.index(session)
+        sessionData[i] = decoded
+
+    data["sessions"] = sessionData
     newData = json.dumps(data, indent=4)
     
+    f = open("../database/sessions.json", "w")
     f.write(newData)
     f.close()
