@@ -1,3 +1,8 @@
 {
-    "sessions": []
+    "sessions": [
+        {
+            "user_id": "0ddc57",
+            "csrf_token": "c70bd111da11493abce3564a66ea5569"
+        }
+    ]
 }

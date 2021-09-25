@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Recipe Search</title>
+            <!--Bootstap Links-->
+                <!-- Latest compiled and minified CSS -->
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+                <!-- jQuery library -->
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+                <!-- Popper JS -->
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    
+                <!-- Latest compiled JavaScript -->
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
+    
+            <!--Links to SVGs for Login Form-->
+            <script src="https://code.iconify.design/2/2.0.4/iconify.min.js"></script>
+    
+            <!-- this link displays the icon in the search bar (placeholder) -->
+            <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    
+            <!--Stylesheet-->
+            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/meals-stylesheet.css') }}">
+
+            <!--Unicode-->
+            <meta charset="utf-8"/>    
+    </head>
+    <body>
+        <!--Horizontal Navbar-->
+        <nav>
+            <ul class="nav nav-pills justify-content">
+                <li>
+                    <img id="unifile-uf" src="{{ url_for('static', filename='images/logos/UIWhite.png') }}">
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="dashboard.html">Dashboard</a>
+                </li> 
+                <li class="nav-item">
+                    <a class="nav-link" href="calendar.html">Calendar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Budget</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Food</a>
+                </li>
+                <li class="ml-auto my-auto">
+                    <div class="dropdown" style="float: right;">
+                        <span class="iconify profile-trigger dropdown-toggle"id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-icon="octicon:person-24" style="color: #e6e6e6;"></span>
+                        <!--Content of the dropdown menu-->
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="#">Profile</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Integrations</a>
+                            <a class="dropdown-item" href="#">Settings</a>
+                            <a class="dropdown-item" href="#">Log out</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <div class="container-fluid h-100">
+            <div class="row flex-grow-1">
+                
+                <!--Secondary navbar below header navbar-->
+                <div class="col-10 h-100 nogap">
+                    <nav id="food-nav" class="sticky-top">
+                        <div class="row">
+                            <div class="col my-auto">
+                                <p id="results-found" class="h-100 my-auto">XXX Results Found</p>
+                            </div>
+
+                            <div class="col my-auto">
+                                <p id="recipe-sort" class="my-auto">&#x25BC; Sort</p>
+                            </div>
+                        </div>
+                    </nav>
+                    <p style="font-size: 72px;">1</p>
+                    <p style="font-size: 72px;">1</p>
+                    <p style="font-size: 72px;">1</p>
+                    <p style="font-size: 72px;">1</p>
+                    <p style="font-size: 72px;">1</p>
+                    <p style="font-size: 72px;">1</p>
+                    <p style="font-size: 72px;">1</p>
+                    <p style="font-size: 72px;">1</p><p style="font-size: 72px;">1</p>
+                    <p style="font-size: 72px;">1</p>
+                    <p style="font-size: 72px;">1</p>
+                    <p style="font-size: 72px;">1</p>
+                    <p style="font-size: 72px;">1</p>
+
+                </div>
+
+                <!--Search sidebar-->
+                <div class="col-2">
+                    <div id="food-sidebar-wrapper">
+                        <div id="food-sidebar-content">
+                            <h2>Recipe Search</h2>
+                            <p>Fill some of the boxes out below and get a list of recipes!</p>
+                            <hr>
+
+                            <label for="query">Search All</label><br>
+                            <input type="text" id="query" name="query" placeholder= 'e.g. "Spaghetti Bolognase"'><br><br>
+
+                            <label for="mealType">Meal Type</label><br>
+                            <input type="text" id="mealType" name="mealType" placeholder='e.g. "Main" or "Dessert"'><br><br>
+
+                            <label for="ingredient">Ingredients</label><br>
+                            <input type="text" id="ingredient" name="ingredient" placeholder='e.g. "Chicken" or "Pasta"'><br><br>
+
+                            <label for="cuisine">Cuisine</label><br>
+                            <input type="text" id="cuisine" name="cuisine" placeholder='e.g. "Chinese" or "Indian"'><br><br>
+                            
+                            <label for="diet">Diet</label><br>
+                            <input type="text" id="diet" name="diet" placeholder='e.g. "Vegetarian" or "Keto"'><br><br>
+
+                            <label for="intolerance">Intolerance</label><br>
+                            <input type="text" id="intolerance" name="intolerance" placeholder='"Gluten" or "Nuts"'><br><br>
+                            
+                            <button type="submit">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
