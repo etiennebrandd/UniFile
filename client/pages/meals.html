@@ -64,8 +64,8 @@
         <div class="container-fluid h-100">
             <div class="row flex-grow-1">
                 
-                <!--Secondary navbar below header navbar-->
                 <div class="col-10 h-100 nogap">
+                    <!--Secondary navbar below header navbar-->
                     <nav id="food-nav" class="sticky-top">
                         <div class="row">
                             <div class="col my-auto">
@@ -77,23 +77,22 @@
                             </div>
                         </div>
                     </nav>
-                    <p style="font-size: 72px;">1</p>
-                    <p style="font-size: 72px;">1</p>
-                    <p style="font-size: 72px;">1</p>
-                    <p style="font-size: 72px;">1</p>
-                    <p style="font-size: 72px;">1</p>
-                    <p style="font-size: 72px;">1</p>
-                    <p style="font-size: 72px;">1</p>
-                    <p style="font-size: 72px;">1</p><p style="font-size: 72px;">1</p>
-                    <p style="font-size: 72px;">1</p>
-                    <p style="font-size: 72px;">1</p>
-                    <p style="font-size: 72px;">1</p>
-                    <p style="font-size: 72px;">1</p>
 
+                    <!--Card viewspace-->
+                    <div class="recipe-results">
+                        <div class="row card">
+                            <div class="col-2 recipe-img-space">
+                                <img src="{{ url_for('static', filename='images/cards/template-card-image.png') }}" class="recipe-img">
+                            </div>
+                        </div>
+                        <div class="row card">
+                            <p>test</p>
+                        </div>
+                    </div>
                 </div>
 
                 <!--Search sidebar-->
-                <div class="col-2">
+                <div class="col-2" style="padding:0;">
                     <div id="food-sidebar-wrapper">
                         <div id="food-sidebar-content">
                             <h2>Recipe Search</h2>
