@@ -401,3 +401,11 @@ def shoppingListGet(username, hash):
 
     return list
 
+
+# Process user requests to call the correct API
+def foodProcessor(formData):
+
+    recipes = getRecipesBySearch(formData)
+
+    return recipes
+
