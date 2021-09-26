@@ -69,7 +69,7 @@
                     <nav id="food-nav" class="sticky-top">
                         <div class="row">
                             <div class="col my-auto">
-                                <p id="results-found" class="h-100 my-auto">{{ recipes|length }} result(s) found...</p>
+                                <p id="results-found" class="h-100 my-auto">Showing {{ recipes|length }} result(s) of {{ total }}...</p>
                             </div>
 
                             <div class="col my-auto">
@@ -80,26 +80,32 @@
 
                     <!--Card viewspace-->
                     <div class="recipe-results">
-                        <div class="row card">
-                            <div class="col-2 recipe-img-space">
-                                <img src="{{ url_for('static', filename='images/cards/template-card-image.png') }}" class="recipe-img">
+
+                        {% for recipe in recipes %}
+                            <div class="row card">
+                                <div class="col-2 recipe-img-space">
+                                    <!-- <img src="{{ url_for('static', filename='images/cards/template-card-image.png') }}" class="recipe-img"> -->
+                                    <img src="{{ recipe['image'] }}" alt="recipe image">
+                                </div>
+                                <p style="float: right;"> {{ recipe["title"] }}</p>
                             </div>
-                        </div>
+                        {% endfor %}
+                            
                         
                         <!-- Each recipe card will appear in a list -->
-                        <ul id="recipeView">
+                        <!-- <ul id="recipeView"> -->
 
                             <!-- This Jinja2 loop iterates through results and creates a list item -->
-                            {% for recipe in recipes %}
+                            <!-- {% for recipe in recipes %}
                                 
                                 <div class="row card">
-                                    <p>Title: {{ recipe["title"] }}</p>
+                                    <p>Title: {{ recipe["image"] }}</p>
                                     <button type="button">View Info</button>
                                 </div>
                                 
-                            {% endfor %}
+                            {% endfor %} -->
 
-                        </ul>
+                        <!-- </ul> -->
 
 
                     </div>
