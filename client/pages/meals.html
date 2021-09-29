@@ -62,7 +62,7 @@
             </ul>
         </nav>
         <div class="container-fluid h-100">
-            <div class="row flex-grow-1">
+            <div class="row flex-grow-1 h-100">
                 
                 <div class="col-10 h-100 nogap">
                     <!--Secondary navbar below header navbar-->
@@ -79,20 +79,46 @@
                     </nav>
 
                     <!--Card viewspace-->
-                    <div class="recipe-results">
-                        <div class="row card">
+                    <div class="container-fluid recipe-results">
+                        <div class="row recipe-card">
                             <div class="col-2 recipe-img-space">
                                 <img src="{{ url_for('static', filename='images/cards/template-card-image.png') }}" class="recipe-img">
                             </div>
+                            <div class="col-10 recipe-overview">
+                                <div class="recipe-container">
+                                    <h3 class="recipe-title">Sample Recipe Title</h3>
+                                    <p class="recipe-type">Recipe Type</p>
+                                    <p class="recipe-servings"><img class="recipe-icon" src="{{ url_for('static', filename='images/cards/serves.png') }}"> x Servings</p>
+                                    <p class="recipe-price"><img class="recipe-icon" src="{{ url_for('static', filename='images/cards/price.png') }}"> £x.xx p/s</p>
+                                    <p class="recipe-time"><img class="recipe-icon" src="{{ url_for('static', filename='images/cards/time.png') }}"> xx mins</p>
+                                    <p class="recipe-calories"><img class="recipe-icon" src="{{ url_for('static', filename='images/cards/calories.png') }}"> xxx</p>
+                                    <p class="recipe-summary">Summary text lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed rhoncus venenatis interdum. Donec in sodales turpis. Nam consequat luctus metus, varius rutrum sem mattis ac. Sed faucibus sem eget sollicitudin imperdiet. Nunc eget nisi maximus, eleifend massa at, auctor ipsum.</p>
+                                    
+                                </div>
+                            </div>
                         </div>
-                        <div class="row card">
-                            <p>test</p>
+                        <div class="row recipe-card">
+                            <div class="col-2 recipe-img-space">
+                                <img src="{{ url_for('static', filename='images/cards/example-stew.jpg') }}" class="recipe-img">
+                            </div>
+                            <div class="col-10 recipe-overview">
+                                <div class="recipe-container">
+                                    <h3 class="recipe-title">Example Chicken Stew</h3>
+                                    <p class="recipe-type">Main Course</p>
+                                    <p class="recipe-servings"><img class="recipe-icon" src="{{ url_for('static', filename='images/cards/serves.png') }}"> 4 Servings</p>
+                                    <p class="recipe-price"><img class="recipe-icon" src="{{ url_for('static', filename='images/cards/price.png') }}"> £2.29 p/s</p>
+                                    <p class="recipe-time"><img class="recipe-icon" src="{{ url_for('static', filename='images/cards/time.png') }}"> 1 hour</p>
+                                    <p class="recipe-calories"><img class="recipe-icon" src="{{ url_for('static', filename='images/cards/calories.png') }}"> 650</p>
+                                    <p class="recipe-summary">A heartwarming staple that will keep you warm on even the coldest of days. In its simplest form, all you need is chicken, some vegetables, stock cubes and water. However, almost anything goes, making it perfect for days where you don't have a lot in the fridge. Try mixing and matching different ingredients to create your perfect stew. Serves well with potatoes and tiger loaf bread.</p>
+                                    
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!--Search sidebar-->
-                <div class="col-2" style="padding:0;">
+                <div class="col-2 h-100" style="padding:0; background-color: rgb(90, 90, 90);">
                     <div id="food-sidebar-wrapper">
                         <div id="food-sidebar-content">
                             <h2>Recipe Search</h2>
