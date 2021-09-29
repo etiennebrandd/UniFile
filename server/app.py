@@ -142,10 +142,13 @@ def recipes():
 
     if request.method == "POST":
         
-        recipes = foodProcessor(request.form.to_dict())
-        print(recipes)
+        recipes, recipeDetails, total = foodProcessor(request.form.to_dict())
 
-        return render_template('pages/meals.html', recipes = recipes["results"], total = recipes["totalResults"])
+        print(type(recipes))
+
+        # recipeType = ",".join(recipes["type"])
+
+        return render_template('pages/meals.html', recipes = recipes, recipeDetails = recipeDetails, total = total)
         
     else:
 

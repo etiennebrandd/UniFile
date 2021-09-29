@@ -13,9 +13,9 @@ api_key = "f163cdaa932542509e6f18bb466b4c14"
 
 # Search Recipes
 # https://spoonacular.com/food-api/docs#Search-Recipes-Complex
-def getRecipesBySearch(payload):
+def getRecipesBySearch(payload, number):
 
-    endpoint = "https://api.spoonacular.com/recipes/complexSearch?apiKey=" + api_key
+    endpoint = "https://api.spoonacular.com/recipes/complexSearch?apiKey=" + api_key + "&number=" + str(number)
 
     r = requests.get(endpoint, params=payload)
     results = r.json()
@@ -58,6 +58,25 @@ def getRecipeInformation(recipeID, nutrition):
     print("** API QUOTA USED: ", r.headers["X-API-Quota-Used"], " **")
 
     return result
+
+
+# Get Recipe Information Bulk (nutrition boolean)
+# https://spoonacular.com/food-api/docs#Get-Recipe-Information-Bulk
+def getRecipeInformationBulk(recipeIDs, nutrition):
+
+    endpoint = "https://api.spoonacular.com/recipes/informationBulk?ids=" + str(recipeIDs) + "&apiKey=" + api_key
+
+    payload = {
+        "includeNutrition": nutrition
+    }
+
+    r = requests.get(endpoint, params=payload)
+    results = r.json()
+
+    print("** POINTS USED THIS REQUEST: ", r.headers["X-API-Quota-Request"], " **")
+    print("** API QUOTA USED: ", r.headers["X-API-Quota-Used"], " **")
+
+    return results
 
 
 # Get Analyzed Recipe Instructions
@@ -405,7 +424,46 @@ def shoppingListGet(username, hash):
 # Process user requests to call the correct API
 def foodProcessor(formData):
 
-    recipes = getRecipesBySearch(formData)
+    results = getRecipesBySearch(formData, 10)
+    recipes = results["results"]
 
-    return recipes
+    ids = []
+
+    for recipe in recipes:
+        ids.append(str(recipe["id"]))
+
+    stringIds = ",".join(ids)
+        
+    recipeDetails = getRecipeInformationBulk(stringIds, True)
+
+    recipePrices = []
+    recipeServings = []
+    recipeTime = []
+    recipeType = []
+    recipeCalories = []
+    recipeSummary = []
+
+    for detail in recipeDetails:
+
+        recipeTime.append(detail["readyInMinutes"])
+        recipeServings.append(detail["servings"])
+        recipeSummary.append(detail["summary"])
+        recipePrices.append(detail["pricePerServing"])
+        recipeType.append(detail["dishTypes"])
+        recipeCalories.append(detail["nutrition"]["nutrients"][0]["amount"])
+
+
+    for recipe in recipes:
+
+        i = recipes.index(recipe)
+        recipes[i]["time"] = recipeTime[i]
+        recipes[i]["servings"] = recipeServings[i]
+        recipes[i]["summary"] = recipeSummary[i]
+        recipes[i]["price"] = int(recipePrices[i])
+        recipes[i]["type"] = recipeType[i]
+        recipes[i]["calories"] = recipeCalories[i]
+
+    total = results["totalResults"]
+
+    return recipes, recipeDetails, total
 
