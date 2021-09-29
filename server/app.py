@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 import dataAccess
 import calendarAPI
+from foodAPI import foodProcessor
 
 # Configure server and folder to fetch pages from
 app = Flask(__name__, template_folder='../client/')
@@ -139,7 +140,19 @@ def calendar():
 @app.route('/recipes', methods = ["GET", "POST"])
 def recipes():
 
-    return render_template('pages/meals.html')
+    if request.method == "POST":
+        
+        recipes, recipeDetails, total = foodProcessor(request.form.to_dict())
+
+        print(type(recipes))
+
+        # recipeType = ",".join(recipes["type"])
+
+        return render_template('pages/meals.html', recipes = recipes, recipeDetails = recipeDetails, total = total)
+        
+    else:
+
+        return render_template('pages/meals.html', recipes = [])
 
 ############################################################
 ## Route logic for logout button is clicked

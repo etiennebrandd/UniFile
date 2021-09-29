@@ -69,7 +69,7 @@
                     <nav id="food-nav" class="sticky-top">
                         <div class="row">
                             <div class="col my-auto">
-                                <p id="results-found" class="h-100 my-auto">XXX Results Found</p>
+                                <p id="results-found" class="h-100 my-auto">Showing {{ recipes|length }} result(s) of {{ total }}...</p>
                             </div>
 
                             <div class="col my-auto">
@@ -80,24 +80,29 @@
 
                     <!--Card viewspace-->
                     <div class="container-fluid recipe-results">
-                        <div class="row recipe-card">
-                            <div class="col-2 recipe-img-space">
-                                <img src="{{ url_for('static', filename='images/cards/template-card-image.png') }}" class="recipe-img">
-                            </div>
-                            <div class="col-10 recipe-overview">
-                                <div class="recipe-container">
-                                    <h3 class="recipe-title">Sample Recipe Title</h3>
-                                    <p class="recipe-type">Recipe Type</p>
-                                    <p class="recipe-servings"><img class="recipe-icon" src="{{ url_for('static', filename='images/cards/serves.png') }}"> x Servings</p>
-                                    <p class="recipe-price"><img class="recipe-icon" src="{{ url_for('static', filename='images/cards/price.png') }}"> £x.xx p/s</p>
-                                    <p class="recipe-time"><img class="recipe-icon" src="{{ url_for('static', filename='images/cards/time.png') }}"> xx mins</p>
-                                    <p class="recipe-calories"><img class="recipe-icon" src="{{ url_for('static', filename='images/cards/calories.png') }}"> xxx</p>
-                                    <p class="recipe-summary">Summary text lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed rhoncus venenatis interdum. Donec in sodales turpis. Nam consequat luctus metus, varius rutrum sem mattis ac. Sed faucibus sem eget sollicitudin imperdiet. Nunc eget nisi maximus, eleifend massa at, auctor ipsum.</p>
-                                    
+                        {% for recipe in recipes %}
+                            <div class="row recipe-card">
+                                <div class="col-2 recipe-img-space">
+                                    <!-- <img src="{{ url_for('static', filename='images/cards/template-card-image.png') }}" class="recipe-img"> -->
+                                    <img src="{{ recipe['image'] }}" class="recipe-img">
+                                </div>
+                                <div class="col-10 recipe-overview">
+                                    <div class="recipe-container">
+                                        <h3 class="recipe-title">{{ recipe["title"] }}</h3>
+                                        <p class="recipe-type">{{ types }}</p>
+                                        <p class="recipe-servings"><img class="recipe-icon" src="{{ url_for('static', filename='images/cards/serves.png') }}">{{ recipe["servings"]}} servings</p>
+                                        <p class="recipe-price"><img class="recipe-icon" src="{{ url_for('static', filename='images/cards/price.png') }}"> £{{ recipe["price"] / 100 }}p per serving</p>
+                                        <p class="recipe-time"><img class="recipe-icon" src="{{ url_for('static', filename='images/cards/time.png') }}">{{ recipe["time"] }} mins</p>
+                                        <p class="recipe-calories"><img class="recipe-icon" src="{{ url_for('static', filename='images/cards/calories.png') }}">{{ recipe["calories"] }} kcal per serving</p>
+                                        <p class="recipe-summary">{{ recipe["summary"] }}</p>
+                                        
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row recipe-card">
+                        {% endfor %}
+                            
+                            
+                        <!-- <div class="row recipe-card">
                             <div class="col-2 recipe-img-space">
                                 <img src="{{ url_for('static', filename='images/cards/example-stew.jpg') }}" class="recipe-img">
                             </div>
@@ -113,7 +118,7 @@
                                     
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
 
@@ -124,26 +129,27 @@
                             <h2>Recipe Search</h2>
                             <p>Fill some of the boxes out below and get a list of recipes!</p>
                             <hr>
+                            <form method="POST">
+                                <label for="query">Search All</label><br>
+                                <input type="text" id="query" name="query" placeholder= 'e.g. "Spaghetti Bolognase"'><br><br>
 
-                            <label for="query">Search All</label><br>
-                            <input type="text" id="query" name="query" placeholder= 'e.g. "Spaghetti Bolognase"'><br><br>
+                                <label for="mealType">Meal Type</label><br>
+                                <input type="text" id="mealType" name="mealType" placeholder='e.g. "Main" or "Dessert"'><br><br>
 
-                            <label for="mealType">Meal Type</label><br>
-                            <input type="text" id="mealType" name="mealType" placeholder='e.g. "Main" or "Dessert"'><br><br>
+                                <label for="ingredient">Ingredients</label><br>
+                                <input type="text" id="ingredient" name="ingredient" placeholder='e.g. "Chicken" or "Pasta"'><br><br>
 
-                            <label for="ingredient">Ingredients</label><br>
-                            <input type="text" id="ingredient" name="ingredient" placeholder='e.g. "Chicken" or "Pasta"'><br><br>
+                                <label for="cuisine">Cuisine</label><br>
+                                <input type="text" id="cuisine" name="cuisine" placeholder='e.g. "Chinese" or "Indian"'><br><br>
+                                
+                                <label for="diet">Diet</label><br>
+                                <input type="text" id="diet" name="diet" placeholder='e.g. "Vegetarian" or "Keto"'><br><br>
 
-                            <label for="cuisine">Cuisine</label><br>
-                            <input type="text" id="cuisine" name="cuisine" placeholder='e.g. "Chinese" or "Indian"'><br><br>
-                            
-                            <label for="diet">Diet</label><br>
-                            <input type="text" id="diet" name="diet" placeholder='e.g. "Vegetarian" or "Keto"'><br><br>
-
-                            <label for="intolerance">Intolerance</label><br>
-                            <input type="text" id="intolerance" name="intolerance" placeholder='"Gluten" or "Nuts"'><br><br>
-                            
-                            <button type="submit">Search</button>
+                                <label for="intolerance">Intolerance</label><br>
+                                <input type="text" id="intolerance" name="intolerance" placeholder='"Gluten" or "Nuts"'><br><br>
+                                
+                                <button type="submit">Search</button>
+                            </form>
                         </div>
                     </div>
                 </div>
