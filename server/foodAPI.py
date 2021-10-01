@@ -1,4 +1,6 @@
 import requests
+from io import StringIO
+from html.parser import HTMLParser
 
 # API key used to allow us to call the API (this needs to be hidden eventually)
 api_key = "f163cdaa932542509e6f18bb466b4c14"
@@ -421,10 +423,26 @@ def shoppingListGet(username, hash):
     return list
 
 
+# Class to strip HTML
+class MLStripper(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.reset()
+        self.strict = False
+        self.convert_charrefs = True
+        self.text = StringIO()
+
+    def handle_data(self, d):
+        self.text.write(d)
+
+    def get_data(self):
+        return self.text.getvalue()
+
+
 # Process user requests to call the correct API
 def foodProcessor(formData):
 
-    results = getRecipesBySearch(formData, 10)
+    results = getRecipesBySearch(formData, 2)
     recipes = results["results"]
 
     ids = []
@@ -458,7 +476,12 @@ def foodProcessor(formData):
         i = recipes.index(recipe)
         recipes[i]["time"] = recipeTime[i]
         recipes[i]["servings"] = recipeServings[i]
-        recipes[i]["summary"] = recipeSummary[i]
+
+        s = MLStripper()
+        s.feed(recipeSummary[i])
+        sanitisedSummary = s.get_data()
+
+        recipes[i]["summary"] = sanitisedSummary
         recipes[i]["price"] = int(recipePrices[i])
         recipes[i]["type"] = recipeType[i]
         recipes[i]["calories"] = recipeCalories[i]
