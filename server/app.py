@@ -144,8 +144,6 @@ def recipes():
         
         recipes, recipeDetails, total = foodProcessor(request.form.to_dict())
 
-        
-
         return render_template('pages/meals.html', recipes = recipes, recipeDetails = recipeDetails, total = total)
         
     else:
