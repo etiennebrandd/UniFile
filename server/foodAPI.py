@@ -1,6 +1,7 @@
 import requests
 from io import StringIO
 from html.parser import HTMLParser
+import json
 
 # API key used to allow us to call the API (this needs to be hidden eventually)
 api_key = "f163cdaa932542509e6f18bb466b4c14"
@@ -442,51 +443,80 @@ class MLStripper(HTMLParser):
 # Process user requests to call the correct API
 def foodProcessor(formData):
 
-    results = getRecipesBySearch(formData, 2)
-    recipes = results["results"]
+    # Open recipe cache
+    f = open("../database/foodAPI/recipeCache.json", "r")
+    data = json.loads(f.read())
+    f.close()
 
-    ids = []
+    # Pull queries
+    queries = data["recipes"]
 
-    for recipe in recipes:
-        ids.append(str(recipe["id"]))
+    # Check to see if query exists in the cache
+    if str(formData) in queries.keys():
 
-    stringIds = ",".join(ids)
+        recipes = queries[str(formData)][0]
+        recipeDetails = queries[str(formData)][1]
+        total = queries[str(formData)][2]
+
+        return recipes, recipeDetails, total
+    
+    else:
+
+        results = getRecipesBySearch(formData, 2)
+        recipes = results["results"]
+
+        ids = []
+
+        for recipe in recipes:
+            ids.append(str(recipe["id"]))
+
+        stringIds = ",".join(ids)
+            
+        recipeDetails = getRecipeInformationBulk(stringIds, True)
+
+        recipePrices = []
+        recipeServings = []
+        recipeTime = []
+        recipeType = []
+        recipeCalories = []
+        recipeSummary = []
+
+        for detail in recipeDetails:
+
+            recipeTime.append(detail["readyInMinutes"])
+            recipeServings.append(detail["servings"])
+            recipeSummary.append(detail["summary"])
+            recipePrices.append(detail["pricePerServing"])
+            recipeType.append(detail["dishTypes"])
+            recipeCalories.append(detail["nutrition"]["nutrients"][0]["amount"])
+
+
+        for recipe in recipes:
+
+            i = recipes.index(recipe)
+            recipes[i]["time"] = recipeTime[i]
+            recipes[i]["servings"] = recipeServings[i]
+
+            s = MLStripper()
+            s.feed(recipeSummary[i])
+            sanitisedSummary = s.get_data()
+
+            recipes[i]["summary"] = sanitisedSummary
+            recipes[i]["price"] = int(recipePrices[i])
+            recipes[i]["type"] = recipeType[i]
+            recipes[i]["calories"] = recipeCalories[i]
+
+        total = results["totalResults"]
+
+        queries[str(formData)] = [recipes, recipeDetails, total]
         
-    recipeDetails = getRecipeInformationBulk(stringIds, True)
-
-    recipePrices = []
-    recipeServings = []
-    recipeTime = []
-    recipeType = []
-    recipeCalories = []
-    recipeSummary = []
-
-    for detail in recipeDetails:
-
-        recipeTime.append(detail["readyInMinutes"])
-        recipeServings.append(detail["servings"])
-        recipeSummary.append(detail["summary"])
-        recipePrices.append(detail["pricePerServing"])
-        recipeType.append(detail["dishTypes"])
-        recipeCalories.append(detail["nutrition"]["nutrients"][0]["amount"])
+        data["recipes"] = queries
+        newQueries = json.dumps(data, indent=4)
 
 
-    for recipe in recipes:
+        f = open("../database/foodAPI/recipeCache.json", "w")
+        f.write(newQueries)
+        f.close()
 
-        i = recipes.index(recipe)
-        recipes[i]["time"] = recipeTime[i]
-        recipes[i]["servings"] = recipeServings[i]
-
-        s = MLStripper()
-        s.feed(recipeSummary[i])
-        sanitisedSummary = s.get_data()
-
-        recipes[i]["summary"] = sanitisedSummary
-        recipes[i]["price"] = int(recipePrices[i])
-        recipes[i]["type"] = recipeType[i]
-        recipes[i]["calories"] = recipeCalories[i]
-
-    total = results["totalResults"]
-
-    return recipes, recipeDetails, total
+        return recipes, recipeDetails, total
 
