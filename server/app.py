@@ -1,10 +1,12 @@
-from flask import Flask, render_template, request, redirect, url_for
+from security import uid
+from flask import Flask, render_template, request, redirect, url_for, session
 import dataAccess
 import calendarAPI
 from foodAPI import foodProcessor
 
 # Configure server and folder to fetch pages from
 app = Flask(__name__, template_folder='../client/')
+app.secret_key = "0519f8cb9ecc4c0a8781d07512c795c8"
 
 
 # Routes
@@ -29,7 +31,10 @@ def index():
             return redirect(url_for('dashboard', user = id))
 
     else:
-        return render_template('index.html', message = "")
+        if request.args.get("authenticated") == False:
+            return render_template('index.html', authError = "Invalid credentials. Please try again")
+        else:
+            return render_template('index.html', message = "")
 
 
 ############################################################
@@ -42,10 +47,11 @@ def login():
         loggedIn, id, token = dataAccess.dbLogin(request.form)  
 
         if loggedIn == False or token == "":
-            return redirect(url_for('index'))
+            return redirect(url_for('index', authenticated = False))
 
         else:
-            return redirect(url_for('dashboard', user = id))
+            session["XSRF-TOKEN"] = id
+            return redirect(url_for('dashboard'))
 
 
 
@@ -55,20 +61,25 @@ def login():
 @app.route('/dashboard')
 def dashboard():
 
-    # Retrive ID of user
-    id = request.args.get("user")
+    # Guard
+    if not "XSRF-TOKEN" in session:
 
-    # Check the user is authenticated by validating token exists
-    x = dataAccess.dbCheckToken(id)
-
-    if not request.args or x == False:
         return redirect(url_for('index'))
+        
+
+    id = session.get("XSRF-TOKEN")
 
     user = dataAccess.dbRetrieveUserByID(id)
     return render_template('pages/dashboard.html',
-        firstName = user["firstName"],
-        liUser = user["id"]
-    )
+    firstName = user["firstName"])
+
+    # Check the user is authenticated by validating token exists
+    # x = dataAccess.dbCheckToken(id)
+
+    # if not request.args or x == False:
+    #     return redirect(url_for('index'))
+
+    
     
     # else: return redirect(url_for('index'))
 
@@ -79,24 +90,30 @@ def dashboard():
 @app.route('/calendar', methods = ['GET', 'POST'])
 def calendar():
 
-    id = request.args.get("user")
-
-    x = dataAccess.dbCheckToken(id)
-
-    if not request.args or x == False:
+    # Guard
+    if not "XSRF-TOKEN" in session:
         return redirect(url_for('index'))
+
+    id = session.get("XSRF-TOKEN")
+
+    
+
+    # x = dataAccess.dbCheckToken(id)
+
+    # if x == False:
+    #     return redirect(url_for('index'))
         
 
     # Retrive a users ID
-    user = dataAccess.dbRetrieveUserByID(id)
+    # user = dataAccess.dbRetrieveUserByID(id)
 
     # Retrieve access token or direct user through auth flow
     try:
         auth = calendarAPI.apiOAuth(id)
         cal = calendarAPI.calendarListGet(auth, "primary")
-
     except:
         print("** ERROR: OAUTH AUTHENTICATION FAILED **")
+        cal = 0
 
 
     if request.method == "POST":
@@ -129,16 +146,21 @@ def calendar():
                 calendarAPI.eventInsert(auth, "primary", False, eventData)
             except: print("** ERROR: EXCEPTION WHEN TRYING TO CREATE EVENT **")
         
-        return redirect(url_for('calendar', user = user["id"]))
+        return redirect(url_for('calendar'))
 
     else:
 
         # Render calendar.html with user and calendar variables for DOM
-        return render_template("pages/calendar.html", liUser = user["id"], calendar = cal["id"])
+        return render_template("pages/calendar.html", calendar = cal["id"])
 
 
 @app.route('/recipes', methods = ["GET", "POST"])
 def recipes():
+
+    # Guard
+    if not "XSRF-TOKEN" in session:
+        return redirect(url_for('index'))
+
 
     if request.method == "POST":
         
@@ -156,7 +178,10 @@ def recipes():
 @app.route('/logout')
 def logout():
     
-    dataAccess.dbLogout(request.args.get("user"))
+    dataAccess.dbLogout(session.get("XSRF-TOKEN"))
+    session.pop("XSRF-TOKEN", None)
+    print(session)
+
     return redirect(url_for('index'))
 
 

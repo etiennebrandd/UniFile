@@ -460,9 +460,10 @@ def foodProcessor(formData):
 
         return recipes, recipeDetails, total
     
+    # If query doesnt exist, call API
     else:
 
-        results = getRecipesBySearch(formData, 2)
+        results = getRecipesBySearch(formData, 10)
         recipes = results["results"]
 
         ids = []
@@ -508,15 +509,32 @@ def foodProcessor(formData):
 
         total = results["totalResults"]
 
-        queries[str(formData)] = [recipes, recipeDetails, total]
-        
-        data["recipes"] = queries
-        newQueries = json.dumps(data, indent=4)
+        # Write call results to cache if cache is less than 5
+        if len(queries) <=4:
+            queries[str(formData)] = [recipes, recipeDetails, total]
 
+            data["recipes"] = queries
+            newQueries = json.dumps(data, indent=1)
 
-        f = open("../database/foodAPI/recipeCache.json", "w")
-        f.write(newQueries)
-        f.close()
+            f = open("../database/foodAPI/recipeCache.json", "w")
+            f.write(newQueries)
+            f.close()
+
+        else:
+            keyList = []
+            for key in queries.keys():
+                keyList.append(key)
+
+            queries.pop(keyList[0])
+
+            queries[str(formData)] = [recipes, recipeDetails, total]
+
+            data["recipes"] = queries
+            newQueries = json.dumps(data, indent=1)
+
+            f = open("../database/foodAPI/recipeCache.json", "w")
+            f.write(newQueries)
+            f.close()
 
         return recipes, recipeDetails, total
 
