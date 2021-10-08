@@ -179,12 +179,14 @@ html, body {
 .*/
 
 .flex-container {
+    width: 100%;
     display: flex;
     flex-flow: wrap row;
     margin: 0;
 }
    
     .results-container {
+        width: 100%;
         margin: 0;
         flex-flow: wrap row;
         flex: 4;
@@ -194,6 +196,7 @@ html, body {
         .sticky-navbar {
             position: sticky;
             top: 0;
+            width:100%
         }
 
             .sort-navbar-container {
@@ -311,12 +314,12 @@ html, body {
             }
 
             .nav-link {
-                font-size:0.7rem
+                font-size:4vw;
             }
 
             .profile-trigger {
-                width: 0.6em;
-                height: 0.6em;
+                width: 4vw;
+                height: 4vw;
             }
             
     }
