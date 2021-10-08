@@ -66,4 +66,3 @@ def decrypt(ciphertext):
 
     plaintext = fernet.decrypt(ciphertext).decode()
     return plaintext
-

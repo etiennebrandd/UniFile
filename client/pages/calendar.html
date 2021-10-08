@@ -32,7 +32,7 @@
                     <img id="unifile-uf" src="{{ url_for('static', filename='images/logos/UIWhite.png') }}">
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{ url_for('dashboard', user = liUser) }}">Dashboard</a>
+                    <a class="nav-link" href="{{ url_for('dashboard') }}">Dashboard</a>
                 </li> 
                 <li class="nav-item">
                     <a class="nav-link" href="#">Calendar</a>
@@ -41,7 +41,7 @@
                     <a class="nav-link" href="#">Budget</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Food</a>
+                    <a class="nav-link" href="{{ url_for('recipes') }}">Food</a>
                 </li>
                 <li class="ml-auto my-auto">
                     <div class="dropdown" style="float: right;">
@@ -53,7 +53,7 @@
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Integrations</a>
                             <a class="dropdown-item" href="#">Settings</a>
-                            <a class="dropdown-item" href="{{ url_for('logout', user = liUser) }}">Log out</a>
+                            <a class="dropdown-item" href="{{ url_for('logout') }}">Log out</a>
                         </div>
                     </div>
                 </li>
