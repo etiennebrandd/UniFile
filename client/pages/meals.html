@@ -34,18 +34,18 @@
                 <li>
                     <img id="unifile-uf" src="{{ url_for('static', filename='images/logos/UIWhite.png') }}">
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="dashboard.html">Dashboard</a>
-                </li> 
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('calendar', user = liUser) }}">Calendar</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Budget</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Food</a>
-                </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="dashboard.html">Dashboard</a>
+                    </li> 
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('calendar', user = liUser) }}">Calendar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Budget</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Food</a>
+                    </li>
                 <li class="ml-auto my-auto">
                     <div class="dropdown" style="float: right;">
                         <span class="iconify profile-trigger dropdown-toggle"id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-icon="octicon:person-24" style="color: #e6e6e6;"></span>
@@ -61,29 +61,27 @@
                 </li>
             </ul>
         </nav>
-        <div class="container-fluid h-100">
+
+        <!--<div class="container-fluid h-100">
             <div class="row flex-grow-1 h-100">
                 
                 <div class="col-10 h-100 nogap">
-                    <!--Secondary navbar below header navbar-->
                     <nav id="food-nav" class="sticky-top">
                         <div class="row">
                             <div class="col my-auto">
-                                <p id="results-found" class="h-100 my-auto">Showing {{ recipes|length }} result(s) of {{ total }}...</p>
+                                
                             </div>
 
                             <div class="col my-auto">
-                                <p id="recipe-sort" class="my-auto">&#x25BC; Sort</p>
+                                
                             </div>
                         </div>
                     </nav>
 
-                    <!--Card viewspace-->
                     <div class="container-fluid recipe-results">
                         {% for recipe in recipes %}
                             <div class="row recipe-card">
                                 <div class="col-2 recipe-img-space">
-                                    <!-- <img src="{{ url_for('static', filename='images/cards/template-card-image.png') }}" class="recipe-img"> -->
                                     <img src="{{ recipe['image'] }}" class="recipe-img">
                                 </div>
                                 <div class="col-10 recipe-overview">
@@ -102,7 +100,7 @@
                         {% endfor %}
                             
                             
-                        <!-- <div class="row recipe-card">
+                         <div class="row recipe-card">
                             <div class="col-2 recipe-img-space">
                                 <img src="{{ url_for('static', filename='images/cards/example-stew.jpg') }}" class="recipe-img">
                             </div>
@@ -118,11 +116,10 @@
                                     
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
                     </div>
                 </div>
 
-                <!--Search sidebar-->
                 <div class="col-2 h-100" style="padding:0; background-color: rgb(90, 90, 90);">
                     <div id="food-sidebar-wrapper">
                         <div id="food-sidebar-content">
@@ -154,6 +151,44 @@
                     </div>
                 </div>
             </div>
+        </div>-->
+
+        <div class="flex-container">
+            <div class="results-container">  
+                <div class="sticky-navbar">    
+                    <div class="sort-navbar-container">
+                        <div class="recipes-found">
+                            <p>Showing {{ recipes|length }} result(s) of {{ total }}...</p>
+                        </div>
+                        <div class="filter-modal">
+                            <p>&#x25BC; Sort</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recipe-container">
+                    <div class="recipe-image">
+                        <img src="{{ url_for('static', filename='images/cards/example-stew.jpg') }}" class="recipe-img">
+                    </div>
+                    <div class="recipe-info">
+                        <h3 class="recipe-title">Example Chicken Stew</h3>
+                        <p class="recipe-type">Main Course</p>
+                        <div class="recipe-stats">
+                            <p class="recipe-servings"><img class="recipe-icon" src="{{ url_for('static', filename='images/cards/serves.png') }}"> 4 Servings</p>
+                            <p class="recipe-price"><img class="recipe-icon" src="{{ url_for('static', filename='images/cards/price.png') }}"> £2.29 p/s</p>
+                            <p class="recipe-time"><img class="recipe-icon" src="{{ url_for('static', filename='images/cards/time.png') }}"> 1 hour</p>
+                            <p class="recipe-calories"><img class="recipe-icon" src="{{ url_for('static', filename='images/cards/calories.png') }}"> 650</p>
+                        </div>
+                        <div class="recipe-summary">A delicious staple that will keep you warm on even the coldest of days. In its simplest form, all you need is chicken, some vegetables, stock cubes and water. However, almost anything goes, making it perfect for days where you don't have a lot in the fridge. Try mixing and matching different ingredients to create your perfect stew. Serves well with potatoes and tiger loaf bread.</div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="filters-container">
+
+            </div>
         </div>
+
+
     </body>
 </html>
