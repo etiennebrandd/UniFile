@@ -25,7 +25,9 @@
             <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/meals-stylesheet.css') }}">
 
             <!--Unicode-->
-            <meta charset="utf-8"/>    
+            <meta charset="utf-8"/> 
+            
+            <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
         <!--Horizontal Navbar-->
@@ -154,18 +156,17 @@
         </div>-->
 
         <div class="flex-container">
-            <div class="results-container">  
-                <div class="sticky-navbar">    
-                    <div class="sort-navbar-container">
-                        <div class="recipes-found">
-                            <p>Showing {{ recipes|length }} result(s) of {{ total }}...</p>
-                        </div>
-                        <div class="filter-modal">
-                            <p>&#x25BC; Sort</p>
-                        </div>
+            <div class="sticky-navbar">    
+                <div class="sort-navbar-container">
+                    <div class="recipes-found">
+                        <p>Showing {{ recipes|length }} result(s) of {{ total }}...</p>
+                    </div>
+                    <div class="filter-modal">
+                        <p>&#x25BC; Sort</p>
                     </div>
                 </div>
-
+            </div>
+            <div class="results-container">  
                 <div class="recipe-container">
                     <div class="recipe-image">
                         <img src="{{ url_for('static', filename='images/cards/example-stew.jpg') }}" class="recipe-img">
@@ -174,10 +175,10 @@
                         <h3 class="recipe-title">Example Chicken Stew</h3>
                         <p class="recipe-type">Main Course</p>
                         <div class="recipe-stats">
-                            <p class="recipe-servings"><img class="recipe-icon" src="{{ url_for('static', filename='images/cards/serves.png') }}"> 4 Servings</p>
+                            <p class="recipe-servings"><img class="recipe-icon" src="{{ url_for('static', filename='images/cards/serves.png') }}"> Serves 4</p>
                             <p class="recipe-price"><img class="recipe-icon" src="{{ url_for('static', filename='images/cards/price.png') }}"> £2.29 p/s</p>
                             <p class="recipe-time"><img class="recipe-icon" src="{{ url_for('static', filename='images/cards/time.png') }}"> 1 hour</p>
-                            <p class="recipe-calories"><img class="recipe-icon" src="{{ url_for('static', filename='images/cards/calories.png') }}"> 650</p>
+                            <p class="recipe-calories"><img class="recipe-icon" src="{{ url_for('static', filename='images/cards/calories.png') }}"> 650 calories</p>
                         </div>
                         <div class="recipe-summary">A delicious staple that will keep you warm on even the coldest of days. In its simplest form, all you need is chicken, some vegetables, stock cubes and water. However, almost anything goes, making it perfect for days where you don't have a lot in the fridge. Try mixing and matching different ingredients to create your perfect stew. Serves well with potatoes and tiger loaf bread.</div>
                     </div>
@@ -185,7 +186,30 @@
 
             </div>
             <div class="filters-container">
+                <h2>Recipe Search</h2>
+                <p>Fill some of the boxes out below and get a list of recipes!</p>
+                <hr>
+                <form method="POST">
+                    <label for="query">Search All</label><br>
+                    <input type="text" id="query" name="query" placeholder= 'e.g. "Spaghetti Bolognase"'><br><br>
 
+                    <label for="mealType">Meal Type</label><br>
+                    <input type="text" id="mealType" name="mealType" placeholder='e.g. "Main" or "Dessert"'><br><br>
+
+                    <label for="ingredient">Ingredients</label><br>
+                    <input type="text" id="ingredient" name="ingredient" placeholder='e.g. "Chicken" or "Pasta"'><br><br>
+
+                    <label for="cuisine">Cuisine</label><br>
+                    <input type="text" id="cuisine" name="cuisine" placeholder='e.g. "Chinese" or "Indian"'><br><br>
+                    
+                    <label for="diet">Diet</label><br>
+                    <input type="text" id="diet" name="diet" placeholder='e.g. "Vegetarian" or "Keto"'><br><br>
+
+                    <label for="intolerance">Intolerance</label><br>
+                    <input type="text" id="intolerance" name="intolerance" placeholder='"Gluten" or "Nuts"'><br><br>
+                    
+                    <button type="submit">Search</button>
+                </form>
             </div>
         </div>
 

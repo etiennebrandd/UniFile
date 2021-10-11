@@ -28,7 +28,7 @@ html, body {
 /*Horizontal navbar*/
 #unifile-uf {
     padding-right: 10px;
-    width: 70px;
+    height: 75px;
 }
 
 .nav {
@@ -72,7 +72,7 @@ html, body {
     height: 100%;
 }
 
-#food-sidebar-content {
+#filters-container {
     width: 100%;
     background-color: rgb(90, 90, 90);
     border-left: 2px solid rgb(60,60,60);
@@ -81,31 +81,31 @@ html, body {
     background-color: rgb(90, 90, 90);
 }
 
-#food-sidebar-content h2 {
+#filters-container h2 {
     font-family: Rubik-Regular;
     color: white;
 }
 
-#food-sidebar-content p {
+#filters-container p {
     font-family: Rubik-Light;
     color: white;
     font-size: 15px;
 }
 
-#food-sidebar-content label {
+#filters-container label {
     font-size: 18px;
     font-family: Rubik-Light;
     color: white
 }
 
-#food-sidebar-content input{
+#filters-container input{
     border-radius: 20px;
     padding-left: 10px;
     outline: 0;
     max-width: 100%;
 }
 
-#food-sidebar-content button {
+#filters-container button {
     font-weight: bold;
     background-color: rgb(148,0,211);
     color: white;
@@ -186,7 +186,7 @@ html, body {
 }
    
     .results-container {
-        width: 100%;
+        width: 75%;
         margin: 0;
         flex-flow: wrap row;
         flex: 4;
@@ -269,23 +269,31 @@ html, body {
                 }
 
                     .recipe-servings {
+                        display: flex;
+                        flex-flow: wrap row;
                         width: 125px;
                     }
                     
                     .recipe-price {
+                        display: flex;
+                        flex-flow: wrap row;
                         width: 125px;
                     }
                     
                     .recipe-time {
-                        width: 110px;
+                        display: flex;
+                        flex-flow: wrap row;
+                        width: 125px;
                     }
                     
                     .recipe-calories {
+                        display: flex;
+                        flex-flow: wrap row;
                         width: 125px;
                     }
                                     
                     .recipe-icon {
-                        width: 35x;
+                        width: 35px;
                         height: 35px;
                     }
                 
@@ -294,17 +302,63 @@ html, body {
                     font-size: 18px;
                     font-weight: 100;
                     overflow-y: scroll;
-                    max-height: 5rem;
+                    max-height: 7rem;
                     margin-bottom: 0;
                 }
 
 
     .filters-container {
+        width: 25%;
         margin: 0;
         flex-flow: wrap column;
         flex:1;
         padding: 2rem;
         background-color: green;
+    }
+
+
+    .filters-container {
+        width: 100%;
+        background-color: rgb(90, 90, 90);
+        border-left: 2px solid rgb(60,60,60);
+        height: 100%;
+        padding: 1rem 1rem 0 1rem;
+        background-color: rgb(90, 90, 90);
+    }
+    
+    .filters-container h2 {
+        font-family: Rubik-Regular;
+        color: white;
+    }
+    
+    .filters-container p {
+        font-family: Rubik-Light;
+        color: white;
+        font-size: 15px;
+    }
+    
+    .filters-container label {
+        font-size: 18px;
+        font-family: Rubik-Light;
+        color: white
+    }
+    
+    .filters-container input{
+        border-radius: 20px;
+        padding-left: 10px;
+        outline: 0;
+        max-width: 100%;
+    }
+    
+    .filters-container button {
+        font-weight: bold;
+        background-color: rgb(148,0,211);
+        color: white;
+        border: 2px solid rgb(148,0,211);
+        border-radius:25px;
+        padding: 10px 20px 10px 20px;
+        position: relative;
+        float: left;
     }
 
 
@@ -318,10 +372,66 @@ html, body {
             }
 
             .profile-trigger {
-                width: 4vw;
-                height: 4vw;
+                width: 7vw;
+                height: 7vw;
+            }
+
+            .recipe-container {
+                max-height: none;
+                flex-flow: wrap column;
+                margin: 3rem;
+            }
+
+            .sticky-navbar {
+                order: 1;
+            }
+
+            .results-container {
+                order: 3;
+                width: 100%;
+            }
+
+            .filters-container {
+                order: 2;
+                width:100%;
+            }
+
+            .recipe-image {
+                width: 100%
+            }
+
+            .recipe-img {
+                width: 100%;
+                max-height: 15rem;
+            }
+
+            .recipe-info {
+                width: 100%;
             }
             
+            .recipe-servings {
+                flex-flow: wrap column;
+                text-align: center;
+            }
+            
+            .recipe-price {
+                flex-flow: wrap column;
+                text-align: center;
+            }
+
+            .recipe-time {
+                flex-flow: wrap column;
+                text-align: center;
+            }
+
+            .recipe-calories {
+                flex-flow: wrap column;
+                text-align: center;
+            }
+
+            .recipe-icon {
+                margin: 0 auto;
+            }
     }
 
 
