@@ -5,48 +5,168 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../server/static/css/landing-new.css" />
-    <title>Document</title>
+    <script src="../client/js/landingApp.js" defer></script>
+    <title>UniFood</title>
   </head>
   <body>
-    <header>
-      <h1 class="logo">Uni<span class="color-primary">Food</span></h1>
+    <header class="landing-header">
+      <h1 class="landing-title">Uni<span class="color-primary">Food</span></h1>
+      <div class="landing-seperator"></div>
       <nav class="landing-nav">
         <ul class="landing-nav__list">
-          <li class="landing-nav__item">
-            <a href="#" class="landing-nav__link">About</a>
-          </li>
-          <li class="landing-nav__item">
-            <a href="#" class="landing-nav__link">Features</a>
-          </li>
-          <li class="landing-nav__item">
-            <a href="#" class="landing-nav__link">Contact Us</a>
-          </li>
-          <li class="landing-nav__item--signin">
-            <a href="#" class="landing-nav__link">Sign In</a>
-          </li>
+          <li class="landing-nav__item">About</li>
+          <li class="landing-nav__item">Features</li>
+          <li class="landing-nav__item">Contact Us</li>
+          <li class="landing-nav__signin">Sign in</li>
         </ul>
       </nav>
-    </header>
+      <div class="intro">
+        <h2 class="intro-header">
+          Struggling with <span class="color-primary">meal</span> ideas?
+        </h2>
+        <h3 class="intro-body">
+          UniFood makes meals simpler by providing you delicious, easy to
+          prepare recipes.
+        </h3>
+      </div>
 
-    <main>
-      <div class="hero">
-        <div class="hero__text">
-          <h2 class="hero__title">
-            Struggling with <span class="color-primary">meal</span> ideas?
-          </h2>
-          <p class="hero__intro">
-            UniFood makes meals simpler by providing you delicious, easy to
-            prepare recipes.
-          </p>
-          <button href="#" class="btn--primary">Sign In</button>
-          <button href="#" class="btn--outline">Register</button>
-        </div>
+      <div class="download-icons-wrapper">
         <img
-          class="hero__img"
-          src="../server/static/images/header-image.png"
-          alt="Pizza hero image"
+          src="../server/static/images/app-store.png"
+          alt="Download icons"
+          class="download-icon-apple"
+        />
+        <img
+          src="../server/static/images/google-play.png"
+          alt="Download icons"
+          class="download-icon-android"
         />
       </div>
-    </main>
+    </header>
+
+    <section class="features">
+      <div class="feature-tab">
+        <button class="feature-tab__button">Recipes</button>
+        <div class="feature-tab__content">
+          <h2 class="feature-tab__header">
+            Hundreds of Recipes at Your Fingertips
+          </h2>
+          <div class="feature-tab__body">
+            <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo aut
+              omnis inventore facere delectus?
+            </p>
+            <p>
+              Cum voluptas distinctio molestiae accusamus ipsam nulla,
+              perferendis consectetur rerum quia quam corporis, tempore
+              perspiciatis debitis atque aliquid totam omnis aspernatur vel?
+              Nostrum qui beatae illo.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="feature-tab">
+        <button class="feature-tab__button">Nutritional Info</button>
+        <div class="feature-tab__content">
+          <h2 class="feature-tab__header">Analyse your Eating</h2>
+          <div class="feature-tab__body">
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui
+              quibusdam iusto odio? Fugit fugiat eum illum at laborum illo non?
+            </p>
+            <p>
+              Impedit quam ab, ipsam at sequi architecto laboriosam voluptatum
+              mollitia velit officia harum iure laudantium facere enim
+              voluptates voluptate obcaecati?
+            </p>
+          </div>
+        </div>
+      </div>
+      <button class="feature-tab__button">Allergy Advice</button>
+      <div class="feature-tab">
+        <div class="feature-tab__content">
+          <h2 class="feature-tab__header">Avoid Whats Bad</h2>
+          <div class="feature-tab__body">
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+              Dignissimos, id quidem ea esse expedita tenetur sed nemo itaque
+              non a.
+            </p>
+            <p>
+              Non blanditiis natus, iste obcaecati voluptate debitis ea quod
+              quos mollitia molestiae aperiam provident, quasi sint ullam
+              tempore commodi nemo?
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="recipe-showcase">
+      <div class="recipe-showcase__buttons">
+        <button>Breakfast</button>
+        <button>Lunch</button>
+        <button>Dinner</button>
+        <button>Deserts</button>
+      </div>
+      <div class="recipe-showcase__recipes"></div>
+    </section>
+
+    <section class="pricing">
+      <div class="pricing__card">
+        <div class="pricing__card__header">
+          <h2>Free</h2>
+          <h3>UniFood Free</h3>
+        </div>
+        <div class="pricing__card__content">
+          <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+          </ul>
+        </div>
+      </div>
+      <div class="pricing__card">
+        <div class="pricing__card__header">
+          <h2>£3.99/month</h2>
+          <h3>UniFood Pro</h3>
+        </div>
+        <div class="pricing__card__content">
+          <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+          </ul>
+        </div>
+      </div>
+      <div class="pricing__card">
+        <div class="pricing__card__header">
+          <h2>£9.99/month</h2>
+          <h3>UniSuite</h3>
+        </div>
+        <div class="pricing__card__content">
+          <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="apps-showcase">
+      <h2>Get the UniFood Apps</h2>
+      <p>
+        With the UniFood apps for both Apple and Android, you can take your
+        meals mobile!
+      </p>
+      <img src="" alt="" />
+    </section>
   </body>
 </html>
