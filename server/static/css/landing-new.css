@@ -116,7 +116,9 @@ body {
 
 .feature-tab__content {
   padding: 0 0.5rem;
-  border: 2px solid var(--clr-primary);
+  position: relative;
+  height: 0;
+  overflow: hidden;
 }
 
 .feature-tab__header {
@@ -135,4 +137,13 @@ body {
 
 .feature-tab__body p {
   padding: 0.5rem 0;
+}
+
+.feature-tab__button--active {
+  background-color: var(--clr-primary-dark);
+}
+
+.feature-tab__content--active {
+  height: auto;
+  border: 2px solid var(--clr-primary-dark);
 }
