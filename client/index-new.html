@@ -9,7 +9,7 @@
     <title>UniFood</title>
   </head>
   <body>
-    <header class="landing-header">
+    <header class="landing-header" id="landing-top">
       <h1 class="landing-title">Uni<span class="color-primary">Food</span></h1>
       <hr class="landing-seperator"></hr>
       <nav class="landing-nav">
@@ -44,7 +44,8 @@
       </div>
     </header>
 
-    <section class="features">
+    <section class="features" id="features">
+      <h2 class="section-title">What makes <span class="color-primary">us</span> special</h2>
       <div class="feature-tab">
         <div class="feature-tab__button">
           <h2>Recipes</h2>
@@ -111,7 +112,7 @@
       </div>
     </section>
 
-    <section class="recipe-showcase">
+    <section class="recipe-showcase" id="recipes">
       <h2 class="section-title">Some of our delicious recipes...</h2>
       <div class="recipe-showcase__buttons">
         <button class="recipe-showcase__button recipe-showcase--active">
@@ -123,23 +124,25 @@
       </div>
       <div class="recipe-showcase__recipes">
         <div class="recipe-card">
-          <div class="recipe-card__image"></div>
+          <div class="recipe-card__image">
+            <img src="../server/static/images/cards/example-stew.jpg" alt="">
+          </div>
           <div class="recipe-card__info">
-            <h3></h3>
-            <p></p>
-            <p></p>
-            <p></p>
+            <h3 class="recipe-card__title">Recipe Title</h3>
+            <p class="recipe-card__description">Sample description that extends over a number of lines</p>
+            <p class="recipe-card__sinfo">Small info</p>
+            <p class="recipe-card__linfo">BIG INFO</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="pricing">
+    <section class="pricing" id="pricing">
       <h2 class="section-title">Pricing</h2>
       <div class="pricing__card">
         <div class="pricing__card__header" id="bronze">
           <h2 class="pricing__card__title">UniFood Free</h2>
-          <h3 class="pricing__card__price">Free</h3>
+          <!-- <h3 class="pricing__card__price">Free</h3> -->
         </div>
         <ul class="pricing__card__ul">
           <li class="pricing__card__li">Lorem ipsum</li>
@@ -179,13 +182,30 @@
       </div>
     </section>
 
-    <section class="apps-showcase">
-      <h2>Get the UniFood Apps</h2>
-      <p>
+    <section class="apps-showcase" id="apps">
+      <h2 class="apps-showcase__title">Get the Uni<span class="color-primary">Food</span> Apps!</h2>
+      <p class="apps-showcase__body">
         With the UniFood apps for both Apple and Android, you can take your
         meals mobile!
       </p>
-      <img src="" alt="" />
+      <img class="apps-showcase__image" src="../server/static/images/devices.png" alt="PC, phone and laptop with UniFood" />
     </section>
+
+    <footer>
+      <ul class="sitemap">
+        <li><a href="#landing-top">Back to Top</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#recipes">Recipes</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#apps">Apps</a></li>
+      </ul>
+      <ul class="links">
+        <li><a href="">Copyright Notice</a></li>
+        <li><a href="">Privacy Policy</a></li>
+        <li><a href="">Email</a></li>
+        <li><a href="">Facebook</a></li>
+        <li><a href="">Twitter</a></li>
+      </ul>
+    </footer>
   </body>
 </html>
