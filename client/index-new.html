@@ -11,7 +11,7 @@
   <body>
     <header class="landing-header">
       <h1 class="landing-title">Uni<span class="color-primary">Food</span></h1>
-      <div class="landing-seperator"></div>
+      <hr class="landing-seperator"></hr>
       <nav class="landing-nav">
         <ul class="landing-nav__list">
           <li class="landing-nav__item">About</li>
@@ -46,11 +46,14 @@
 
     <section class="features">
       <div class="feature-tab">
-        <button class="feature-tab__button">Recipes</button>
+        <div class="feature-tab__button">
+          <h2>Recipes</h2>
+          <p>+</p>
+        </div>
         <div class="feature-tab__content">
-          <h2 class="feature-tab__header">
+          <h3 class="feature-tab__header">
             Hundreds of Recipes at Your Fingertips
-          </h2>
+          </h3>
           <div class="feature-tab__body">
             <p>
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo aut
@@ -66,7 +69,10 @@
         </div>
       </div>
       <div class="feature-tab">
-        <button class="feature-tab__button">Nutritional Info</button>
+        <div class="feature-tab__button">
+          <h2>Shopping Lists</h2>
+          <p>+</p>
+        </div>
         <div class="feature-tab__content">
           <h2 class="feature-tab__header">Analyse your Eating</h2>
           <div class="feature-tab__body">
@@ -83,7 +89,10 @@
         </div>
       </div>
       <div class="feature-tab">
-        <button class="feature-tab__button">Allergy Advice</button>
+        <div class="feature-tab__button">
+          <h2>Allergy Advice</h2>
+          <p>+</p>
+        </div>
         <div class="feature-tab__content">
           <h2 class="feature-tab__header">Avoid Whats Bad</h2>
           <div class="feature-tab__body">
@@ -112,60 +121,61 @@
         <button class="recipe-showcase__button">Dinner</button>
         <button class="recipe-showcase__button">Deserts</button>
       </div>
-      <div class="recipe-showcase__recipes"></div>
+      <div class="recipe-showcase__recipes">
+        <div class="recipe-card">
+          <div class="recipe-card__image"></div>
+          <div class="recipe-card__info">
+            <h3></h3>
+            <p></p>
+            <p></p>
+            <p></p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section class="pricing">
       <h2 class="section-title">Pricing</h2>
       <div class="pricing__card">
-        <div class="pricing__card__header">
-          <img
-            class="pricing__card__color"
-            src="../server/static/images/bronze-header.png"
-            alt="bronze-header"
-          />
-          <h2>UniFood Free</h2>
-          <h3>Free</h3>
+        <div class="pricing__card__header" id="bronze">
+          <h2 class="pricing__card__title">UniFood Free</h2>
+          <h3 class="pricing__card__price">Free</h3>
         </div>
-        <div class="pricing__card__content">
-          <ul>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-            <li>5</li>
-          </ul>
-        </div>
+        <ul class="pricing__card__ul">
+          <li class="pricing__card__li">Lorem ipsum</li>
+          <li class="pricing__card__li">Nunc dictum</li>
+          <li class="pricing__card__li">Pellentesque</li>
+          <li class="pricing__card__li">Duis iaculis</li>
+          <li class="pricing__card__li">Maecenas sagittis</li>
+        </ul>
       </div>
       <div class="pricing__card">
-        <div class="pricing__card__header">
-          <h2>£3.99/month</h2>
-          <h3>UniFood Pro</h3>
+        <div class="pricing__card__header" id="silver">
+          <h2 class="pricing__card__title">UniFood Pro</h2>
+          <h3 class="pricing__card__price"><sup class="super-sub">£</sup>3.99<sub class="super-sub">/pcm</h3>
         </div>
-        <div class="pricing__card__content">
-          <ul>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-            <li>5</li>
-          </ul>
-        </div>
+        <ul class="pricing__card__ul">
+          <li class="pricing__card__li">Lorem ipsum</li>
+          <li class="pricing__card__li">Nunc dictum</li>
+          <li class="pricing__card__li">Pellentesque</li>
+          <li class="pricing__card__li">Duis iaculis</li>
+          <li class="pricing__card__li">Maecenas sagittis</li>
+        </ul>
       </div>
       <div class="pricing__card">
-        <div class="pricing__card__header">
-          <h2>£9.99/month</h2>
-          <h3>UniSuite</h3>
+        <div class="pricing__card__header" id="gold">
+          <h2 class="pricing__card__title">UniSuite</h2>
+          <h3 class="pricing__card__price">
+            <sup class="super-sub">£</sup>9.99<sub class="super-sub">/pcm</sub>
+          </h3>
         </div>
-        <div class="pricing__card__content">
-          <ul>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-            <li>5</li>
-          </ul>
-        </div>
+        <ul class="pricing__card__ul">
+          <li class="pricing__card__li">Lorem ipsum</li>
+          <li class="pricing__card__li">Nunc dictum</li>
+          <li class="pricing__card__li">Pellentesque</li>
+          <li class="pricing__card__li">Duis iaculis</li>
+          <li class="pricing__card__li">Maecenas sagittis</li>
+        </ul>
       </div>
     </section>
 

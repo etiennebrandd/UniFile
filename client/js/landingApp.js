@@ -10,6 +10,12 @@ for (const btn of featureTabButtons) {
   btn.addEventListener('click', function () {
     btn.nextElementSibling.classList.toggle('feature-tab__content--active');
     btn.classList.toggle('feature-tab__button--active');
+
+    if (btn.classList.contains('feature-tab__button--active')) {
+      btn.querySelector('p').textContent = '-';
+    } else {
+      btn.querySelector('p').textContent = '+';
+    }
   });
 }
 
