@@ -8,16 +8,17 @@
     <script src="../client/js/landingApp.js" defer></script>
     <title>UniFood</title>
   </head>
+
   <body>
-    <header class="landing-header" id="landing-top">
-      <h1 class="landing-title">Uni<span class="color-primary">Food</span></h1>
-      <hr class="landing-seperator"></hr>
-      <nav class="landing-nav">
-        <ul class="landing-nav__list">
-          <li class="landing-nav__item">About</li>
-          <li class="landing-nav__item">Features</li>
-          <li class="landing-nav__item">Contact Us</li>
-          <li class="landing-nav__signin">Sign in</li>
+    <header id="top">
+      <h1 class="header-title">Uni<span class="color-primary">Food</span></h1>
+      <hr class="green-hr"></hr>
+      <nav class="header-nav">
+        <ul class="header-nav__list">
+          <li class="header-nav__item"><a href="#about">About</a></li>
+          <li class="header-nav__item"><a href="#recipes">Recipes</a></li>
+          <li class="header-nav__item"><a href="#pricing">Pricing</a></li>
+          <li class="header-nav__signin">Sign in</li>
         </ul>
       </nav>
       <div class="intro">
@@ -28,178 +29,184 @@
           UniFood makes meals simpler by providing you delicious, easy to
           prepare recipes.
         </h3>
-      </div>
-
-      <div class="download-icons-wrapper">
-        <img
-          src="../server/static/images/app-store.png"
-          alt="Download icons"
-          class="download-icon-apple"
-        />
-        <img
-          src="../server/static/images/google-play.png"
-          alt="Download icons"
-          class="download-icon-android"
-        />
+        <div class="download-icons">
+          <img
+            src="../server/static/images/app-store.png"
+            alt="Download icons"
+            class="download-icons__apple"
+          />
+          <img
+            src="../server/static/images/google-play.png"
+            alt="Download icons"
+            class="download-icons__android"
+          />
+        </div>
       </div>
     </header>
 
-    <section class="features" id="features">
-      <h2 class="section-title">What makes <span class="color-primary">us</span> special</h2>
-      <div class="feature-tab">
-        <div class="feature-tab__button">
-          <h2>Recipes</h2>
-          <p>+</p>
-        </div>
-        <div class="feature-tab__content">
-          <h3 class="feature-tab__header">
-            Hundreds of Recipes at Your Fingertips
-          </h3>
-          <div class="feature-tab__body">
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo aut
-              omnis inventore facere delectus?
-            </p>
-            <p>
-              Cum voluptas distinctio molestiae accusamus ipsam nulla,
-              perferendis consectetur rerum quia quam corporis, tempore
-              perspiciatis debitis atque aliquid totam omnis aspernatur vel?
-              Nostrum qui beatae illo.
-            </p>
+    <main>
+      <section id="about">
+        <h2 class="section-title">About <span class="color-primary">us</span></h2>
+        <p class="features__body">UniFood is an all-in-one meal planning and recipe app, designed to take the stress out of meals. Powered by the Spoonacular API, UniFood has access to over 5000 recipes and 2600 ingredients, so you are sure to find a recipe you will love</p>
+        <div class="feature-tab">
+          <div class="feature-tab__button">
+            <h2>Recipes</h2>
+            <p>+</p>
+          </div>
+          <div class="feature-tab__content">
+            <h3 class="feature-tab__header">
+              Hundreds of Recipes at Your Fingertips
+            </h3>
+            <div class="feature-tab__body">
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo aut
+                omnis inventore facere delectus?
+              </p>
+              <p>
+                Cum voluptas distinctio molestiae accusamus ipsam nulla,
+                perferendis consectetur rerum quia quam corporis, tempore
+                perspiciatis debitis atque aliquid totam omnis aspernatur vel?
+                Nostrum qui beatae illo.
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="feature-tab">
-        <div class="feature-tab__button">
-          <h2>Shopping Lists</h2>
-          <p>+</p>
-        </div>
-        <div class="feature-tab__content">
-          <h2 class="feature-tab__header">Analyse your Eating</h2>
-          <div class="feature-tab__body">
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui
-              quibusdam iusto odio? Fugit fugiat eum illum at laborum illo non?
-            </p>
-            <p>
-              Impedit quam ab, ipsam at sequi architecto laboriosam voluptatum
-              mollitia velit officia harum iure laudantium facere enim
-              voluptates voluptate obcaecati?
-            </p>
+        <div class="feature-tab">
+          <div class="feature-tab__button">
+            <h2>Shopping Lists</h2>
+            <p>+</p>
+          </div>
+          <div class="feature-tab__content">
+            <h2 class="feature-tab__header">Analyse your Eating</h2>
+            <div class="feature-tab__body">
+              <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui
+                quibusdam iusto odio? Fugit fugiat eum illum at laborum illo non?
+              </p>
+              <p>
+                Impedit quam ab, ipsam at sequi architecto laboriosam voluptatum
+                mollitia velit officia harum iure laudantium facere enim
+                voluptates voluptate obcaecati?
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="feature-tab">
-        <div class="feature-tab__button">
-          <h2>Allergy Advice</h2>
-          <p>+</p>
-        </div>
-        <div class="feature-tab__content">
-          <h2 class="feature-tab__header">Avoid Whats Bad</h2>
-          <div class="feature-tab__body">
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Dignissimos, id quidem ea esse expedita tenetur sed nemo itaque
-              non a.
-            </p>
-            <p>
-              Non blanditiis natus, iste obcaecati voluptate debitis ea quod
-              quos mollitia molestiae aperiam provident, quasi sint ullam
-              tempore commodi nemo?
-            </p>
+        <div class="feature-tab">
+          <div class="feature-tab__button">
+            <h2>Allergy Advice</h2>
+            <p>+</p>
+          </div>
+          <div class="feature-tab__content">
+            <h2 class="feature-tab__header">Avoid Whats Bad</h2>
+            <div class="feature-tab__body">
+              <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Dignissimos, id quidem ea esse expedita tenetur sed nemo itaque
+                non a.
+              </p>
+              <p>
+                Non blanditiis natus, iste obcaecati voluptate debitis ea quod
+                quos mollitia molestiae aperiam provident, quasi sint ullam
+                tempore commodi nemo?
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="recipe-showcase" id="recipes">
-      <h2 class="section-title">Some of our delicious recipes...</h2>
-      <div class="recipe-showcase__buttons">
-        <button class="recipe-showcase__button recipe-showcase--active">
-          Breakfast
-        </button>
-        <button class="recipe-showcase__button">Lunch</button>
-        <button class="recipe-showcase__button">Dinner</button>
-        <button class="recipe-showcase__button">Deserts</button>
-      </div>
-      <div class="recipe-showcase__recipes">
-        <div class="recipe-card">
-          <div class="recipe-card__image">
-            <img src="../server/static/images/cards/example-stew.jpg" alt="">
+      <section id="recipes">
+        <h2 class="section-title">Some of our delicious recipes...</h2>
+        <div class="recipe-showcase__buttons">
+          <button class="recipe-showcase__button recipe-showcase--active">
+            Breakfast
+          </button>
+          <button class="recipe-showcase__button">Lunch</button>
+          <button class="recipe-showcase__button">Dinner</button>
+          <button class="recipe-showcase__button">Deserts</button>
+        </div>
+        <div class="recipe-showcase__recipes">
+          <div class="recipe-card">
+            <div class="recipe-card__image">
+              <img src="../server/static/images/cards/example-stew.jpg" alt="">
+            </div>
+            <div class="recipe-card__info">
+              <h3 class="recipe-card__title">Recipe Title</h3>
+              <p class="recipe-card__description">Sample description that extends over a number of lines</p>
+              <p class="recipe-card__sinfo">Small info</p>
+              <p class="recipe-card__linfo">BIG INFO</p>
+            </div>
           </div>
-          <div class="recipe-card__info">
-            <h3 class="recipe-card__title">Recipe Title</h3>
-            <p class="recipe-card__description">Sample description that extends over a number of lines</p>
-            <p class="recipe-card__sinfo">Small info</p>
-            <p class="recipe-card__linfo">BIG INFO</p>
+        </div>
+      </section>
+
+      <section id="pricing">
+        <h2 class="section-title">Pricing</h2>
+        <div class="pricing-wrapper">
+          <div class="pricing__card">
+            <div class="pricing__card__header" id="bronze">
+              <h2 class="pricing__card__title">UniFood Free</h2>
+              <!-- <h3 class="pricing__card__price">Free</h3> -->
+            </div>
+            <ul class="pricing__card__ul">
+              <li class="pricing__card__li">Lorem ipsum</li>
+              <li class="pricing__card__li">Nunc dictum</li>
+              <li class="pricing__card__li">Pellentesque</li>
+              <li class="pricing__card__li">Duis iaculis</li>
+              <li class="pricing__card__li">Maecenas sagittis</li>
+            </ul>
           </div>
-        </div>
-      </div>
-    </section>
+          <div class="pricing__card">
+            <div class="pricing__card__header" id="silver">
+              <h2 class="pricing__card__title">UniFood Pro</h2>
+              <h3 class="pricing__card__price"><sup class="super-sub">£</sup>3.99<sub class="super-sub">/pcm</h3>
+            </div>
+            <ul class="pricing__card__ul">
+              <li class="pricing__card__li">Lorem ipsum</li>
+              <li class="pricing__card__li">Nunc dictum</li>
+              <li class="pricing__card__li">Pellentesque</li>
+              <li class="pricing__card__li">Duis iaculis</li>
+              <li class="pricing__card__li">Maecenas sagittis</li>
+            </ul>
+          </div>
+          <div class="pricing__card">
+            <div class="pricing__card__header" id="gold">
+              <h2 class="pricing__card__title">UniSuite</h2>
+              <h3 class="pricing__card__price">
+                <sup class="super-sub">£</sup>9.99<sub class="super-sub">/pcm</sub>
+              </h3>
+            </div>
+            <ul class="pricing__card__ul">
+              <li class="pricing__card__li">Lorem ipsum</li>
+              <li class="pricing__card__li">Nunc dictum</li>
+              <li class="pricing__card__li">Pellentesque</li>
+              <li class="pricing__card__li">Duis iaculis</li>
+              <li class="pricing__card__li">Maecenas sagittis</li>
+            </ul>
+          </div>
+        </div>  
+      </section>
 
-    <section class="pricing" id="pricing">
-      <h2 class="section-title">Pricing</h2>
-      <div class="pricing__card">
-        <div class="pricing__card__header" id="bronze">
-          <h2 class="pricing__card__title">UniFood Free</h2>
-          <!-- <h3 class="pricing__card__price">Free</h3> -->
-        </div>
-        <ul class="pricing__card__ul">
-          <li class="pricing__card__li">Lorem ipsum</li>
-          <li class="pricing__card__li">Nunc dictum</li>
-          <li class="pricing__card__li">Pellentesque</li>
-          <li class="pricing__card__li">Duis iaculis</li>
-          <li class="pricing__card__li">Maecenas sagittis</li>
-        </ul>
-      </div>
-      <div class="pricing__card">
-        <div class="pricing__card__header" id="silver">
-          <h2 class="pricing__card__title">UniFood Pro</h2>
-          <h3 class="pricing__card__price"><sup class="super-sub">£</sup>3.99<sub class="super-sub">/pcm</h3>
-        </div>
-        <ul class="pricing__card__ul">
-          <li class="pricing__card__li">Lorem ipsum</li>
-          <li class="pricing__card__li">Nunc dictum</li>
-          <li class="pricing__card__li">Pellentesque</li>
-          <li class="pricing__card__li">Duis iaculis</li>
-          <li class="pricing__card__li">Maecenas sagittis</li>
-        </ul>
-      </div>
-      <div class="pricing__card">
-        <div class="pricing__card__header" id="gold">
-          <h2 class="pricing__card__title">UniSuite</h2>
-          <h3 class="pricing__card__price">
-            <sup class="super-sub">£</sup>9.99<sub class="super-sub">/pcm</sub>
-          </h3>
-        </div>
-        <ul class="pricing__card__ul">
-          <li class="pricing__card__li">Lorem ipsum</li>
-          <li class="pricing__card__li">Nunc dictum</li>
-          <li class="pricing__card__li">Pellentesque</li>
-          <li class="pricing__card__li">Duis iaculis</li>
-          <li class="pricing__card__li">Maecenas sagittis</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="apps-showcase" id="apps">
-      <h2 class="apps-showcase__title">Get the Uni<span class="color-primary">Food</span> Apps!</h2>
-      <p class="apps-showcase__body">
-        With the UniFood apps for both Apple and Android, you can take your
-        meals mobile!
-      </p>
-      <img class="apps-showcase__image" src="../server/static/images/devices.png" alt="PC, phone and laptop with UniFood" />
-    </section>
+      <section class="apps-showcase" id="apps">
+        <h2 class="apps-showcase__title">Get the Uni<span class="color-primary">Food</span> Apps!</h2>
+        <p class="apps-showcase__body">
+          With the UniFood apps for both Apple and Android, you can take your
+          meals mobile!
+        </p>
+        <img class="apps-showcase__image" src="../server/static/images/devices.png" alt="PC, phone and laptop with UniFood" />
+      </section>
+    </main>
 
     <footer>
-      <ul class="sitemap">
-        <li><a href="#landing-top">Back to Top</a></li>
-        <li><a href="#features">Features</a></li>
+      <ul class="footer__section">
+        <li class="footer__title">Sitemap</li>
+        <li><a href="#top">Back to Top</a></li>
+        <li><a href="#about">About</a></li>
         <li><a href="#recipes">Recipes</a></li>
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="#apps">Apps</a></li>
       </ul>
-      <ul class="links">
+      <ul class="footer__section">
+        <li class="footer__title">Links</li>
         <li><a href="">Copyright Notice</a></li>
         <li><a href="">Privacy Policy</a></li>
         <li><a href="">Email</a></li>

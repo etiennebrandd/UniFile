@@ -47,37 +47,38 @@ body {
   color: var(--clr-primary);
 }
 
-/* navigation */
-.landing-nav__list {
-  display: flex;
-  list-style: none;
-  justify-content: space-around;
-}
-
-.landing-nav__item {
-  font-size: var(--fs-600);
-  padding: 0.5rem;
-}
-
-.landing-nav__signin {
-  display: none;
-}
-
-/* header */
-.landing-header {
+/* header, intro and navigation */
+header {
   display: flex;
   flex-direction: column;
 }
 
-.landing-title {
+.header-title {
   font-family: var(--ff-title);
   font-size: var(--fs-header);
   text-align: center;
 }
 
-.landing-seperator {
+.green-hr {
   border: 1.5px solid var(--clr-primary);
   margin: 0 1rem;
+}
+
+.header-nav__list {
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
+}
+
+.header-nav__item > a {
+  font-size: var(--fs-600);
+  padding: 0.5rem;
+  text-decoration: none;
+  color: black;
+}
+
+.header-nav__signin {
+  display: none;
 }
 
 .intro {
@@ -89,16 +90,16 @@ body {
   font-weight: bold;
   text-align: center;
   line-height: 1.2;
-  margin-bottom: 1.5rem;
 }
 
 .intro-body {
   font-size: var(--fs-900);
   font-weight: 200;
   text-align: center;
+  margin: 2rem 0;
 }
 
-.download-icons-wrapper {
+.download-icons {
   display: flex;
   flex-flow: wrap row;
   justify-content: center;
@@ -106,14 +107,23 @@ body {
   padding-bottom: 1rem;
 }
 
-.download-icons-wrapper img {
+.download-icons__apple,
+.download-icons__android {
   width: 100%;
   max-width: 18rem;
 }
 
 /* feature tabs */
+.features__body {
+  font-weight: 100;
+  font-size: var(--fs-600);
+  line-height: 1.6;
+  padding: 0 1rem;
+  text-align: center;
+}
+
 .feature-tab {
-  padding: 0.5rem;
+  padding: 0.75rem 0.5rem;
 }
 
 .feature-tab__button {
@@ -157,7 +167,6 @@ body {
 }
 
 .feature-tab__body {
-  font-family: var(--ff-body);
   font-weight: 100;
   font-size: var(--fs-600);
   line-height: 1.6;
@@ -185,7 +194,6 @@ body {
 
 .recipe-showcase__button {
   font-size: var(--fs-800);
-  font-family: var(--ff-body);
   font-weight: 500;
   margin: 0.5rem;
   padding: 0.5rem 1rem;
@@ -229,7 +237,6 @@ body {
 }
 
 .recipe-card__description {
-  font-family: var(--ff-body);
   font-weight: 100;
   padding: 1rem 0;
   grid-area: description;
@@ -254,16 +261,19 @@ body {
   background: linear-gradient(to bottom, #d4af37 0%, #ebc138 100%);
 }
 
-.super-sub {
-  font-weight: 300;
-  font-size: var(--fs-600);
+#pricing {
+  margin: 0 2rem;
 }
 
-.pricing {
+.pricing-wrapper {
   display: flex;
   flex-flow: wrap column;
   align-content: center;
-  margin: 0 2rem;
+}
+
+.super-sub {
+  font-weight: 300;
+  font-size: var(--fs-600);
 }
 
 .pricing__card {
@@ -288,7 +298,6 @@ body {
 }
 
 .pricing__card__title {
-  font-family: var(--ff-body);
   font-weight: 200;
   font-size: var(--fs-sub-heading);
 }
@@ -301,7 +310,6 @@ body {
 
 .pricing__card__ul {
   list-style: none;
-  font-family: var(--ff-body);
   font-size: var(--fs-900);
   font-weight: 200;
   padding: 0 0.5rem 2rem 0.5rem;
@@ -309,6 +317,10 @@ body {
 }
 
 /* apps showcase */
+#apps {
+  margin-bottom: 5rem;
+}
+
 .apps-showcase {
   width: 100%;
   padding: 0 1.5rem;
@@ -322,7 +334,6 @@ body {
 }
 
 .apps-showcase__body {
-  font-family: var(--ff-body);
   font-size: var(--fs-900);
   line-height: 1.4;
   font-weight: 100;
@@ -337,14 +348,32 @@ body {
 /* footer */
 footer {
   display: flex;
+  flex-flow: wrap row;
   justify-content: space-between;
   background-color: var(--clr-dark);
-  padding: 1rem;
+  padding: 2rem;
   line-height: 1.8;
-  font-family: var(--ff-body);
   font-weight: 100;
 }
 
-footer a {
+.footer__title {
+  font-size: var(--fs-800);
+  font-weight: 500;
   color: white;
+  list-style: none;
+}
+
+.footer__section a {
+  color: white;
+  text-decoration: none;
+}
+
+/* media queries */
+@media (min-width: 700px) {
+  :root {
+    --fs-header: 6rem;
+    --fs-sub-heading: 4rem;
+
+    --fs-600: 1.7rem;
+  }
 }
