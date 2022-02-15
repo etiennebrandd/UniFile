@@ -29,12 +29,14 @@ html,
 body {
   width: 100%;
   height: 100%;
-  max-width: 700px;
+  max-width: 800px;
   margin-left: auto;
   margin-right: auto;
 
   font-family: var(--ff-body);
   color: var(--clr-dark);
+
+  scroll-behavior: smooth;
 }
 
 .section-title {
@@ -134,26 +136,29 @@ header {
 
 .account-buttons {
   display: none;
+  gap: 20rem;
 }
 
 .primary-button {
   background: var(--clr-primary);
-  padding: 0.6rem 2.6rem;
+  padding: 0.5rem 3.5rem;
   border-radius: 50px;
   color: white;
   letter-spacing: 1px;
   border: none;
   font-size: var(--fs-800);
+  cursor: pointer;
 }
 
 .outline-button {
   background: transparent;
-  padding: 0.6rem 2.6rem;
+  padding: 0.5rem 3.5rem;
   border-radius: 50px;
-  color: black;
+  color: var(--clr-primary);
   letter-spacing: 1px;
   border: 3px solid var(--clr-primary);
   font-size: var(--fs-800);
+  cursor: pointer;
 }
 
 /* feature tabs */
@@ -292,11 +297,17 @@ header {
 }
 
 /* recipe showcase */
+#recipe-title {
+  grid-area: title;
+}
+
 .recipe-showcase__buttons {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
   flex-wrap: wrap;
+  grid-area: buttons;
+  margin-bottom: 3rem;
 }
 
 .recipe-showcase__button {
@@ -318,15 +329,18 @@ header {
 
 .recipe-showcase__recipes {
   display: flex;
+  align-content: center;
   justify-content: center;
+  flex-flow: wrap row;
   height: max-content;
+  gap: 3rem;
+  grid-area: recipes;
 }
 
 .recipe-card {
   display: grid;
   width: min-content;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  margin-top: 2rem;
 }
 
 .recipe-card__info {
@@ -466,6 +480,7 @@ footer {
   padding: 2rem;
   line-height: 1.8;
   font-weight: 100;
+  width: 100%;
 }
 
 .footer__title {
@@ -485,6 +500,8 @@ footer {
   :root {
     --fs-header: 6rem;
     --fs-sub-heading: 4rem;
+
+    --fs-600: 1.5rem;
   }
 
   html,
@@ -503,9 +520,13 @@ footer {
   }
 
   .header-nav__signin,
-  .header-image,
-  .account-buttons {
+  .header-image {
     display: block;
+  }
+
+  .account-buttons {
+    display: flex;
+    gap: 5rem;
   }
 
   .intro {
@@ -542,7 +563,7 @@ footer {
   }
 
   #about {
-    padding: 5rem 0;
+    padding: 5rem 0 0 0;
     max-width: 1400px;
     margin-right: auto;
     margin-left: auto;
@@ -553,5 +574,79 @@ footer {
 
   .desktop-features {
     display: block;
+  }
+
+  #recipes {
+    display: grid;
+    max-width: 1400px;
+    margin: 5rem auto 0rem auto;
+    grid-template-columns: 1fr 2fr 2fr 2fr;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+      'title   title   title   title'
+      'buttons recipes recipes recipes'
+      'buttons recipes recipes recipes'
+      'buttons recipes recipes recipes';
+  }
+
+  .recipe-card {
+    margin: 0 2rem;
+  }
+
+  .recipe-showcase__recipes {
+    flex-flow: wrap row;
+  }
+
+  .recipe-showcase__buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .recipe-showcase__button {
+    height: fit-content;
+    padding: 0.6rem 4rem;
+    border-radius: 75px;
+  }
+
+  #pricing {
+    margin: 10rem 0 0 0;
+  }
+
+  #bronze-card {
+    order: 1;
+  }
+
+  #silver-card {
+    order: 3;
+  }
+
+  #gold-card {
+    order: 2;
+  }
+
+  #silver-card,
+  #bronze-card {
+    transform: scale(0.9, 0.9);
+  }
+
+  .pricing-wrapper {
+    gap: 3rem;
+  }
+  .pricing__card {
+    max-width: 25rem;
+  }
+
+  #apps {
+    margin: 10rem 0 0 0;
+    display: grid;
+  }
+
+  footer {
+    justify-content: space-around;
+  }
+
+  .apps-showcase__image {
+    max-height: 30rem;
+    width: auto;
+    justify-self: center;
   }
 }

@@ -142,7 +142,7 @@
       </section>
 
       <section id="recipes">
-        <h2 class="section-title">Some of our delicious recipes...</h2>
+        <h2 class="section-title" id="recipe-title">Some of our delicious recipes...</h2>
         <div class="recipe-showcase__buttons">
           <button class="recipe-showcase__button recipe-showcase--active">
             Breakfast
@@ -163,13 +163,35 @@
               <p class="recipe-card__linfo">BIG INFO</p>
             </div>
           </div>
+          <div class="recipe-card">
+            <div class="recipe-card__image">
+              <img src="../server/static/images/cards/example-stew.jpg" alt="">
+            </div>
+            <div class="recipe-card__info">
+              <h3 class="recipe-card__title">Recipe Title</h3>
+              <p class="recipe-card__description">Sample description that extends over a number of lines</p>
+              <p class="recipe-card__sinfo">Small info</p>
+              <p class="recipe-card__linfo">BIG INFO</p>
+            </div>
+          </div>
+          <div class="recipe-card">
+            <div class="recipe-card__image">
+              <img src="../server/static/images/cards/example-stew.jpg" alt="">
+            </div>
+            <div class="recipe-card__info">
+              <h3 class="recipe-card__title">Recipe Title</h3>
+              <p class="recipe-card__description">Sample description that extends over a number of lines</p>
+              <p class="recipe-card__sinfo">Small info</p>
+              <p class="recipe-card__linfo">BIG INFO</p>
+            </div>
+          </div>
         </div>
       </section>
 
       <section id="pricing">
         <h2 class="section-title">Pricing</h2>
         <div class="pricing-wrapper">
-          <div class="pricing__card">
+          <div class="pricing__card" id="bronze-card">
             <div class="pricing__card__header" id="bronze">
               <h2 class="pricing__card__title">UniFood Free</h2>
               <!-- <h3 class="pricing__card__price">Free</h3> -->
@@ -182,7 +204,7 @@
               <li class="pricing__card__li">Maecenas sagittis</li>
             </ul>
           </div>
-          <div class="pricing__card">
+          <div class="pricing__card" id="silver-card">
             <div class="pricing__card__header" id="silver">
               <h2 class="pricing__card__title">UniFood Pro</h2>
               <h3 class="pricing__card__price"><sup class="super-sub">£</sup>3.99<sub class="super-sub">/pcm</h3>
@@ -195,7 +217,7 @@
               <li class="pricing__card__li">Maecenas sagittis</li>
             </ul>
           </div>
-          <div class="pricing__card">
+          <div class="pricing__card" id="gold-card">
             <div class="pricing__card__header" id="gold">
               <h2 class="pricing__card__title">UniSuite</h2>
               <h3 class="pricing__card__price">
