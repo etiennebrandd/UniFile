@@ -369,6 +369,11 @@ header {
   grid-area: description;
 }
 
+.recipe-card__image > img {
+  width: 100%;
+  height: auto;
+}
+
 .recipe-card__linfo {
   font-weight: 700;
   grid-area: large-info;
@@ -499,13 +504,13 @@ footer {
   text-decoration: none;
 }
 
+/* media queries */
 @media only screen and (min-width: 600px) {
   footer {
     justify-content: space-around;
   }
 }
 
-/* media queries */
 @media only screen and (min-width: 1280px) {
   :root {
     --fs-header: 6rem;
@@ -601,6 +606,7 @@ footer {
 
   .recipe-card {
     margin: 0 2rem;
+    width: calc(70% / 3);
   }
 
   .recipe-showcase__recipes {
@@ -641,8 +647,9 @@ footer {
   .pricing-wrapper {
     gap: 3rem;
   }
+
   .pricing__card {
-    max-width: 25rem;
+    max-width: calc(80% / 3);
   }
 
   #apps {
