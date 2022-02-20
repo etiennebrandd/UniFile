@@ -147,7 +147,7 @@ header {
   background: var(--clr-primary);
   padding: 0.5rem 3.5rem;
   border-radius: 50px;
-  color: white;
+
   letter-spacing: 1px;
   border: none;
   font-size: var(--fs-800);
@@ -158,11 +158,24 @@ header {
   background: transparent;
   padding: 0.5rem 3.5rem;
   border-radius: 50px;
-  color: var(--clr-primary);
+
   letter-spacing: 1px;
   border: 3px solid var(--clr-primary);
   font-size: var(--fs-800);
   cursor: pointer;
+}
+
+.primary-button > a {
+  color: white;
+}
+
+.outline-button > a {
+  color: var(--clr-primary);
+}
+
+.primary-button > a,
+.outline-button > a {
+  text-decoration: none;
 }
 
 /* feature tabs */

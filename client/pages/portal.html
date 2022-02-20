@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../../server/static/css/portal.css" />
+    <script src="../js/portalApp.js" defer></script>
     <title>UniFood Account</title>
   </head>
   <body>
@@ -12,19 +13,66 @@
       <div class="green-background">
         <h1 class="page-title">UniFood</h1>
       </div>
-      <div class="card">
-        <h2 class="card__title">Login</h2>
-        <p class="card__tagline">Log back in to UniFood</p>
-        <form class="card__login-form" action="">
-          <label for="login-email" class="card__label">Email</label>
-          <input type="text" name="login-email" class="card__input" />
 
-          <label for="login-password" class="card__label">Password</label>
-          <input type="password" name="login-password" class="card__input" />
-        </form>
-        <p class="card__forgot">Forgotten your password?</p>
-        <button class="card__submit">Log in</button>
-        <p class="card__swap">Don't have an account? Sign up!</p>
+      <div class="signin-image">
+        <img
+          src="../../server/static/images/signInFood.jpg"
+          alt="An appetizing image of vegetables"
+        />
+      </div>
+
+      <div class="card">
+        <div id="login" class="shown">
+          <div class="card--top">
+            <h2 class="card__title">Login</h2>
+            <p class="card__tagline">Log back in to UniFood</p>
+            <form class="card__login-form" action="">
+              <label for="email" class="card__label">Email</label>
+              <input type="text" name="email" class="card__input" />
+
+              <label for="password" class="card__label">Password</label>
+              <input type="password" name="password" class="card__input" />
+            </form>
+            <p class="card__forgot">Forgotten your password?</p>
+          </div>
+          <div class="card-bottom">
+            <button class="card__submit">Log in</button>
+            <p class="card__swap">Don't have an account? Sign up!</p>
+          </div>
+        </div>
+
+        <div id="register" class="hidden">
+          <div class="card--top">
+            <h2 class="card__title">Register</h2>
+            <p class="card__tagline">Sign up for a UniFood account</p>
+            <form class="card__login-form" action="">
+              <label for="fname" class="card__label">First Name</label>
+              <input type="text" name="fname" class="card__input" />
+
+              <label for="lname" class="card__label">Last Name</label>
+              <input type="text" name="lname" class="card__input" />
+
+              <label for="email" class="card__label">Email</label>
+              <input type="text" name="email" class="card__input" />
+
+              <label for="password" class="card__label">Password</label>
+              <input type="password" name="password" class="card__input" />
+
+              <label for="confirm-password" class="card__label"
+                >Confirm Password</label
+              >
+              <input
+                type="password"
+                name="confirm-password"
+                class="card__input"
+              />
+            </form>
+          </div>
+          <div class="card-bottom">
+            <button class="card__submit">Sign Up</button>
+            <p class="card__swap">Already have an account? Log in!</p>
+          </div>
+        </div>
       </div>
     </main>
   </body>
