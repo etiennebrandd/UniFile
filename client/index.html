@@ -1,186 +1,255 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>UniFile</title>
-        <!--Bootstap Links-->
-            <!-- Latest compiled and minified CSS -->
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../server/static/css/global.css" />
+    <link rel="stylesheet" href="../server/static/css/index.css" />
+    <script src="../client/js/landingApp.js" defer></script>
+    <title>UniFood</title>
+  </head>
 
-            <!-- jQuery library -->
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-            <!-- Popper JS -->
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
-            <!-- Latest compiled JavaScript -->
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> 
-
-        <!--Links to SVGs for Login Form-->
-        <script src="https://code.iconify.design/2/2.0.4/iconify.min.js"></script>
-
-        <!-- this link displays the icon in the search bar (placeholder) -->
-        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
-
-        <!--Stylesheet-->
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/landing-stylesheet.css') }}">
-    </head>
-    
-    <body>
-        <!--Navbar at the top of the page-->
-            <nav class="navbar navbar-expand-sm bg-light navbar-dark purple-bb" id="header">
-                <a class="navbar-brand" href="#"><img id="header-image" src="{{ url_for('static', filename='images/logos/UniFileTransparent.png') }}"></a>
-
-                <ul class="nav nav-pills nav-justified">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#Calendar">Calendar</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#Budgeting">Budgeting</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#MealPlanning">Meal Planning</a>
-                    </li>
-                </ul>
-                <ul class="nav ml-auto">
-                    <li>
-                        <a class="login-trigger" href="#" data-target="#login" data-toggle="modal">Login</a>
-                    </li>
-                </ul>
-            </nav>
-
-        <!--Login Modal-->
-        <div id="login" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <button data-dismiss="modal" class="close">&times;</button>
-                        <h4>Login</h4>
-                        <form method="POST", action="http://localhost:5000/login">
-                            <input type="text" name="email" class="username form-control" placeholder="Email"/>
-                            <input type="password" name="password" class="password form-control" placeholder="Password"/>
-                            <input class="btn login" type="submit" value="Login" />
-                        </form>
-                        <p>{{ authError }}</p>
-                    </div>
-                </div>
-            </div>
+  <body>
+    <div class="header-intro-wrapper">
+      <header id="top">
+        <h1 class="header-title">Uni<span class="color-primary">Food</span></h1>
+        <hr class="green-hr"></hr>
+        <nav class="header-nav">
+          <ul class="header-nav__list">
+            <li class="header-nav__item"><a href="#about">About</a></li>
+            <li class="header-nav__item"><a href="#recipes">Recipes</a></li>
+            <li class="header-nav__item"><a href="#pricing">Pricing</a></li>
+            <li class="header-nav__item header-nav__signin"><a href="./pages/portal.html">Sign in</a></li>
+          </ul>
+        </nav>
+      </header>
+      <div class="intro">
+        <h2 class="intro-header">
+          Struggling with <span class="color-primary">meal</span> ideas?
+        </h2>
+        <h3 class="intro-body">
+          UniFood makes meals simpler by providing you delicious, easy to
+          prepare recipes.
+        </h3>
+        <div class="download-icons">
+          <img
+            src="../server/static/images/landing/app-store.png"
+            alt="Download icons"
+            class="download-icons__apple"
+          />
+          <img
+            src="../server/static/images/landing/google-play.png"
+            alt="Download icons"
+            class="download-icons__android"
+          />
         </div>
-
-
-        <!--Jumbotron and Contents-->
-        <div class="jumbotron mh-50">
-            <div class="row">
-                <div class="col mh-50 my-auto">
-                    <h1 class="jumbo-title">Welcome to UniFile</h1>
-                    <h2 class="jumbo-tag">The one-stop shop for all things Uni</h2>
-                    <p class="jumbo-p">A bespoke application which manages all aspects of university life. From timetabling, to budgeting, and even meal prepping, UniFile takes care of the planning, so you can use more of your brain for what matters.</p>
-                </div>
-                <div class="col mh-50 mx-auto register-form">
-                    <h2>Start Today. For Free.</h2>
-                    <p>Register for a free UniFile account to get started.</p>
-                    <!--Form to Register-->
-                    <form method="POST">
-                        <div class="form-group">
-                            <div class="input-group register-names">
-                                <span class="iconify col1-input-icon" data-icon="octicon:person-24" style="color: darkviolet;"></span>
-                                <input type="text" name="firstName" placeholder="First Name">
-                                <span class="iconify col2-input-icon" data-icon="octicon:person-24" style="color: darkviolet;"></span>
-                                <input type="text" name="lastName" placeholder="Last Name">
-                            </div>
-                        </div>
-                        <div class="form-group register-account">
-                            <div class="input-group">
-                                <span class="iconify col1-input-icon" data-icon="octicon:mail-24" style="color: darkviolet;"></span>
-                                <input type="email" name="email" placeholder="Email">
-                            </div>
-                        </div>
-                        <div class="form-group register-account">
-                            <div class="input-group">
-                                <span class="iconify col1-input-icon" data-icon="octicon:lock-24" style="color: darkviolet;"></span>
-                                <input type="password" name="password" placeholder="Password">
-                            </div>
-                        </div>                
-                        <button type="submit">Sign-up</button>
-            
-                    </form>
-                    <p>{{ message }}</p>
-                </div>
-            </div>
+        <div class="account-buttons">
+          <button class="primary-button"><a href="./pages/portal.html">Sign in</a></button>
+          <button class="outline-button"><a href="./pages/portal.html">Register</a></button>
         </div>
+      </div>
+      <img class="header-image" src="../server/static/images/landing/header-image.png" alt="Header image of a pizza">
+    </div>
 
-        <!--Overview slide (1)-->
-        <div class="white-slide">
-            <div class="row">
-                <div class="col">
-                    <img class="slide-img" src="{{ url_for('static', filename='images/wireframes/dashboard-wireframe.png') }}">
-                </div>
-                <div class="col mx-auto my-auto">
-                    <h1 id="RegainClarity" class="slide-title">Regain Clarity</h1>
-                    <p class="slide-p">University is a very stressful time. Having to manage deadlines, money, independancy and a social life can be very difficult. Unifile gives you the tools to take some of that stress away, so you can start to enjoy your UniLife</p>
-                    <div class="row">
-                        <div class="col landing-features">
-                            <ul>
-                                <li>Dashboard</li>
-                                <li>Budget Tracker and Planner</li>
-                                <li>To-Do List</li>
-                            </ul>
-                        </div>
 
-                        <div class="col landing-features">
-                            <ul>
-                                <li>Calendar</li>
-                                <li>Meal Planner</li>
-                                <li>Integrations</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+    <main>
+      <section id="about">
+        <h2 class="section-title">About <span class="color-primary">us</span></h2>
+        <p class="features__body">UniFood is an all-in-one meal planning and recipe app, designed to take the stress out of meals. Powered by the Spoonacular API, UniFood has access to over 5000 recipes and 2600 ingredients, so you are sure to find a recipe you will love.</p>
+        <div class="desktop-features">
+          <div class="desktop-features__tabbar">
+            <ul class="desktop-features__list">
+              <a class="desktop-features__tab desktop-features__tab--active" id="recipe-tab">Recipes</a>
+              <a class="desktop-features__tab" id="meal-tab">Meal Planning</a>
+              <a class="desktop-features__tab" id="pantry-tab">Pantry</a>
+            </ul>
+          </div>
+          <div class="desktop-features__content">
+            <div class="desktop-features__body">
+              <h3>Thousands of recipes, at your fingertips.</h3>
+              <br>
+              <p>Coming up with meal ideas has never been simpler. Using our library of over 5,000 recipes, you can save your favourites, organise them into folders and create meal plans and shopping lists. With full nutritional information for all our recipes, its never been easier to eat well with minimal effort.</p>
             </div>
-        </div>
-
-        <!--Calendar slide (2)-->
-        <div class="purple-slide">
-            <div class="row">
-                <div class="col mx-auto my-auto">
-                    <h1 id="Calendar" class="jumbo-title">Calendar</h1>
-                    <p class="jumbo-p">With so many things going on at university, it is difficult to keep on top of things. With UniFiles calendar, you are able to keep track of all those classes, exams and events in one place, so you'll never miss a deadline</p>
-                    <p class="jumbo-p">UniFile's calendar also supports integration with Google Calendar, with Outlook Calendar integration in the works. This means that you can have all of your calendars and timetables in one place - no more jumping between apps to see your classes!</p>
-                </div>
-
-                <div class="col">
-                    <img class="slide-img" src="{{ url_for('static', filename='images/wireframes/calendar-wireframe.png') }}">
-                </div>
+            <div class="desktop-features__image">
+              <img src="../../server/static/images/landing/recipe-feature-image.jpg" alt="An appetizing image of fries and salsa">
             </div>
+          </div>
         </div>
-
-        <!--Budgeting slide (3)-->
-        <div class="white-slide">
-            <div class="row">
-                <div class="col">
-                    <img class="slide-img" src="{{ url_for('static', filename='images/wireframes/budget-wireframe.png') }}">
-                </div>
-                <div class="col mx-auto my-auto">
-                    <h1 id="Budgeting" class="slide-title">Budgeting</h1>
-                    <p class="slide-p">Most apps nowadays simply track your budget. You manually put in what you spend, and it tells you how much you have left for the week.</p>
-                    <p class="slide-p">UniFile takes a different approach by doing the planning for you. We give you a range of categories and you rank them from most important to least. Have an expensive degree which requires specialised equipment? We'll deduct money from the least important priority to cover the expense</p>
-                    <p class="slide-p">With integration across the rest of UniFile, and banking integration in the works, you can sleep easy knowing UniFile has you covered</p>
-                </div>
+        
+        <div class="feature-tab">
+          <div class="feature-tab__button feature-tab__button--active">
+            <h2>Recipes</h2>
+            <p>+</p>
+          </div>
+          <div class="feature-tab__content feature-tab__content--active">
+            <h3 class="feature-tab__header">
+              Thousands of recipes, at your fingertips.
+            </h3>
+            <div class="feature-tab__body">
+              <p>
+                Coming up with meal ideas has never been simpler. Using our library of over 5,000 recipes, you can save your favourites, organise them into folders and create meal plans and shopping lists. With full nutritional information for all our recipes, its never been easier to eat well with minimal effort.
+              </p>
             </div>
+          </div>
         </div>
-
-        <!--Meal slide (4)-->
-        <div class="purple-slide">
-            <div class="row">
-                <div class="col mx-auto my-auto">
-                    <h1 id="MealPlanning" class="jumbo-title">Meal Planning</h1>
-                    <p class="jumbo-p">For a lot of people, university is the first time they will be cooking for themselves. We take a lot of the guesswork out of it by planning the weeks meals for you, in co-operation with our budget app.</p>
-                    <p class="jumbo-p">There is also the option to input a few of the odd ingredients you have spare in the cupboard to make an entirely new dish!</p>
-                </div>
-
-                <div class="col">
-                    <img class="slide-img" src="{{ url_for('static', filename='images/wireframes/meal-wireframe.png') }}">
-                </div>
+        <div class="feature-tab">
+          <div class="feature-tab__button">
+            <h2>Meal Planning</h2>
+            <p>+</p>
+          </div>
+          <div class="feature-tab__content">
+            <h2 class="feature-tab__header">Meal planning. Done right.</h2>
+            <div class="feature-tab__body">
+              <p>
+                Meal planning is a proven way to eat healthily, waste less and meet your nutritional goals. UniFood gives you all the tools you need to create your own awesome meal plans, fitting any dietary needs.
+              </p>
+              <p>
+                Don't want to make your own? We can do it for you, after a few simple clicks.
+              </p>
             </div>
+          </div>
         </div>
-    </body>
+        <div class="feature-tab">
+          <div class="feature-tab__button">
+            <h2>Pantry</h2>
+            <p>+</p>
+          </div>
+          <div class="feature-tab__content">
+            <h2 class="feature-tab__header">Waste less keeping track of what you have.</h2>
+            <div class="feature-tab__body">
+              <p>
+                Ever buy an ingredient, thinking you don't have it, only to slap yourself when you get home and realise you do? We've all been there. Easily add ingredients into your digital pantry and never lose track of what you have!
+              </p>
+              <p>
+                Ingredients are automatically added and deducted through use of the shopping list and meal plan features.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="recipes">
+        <h2 class="section-title" id="recipe-title">Some of our delicious recipes...</h2>
+        <div class="recipe-showcase__buttons">
+          <button class="recipe-showcase__button recipe-showcase--active">
+            Breakfast
+          </button>
+          <button class="recipe-showcase__button">Lunch</button>
+          <button class="recipe-showcase__button">Dinner</button>
+          <button class="recipe-showcase__button">Deserts</button>
+        </div>
+        <div class="recipe-showcase__recipes">
+          <div class="recipe-card">
+            <div class="recipe-card__image">
+              <img src="../server/static/images/landing/example-stew.jpg" alt="">
+            </div>
+            <div class="recipe-card__info">
+              <h3 class="recipe-card__title">Recipe Title</h3>
+              <p class="recipe-card__description">Sample description that extends over a number of lines</p>
+              <p class="recipe-card__sinfo">Small info</p>
+              <p class="recipe-card__linfo">BIG INFO</p>
+            </div>
+          </div>
+          <div class="recipe-card">
+            <div class="recipe-card__image">
+              <img src="../server/static/images/landing/example-stew.jpg" alt="">
+            </div>
+            <div class="recipe-card__info">
+              <h3 class="recipe-card__title">Recipe Title</h3>
+              <p class="recipe-card__description">Sample description that extends over a number of lines</p>
+              <p class="recipe-card__sinfo">Small info</p>
+              <p class="recipe-card__linfo">BIG INFO</p>
+            </div>
+          </div>
+          <div class="recipe-card">
+            <div class="recipe-card__image">
+              <img src="../server/static/images/landing/example-stew.jpg" alt="">
+            </div>
+            <div class="recipe-card__info">
+              <h3 class="recipe-card__title">Recipe Title</h3>
+              <p class="recipe-card__description">Sample description that extends over a number of lines</p>
+              <p class="recipe-card__sinfo">Small info</p>
+              <p class="recipe-card__linfo">BIG INFO</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing">
+        <h2 class="section-title">Pricing</h2>
+        <div class="pricing-wrapper">
+          <div class="pricing__card" id="bronze-card">
+            <div class="pricing__card__header" id="bronze">
+              <h2 class="pricing__card__title">UniFood Free</h2>
+              <!-- <h3 class="pricing__card__price">Free</h3> -->
+            </div>
+            <ul class="pricing__card__ul">
+              <li class="pricing__card__li">Lorem ipsum</li>
+              <li class="pricing__card__li">Nunc dictum</li>
+              <li class="pricing__card__li">Pellentesque</li>
+              <li class="pricing__card__li">Duis iaculis</li>
+              <li class="pricing__card__li">Maecenas sagittis</li>
+            </ul>
+          </div>
+          <div class="pricing__card" id="silver-card">
+            <div class="pricing__card__header" id="silver">
+              <h2 class="pricing__card__title">UniFood Pro</h2>
+              <h3 class="pricing__card__price"><sup class="super-sub">£</sup>3.99<sub class="super-sub">/pcm</h3>
+            </div>
+            <ul class="pricing__card__ul">
+              <li class="pricing__card__li">Lorem ipsum</li>
+              <li class="pricing__card__li">Nunc dictum</li>
+              <li class="pricing__card__li">Pellentesque</li>
+              <li class="pricing__card__li">Duis iaculis</li>
+              <li class="pricing__card__li">Maecenas sagittis</li>
+            </ul>
+          </div>
+          <div class="pricing__card" id="gold-card">
+            <div class="pricing__card__header" id="gold">
+              <h2 class="pricing__card__title">UniSuite</h2>
+              <h3 class="pricing__card__price">
+                <sup class="super-sub">£</sup>9.99<sub class="super-sub">/pcm</sub>
+              </h3>
+            </div>
+            <ul class="pricing__card__ul">
+              <li class="pricing__card__li">Lorem ipsum</li>
+              <li class="pricing__card__li">Nunc dictum</li>
+              <li class="pricing__card__li">Pellentesque</li>
+              <li class="pricing__card__li">Duis iaculis</li>
+              <li class="pricing__card__li">Maecenas sagittis</li>
+            </ul>
+          </div>
+        </div>  
+      </section>
+
+      <section class="apps-showcase" id="apps">
+        <h2 class="section-title">Get the Uni<span class="color-primary">Food</span> Apps!</h2>
+        <p class="apps-showcase__body">
+          With the UniFood apps for both Apple and Android, you can take your
+          meals mobile!
+        </p>
+        <img class="apps-showcase__image" src="../server/static/images/landing/devices.png" alt="PC, phone and laptop with UniFood" />
+      </section>
+    </main>
+
+    <footer>
+      <ul class="footer__section">
+        <li class="footer__title">Sitemap</li>
+        <li><a href="#top">Back to Top</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#recipes">Recipes</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#apps">Apps</a></li>
+      </ul>
+      <ul class="footer__section">
+        <li class="footer__title">Links</li>
+        <li><a href="">Copyright Notice</a></li>
+        <li><a href="">Privacy Policy</a></li>
+        <li><a href="">Email</a></li>
+        <li><a href="">Facebook</a></li>
+        <li><a href="">Twitter</a></li>
+      </ul>
+    </footer>
+  </body>
 </html>

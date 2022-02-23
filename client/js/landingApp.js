@@ -17,25 +17,24 @@ const desktopFeatureContent = document.querySelector(
 const featureData = [
   {
     id: 'recipe-tab',
-    title: 'Recipe title would go here',
-    image: 'url',
-    imageAlt: 'An image of something',
-    text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur necessitatibus velit ullam cumque minus quasi quibusdam! Voluptatum commodi voluptate beatae aliquam. Ipsam, placeat et autem delectus laboriosam sed eaque nihil sapiente facilis quibusdam, doloremque laborum eligendi ad nesciunt officia! Maiores.',
+    title: 'Thousands of recipes, at your fingertips.',
+    image: '../../server/static/images/landing/recipe-feature-image.jpg',
+    imageAlt: 'An appetizing image of fries and salsa',
+    text: 'Coming up with meal ideas has never been simpler. Using our library of over 5,000 recipes, you can save your favourites, organise them into folders and create meal plans and shopping lists. With full nutritional information for all our recipes, its never been easier to eat well with minimal effort.',
   },
   {
-    id: 'shopping-tab',
-    title: 'Shopping title, slightly longer, would appear here',
-    image: 'url',
+    id: 'meal-tab',
+    title: 'Meal planning. Done right.',
+    image: '../server/static/images/landing/meal-feature-image.jpg',
     imageAlt: 'An image of something',
-    text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae, minus repellendus libero accusantium quas deleniti aperiam esse tempora neque totam voluptatem excepturi ipsam repudiandae debitis. Assumenda tenetur aspernatur molestiae, error id maiores nisi facere? Ut ex exercitationem minima iste pariatur velit laudantium ab, quam accusantium.',
+    text: "Meal planning is a proven way to eat healthily, waste less and meet your nutritional goals. UniFood gives you all the tools you need to create your own awesome meal plans, fitting any dietary needs. Don't want to make your own? We can do it for you, after a few simple clicks.",
   },
   {
-    id: 'allergy-tab',
-    title:
-      'The allergy title would be the longest, showing itself right around here',
-    image: 'url',
+    id: 'pantry-tab',
+    title: 'Waste less keeping track of what you have.',
+    image: '../server/static/images/landing/pantry-feature-image.jpg',
     imageAlt: 'An image of something',
-    text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam vel accusantium possimus dolorum dolorem natus accusamus, voluptatem quisquam, id odit eum, harum ea laudantium nostrum numquam quas. Consectetur cumque ad doloremque facere quo. Labore iusto accusamus ex. Impedit fugit ex quia! Molestiae.',
+    text: "Ever buy an ingredient, thinking you don't have it, only to slap yourself when you get home and realise you do? We've all been there. Easily add ingredients into your digital pantry and never lose track of what you have! Ingredients are automatically added and deducted through use of the shopping list and meal plan features.",
   },
 ];
 
