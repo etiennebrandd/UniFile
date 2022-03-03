@@ -6,6 +6,10 @@ main {
   margin-right: auto;
 }
 
+section {
+  margin: 6rem 0;
+}
+
 .section-title {
   font-family: var(--ff-title);
   font-size: var(--fs-sub-heading);
@@ -72,6 +76,7 @@ header {
   font-family: var(--ff-body);
   font-weight: 100;
   margin: 2rem 0;
+  text-align: center;
 }
 
 .header-image {

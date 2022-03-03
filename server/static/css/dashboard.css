@@ -1,0 +1,191 @@
+/* page layout */
+main,
+aside,
+.dashboard-wrapper {
+  width: 100%;
+  height: 100vh;
+}
+
+.dashboard-wrapper {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+}
+
+.dashboard-sidebar {
+  display: grid;
+  grid-template-rows: 1fr 9fr;
+  background-color: var(--clr-dark);
+  color: white;
+  padding: 1rem;
+}
+
+.dashboard-main {
+  display: grid;
+  overflow: clip;
+  padding: 1rem 2rem 0 2rem;
+  width: 100%;
+  height: 100vh;
+  grid-template-rows: 1fr 2fr 5fr 5fr;
+  grid-template-areas:
+    'search search search search search'
+    'greeting greeting greeting greeting greeting'
+    'meal nutrition nutrition nutrition nutrition'
+    'coming-up coming-up coming-up coming-up coming-up';
+}
+
+/* sidebar */
+.sidebar__title {
+  font-family: var(--ff-body);
+  font-size: var(--fs-sub-heading);
+  font-weight: 400;
+}
+.sidebar__nav {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidebar__ul {
+  list-style: none;
+}
+
+.sidebar__subheading {
+  font-family: var(--ff-title);
+  font-size: var(--fs-900);
+  font-weight: 500;
+}
+
+.sidebar__li {
+  font-size: var(--fs-800);
+  font-weight: 300;
+  margin: 0.6rem 0;
+}
+
+.sidebar__li:hover {
+  color: var(--clr-primary);
+  transition: color 0.3s ease-out;
+  cursor: pointer;
+}
+
+.sidebar__active {
+  color: var(--clr-primary);
+}
+
+/* search bar and titles */
+.searchbar {
+  width: 98%;
+  grid-area: search;
+}
+
+.searchbar-input {
+  width: 100%;
+  font-size: var(--fs-800);
+  padding: 0.5rem 2rem;
+  border: 3px solid var(--clr-grey);
+  border-radius: 100px;
+  font-family: var(--ff-body);
+  font-weight: 300;
+  outline: none;
+}
+
+.greeting {
+  grid-area: greeting;
+}
+
+.greeting > * {
+  font-size: var(--fs-sub-heading);
+  font-family: var(--ff-body);
+  font-weight: 300;
+  margin: 1rem 0;
+}
+
+/* next meal section */
+.next-meal {
+  grid-area: meal;
+}
+
+.meal__heading {
+  font-size: var(--fs-900);
+  font-family: var(--ff-title);
+  font-weight: 400;
+}
+
+.meal__card {
+  transform: scale(1);
+  transform-origin: top left;
+}
+
+.meal__img {
+  z-index: -1;
+  position: relative;
+  display: inherit;
+}
+
+.meal__img--filter {
+  box-shadow: inset 414px 0px 121px -39px rgba(0, 0, 0, 0.75);
+  width: fit-content;
+  height: fit-content;
+}
+
+.meal__text {
+  position: absolute;
+  top: 0;
+  color: white;
+  margin: 1rem;
+  width: 50%;
+  font-size: var(--fs-600);
+  font-weight: 300;
+}
+
+.meal__title {
+  font-weight: 300;
+  font-size: var(--fs-sub-heading);
+  line-height: 1.2;
+}
+
+.meal__rating {
+  margin: 0.6rem 0;
+}
+
+.meal__info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+/*coming up*/
+.coming-up {
+  display: flex;
+  flex-direction: column;
+  grid-area: coming-up;
+}
+
+.card-carousel {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+.coming-up__type {
+  font-weight: 300;
+  line-height: 1.2;
+  font-size: var(--fs-900);
+}
+
+.coming-up__title {
+  font-weight: 300;
+  line-height: 1.2;
+  font-size: var(--fs-800);
+  font-style: italic;
+}
+
+/*  */
+.nutrition {
+  grid-area: nutrition;
+}
+
+.meal__placeholder {
+  height: fit-content;
+}
