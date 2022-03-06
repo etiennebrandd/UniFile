@@ -74,7 +74,7 @@ aside,
 
 /* search bar and titles */
 .searchbar {
-  width: 98%;
+  width: 97%;
   grid-area: search;
 }
 
@@ -112,7 +112,7 @@ aside,
 }
 
 .meal__card {
-  transform: scale(1);
+  transform: scale(0.85);
   transform-origin: top left;
 }
 
@@ -165,7 +165,6 @@ aside,
 .card-carousel {
   display: flex;
   flex-direction: row;
-  gap: 2rem;
 }
 
 .coming-up__type {
