@@ -148,7 +148,7 @@ header {
   font-size: var(--fs-400);
   margin-top: 2rem;
   font-style: italic;
-  display: none;#
+  display: none;
 }
 
 .guest-access a {

@@ -180,6 +180,11 @@ aside,
   font-style: italic;
 }
 
+.unplanned-text {
+  width: 100%;
+  text-align: center;
+}
+
 /*  */
 .nutrition {
   grid-area: nutrition;
