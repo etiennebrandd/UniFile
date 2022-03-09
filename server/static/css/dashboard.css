@@ -1,12 +1,5 @@
 /* page layout */
-main,
-aside,
-.dashboard-wrapper {
-  width: 100%;
-  height: 100vh;
-}
-
-.dashboard-wrapper {
+body {
   display: grid;
   grid-template-columns: max-content 1fr;
 }
@@ -21,9 +14,7 @@ aside,
 
 .dashboard-main {
   display: grid;
-  overflow: clip;
   padding: 1rem 2rem 0 2rem;
-  width: 100%;
   height: 100vh;
   grid-template-rows: 1fr 2fr 5fr 5fr;
   grid-template-areas:
@@ -74,12 +65,10 @@ aside,
 
 /* search bar and titles */
 .searchbar {
-  width: 97%;
   grid-area: search;
 }
 
 .searchbar-input {
-  width: 100%;
   font-size: var(--fs-800);
   padding: 0.5rem 2rem;
   border: 3px solid var(--clr-grey);
@@ -181,7 +170,6 @@ aside,
 }
 
 .unplanned-text {
-  width: 100%;
   text-align: center;
 }
 
