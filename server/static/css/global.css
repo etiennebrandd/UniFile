@@ -61,7 +61,8 @@
 :root {
   --clr-primary: #0fa50f;
   --clr-primary-dark: #0b860b;
-  --clr-dark: #1a1a1a;
+  --clr-dark: #181818;
+  --clr-grey: #d3d1d1;
   --clr-light: #ffffff;
 
   --ff-title: 'Prompt', sans-serif;
@@ -100,10 +101,14 @@ body {
   color: var(--clr-primary);
 }
 
+.margin-0 {
+  margin: 0;
+}
+
 @media only screen and (min-width: 1280px) {
   :root {
     --fs-header: 6rem;
-    --fs-sub-heading: 4rem;
+    --fs-sub-heading: 3rem;
 
     --fs-600: 1.5rem;
   }

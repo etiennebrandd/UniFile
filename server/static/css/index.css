@@ -6,6 +6,10 @@ main {
   margin-right: auto;
 }
 
+section {
+  margin: 6rem 0;
+}
+
 .section-title {
   font-family: var(--ff-title);
   font-size: var(--fs-sub-heading);
@@ -72,6 +76,7 @@ header {
   font-family: var(--ff-body);
   font-weight: 100;
   margin: 2rem 0;
+  text-align: center;
 }
 
 .header-image {
@@ -137,6 +142,18 @@ header {
 .primary-button > a,
 .outline-button > a {
   text-decoration: none;
+}
+
+.guest-access {
+  font-size: var(--fs-400);
+  margin-top: 2rem;
+  font-style: italic;
+  display: none;
+}
+
+.guest-access a {
+  text-decoration: none;
+  color: var(--clr-primary);
 }
 
 /* feature tabs */
@@ -514,6 +531,10 @@ footer {
   .account-buttons {
     display: flex;
     gap: 5rem;
+  }
+
+  .guest-access {
+    display: block;
   }
 
   .intro {
