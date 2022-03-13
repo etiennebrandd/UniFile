@@ -4,9 +4,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="../server/static/css/global.css" />
-    <link rel="stylesheet" href="../server/static/css/index.css" />
-    <script src="../client/js/landingApp.js" defer></script>
+    <!-- <link rel="stylesheet" href="../server/static/css/global.css" /> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}" />
+
+    <!-- <link rel="stylesheet" href="../server/static/css/index.css" /> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" />
+
+    <!-- <script src="../client/js/landingApp.js" defer></script> -->
+    <script src="{{ url_for('static', filename='js/landingApp.js') }}" defer></script>
     <title>UniFood</title>
   </head>
 
@@ -20,7 +25,7 @@
             <li class="header-nav__item"><a href="#about">About</a></li>
             <li class="header-nav__item"><a href="#recipes">Recipes</a></li>
             <li class="header-nav__item"><a href="#pricing">Pricing</a></li>
-            <li class="header-nav__item header-nav__signin"><a href="./pages/portal.html">Sign in</a></li>
+            <li class="header-nav__item header-nav__signin"><a href="#">Sign in</a></li>
           </ul>
         </nav>
       </header>
@@ -33,26 +38,43 @@
           prepare recipes.
         </p>
         <div class="download-icons">
-          <img
+          <!-- <img
             src="../server/static/images/landing/app-store.png"
             alt="Download icons"
             class="download-icons__apple"
-          />
+          /> -->
           <img
+            src="{{ url_for('static', filename='images/landing/app-store.png') }}"
+            alt="Download icons"
+            class="download-icons__apple"
+          />
+          <!-- <img
             src="../server/static/images/landing/google-play.png"
+            alt="Download icons"
+            class="download-icons__android"
+          /> -->
+          <img
+            src="{{ url_for('static', filename='images/landing/google-play.png') }}"
             alt="Download icons"
             class="download-icons__android"
           />
         </div>
         <div class="account-buttons">
-          <button class="primary-button"><a href="./pages/portal.html">Sign in</a></button>
-          <button class="outline-button"><a href="./pages/portal.html">Register</a></button>
+          <button class="primary-button"><a href="{{ url_for('portal') }}">Sign in</a></button>
+          <!-- <button class="primary-button"><a href="#">Sign in</a></button> -->
+
+          <button class="outline-button"><a href="{{ url_for('portal') }}">Register</a></button>
+          <!-- <button class="outline-button"><a href="#">Register</a></button> -->
+
         </div>
         <div class="guest-access">
-          <p>Visiting from one of our portfoilos, and just want to test what we've done? <a href="./pages/dashboard.html">Click here!</a></p>
+          <!-- <p>Visiting from one of our portfoilos, and just want to test what we've done? <a href="./pages/dashboard.html">Click here!</a></p> -->
+          <p>Visiting from one of our portfoilos, and just want to test what we've done? <a href="{{ url_for('dashboard') }}">Click here!</a></p>
         </div>
       </div>
-      <img class="header-image" src="../server/static/images/landing/header-image.png" alt="Header image of a pizza">
+      <!-- <img class="header-image" src="../server/static/images/landing/header-image.png" alt="Header image of a pizza"> -->
+      <img class="header-image" src="{{ url_for('static', filename='images/landing/header-image.png') }}" alt="Header image of a pizza">
+
     </div>
 
 
@@ -75,7 +97,8 @@
               <p>Coming up with meal ideas has never been simpler. Using our library of over 5,000 recipes, you can save your favourites, organise them into folders and create meal plans and shopping lists. With full nutritional information for all our recipes, its never been easier to eat well with minimal effort.</p>
             </div>
             <div class="desktop-features__image">
-              <img src="../../server/static/images/landing/recipe-feature-image.jpg" alt="An appetizing image of fries and salsa">
+              <!-- <img src="../../server/static/images/landing/recipe-feature-image.jpg" alt="An appetizing image of fries and salsa"> -->
+              <img src="{{ url_for('static', filename='images/landing/recipe-feature-image.jpg') }}" alt="An appetizing image of fries and salsa">
             </div>
           </div>
         </div>
@@ -145,7 +168,9 @@
         <div class="recipe-showcase__recipes">
           <div class="recipe-card">
             <div class="recipe-card__image">
-              <img src="../server/static/images/landing/example-stew.jpg" alt="">
+              <!-- <img src="../server/static/images/landing/example-stew.jpg" alt=""> -->
+              <img src="{{ url_for('static', filename='images/landing/example-stew.jpg') }}" alt="">
+
             </div>
             <div class="recipe-card__info">
               <h3 class="recipe-card__title">Recipe Title</h3>
@@ -156,7 +181,8 @@
           </div>
           <div class="recipe-card">
             <div class="recipe-card__image">
-              <img src="../server/static/images/landing/example-stew.jpg" alt="">
+              <!-- <img src="../server/static/images/landing/example-stew.jpg" alt=""> -->
+              <img src="{{ url_for('static', filename='images/landing/example-stew.jpg') }}" alt="">
             </div>
             <div class="recipe-card__info">
               <h3 class="recipe-card__title">Recipe Title</h3>
@@ -167,7 +193,8 @@
           </div>
           <div class="recipe-card">
             <div class="recipe-card__image">
-              <img src="../server/static/images/landing/example-stew.jpg" alt="">
+              <!-- <img src="../server/static/images/landing/example-stew.jpg" alt=""> -->
+              <img src="{{ url_for('static', filename='images/landing/example-stew.jpg') }}" alt="">
             </div>
             <div class="recipe-card__info">
               <h3 class="recipe-card__title">Recipe Title</h3>
@@ -231,7 +258,8 @@
         <p class="apps-showcase__body">
           With the UniFood apps for both Apple and Android, you can have your meals to go!
         </p>
-        <img class="apps-showcase__image" src="../server/static/images/landing/devices.png" alt="PC, phone and laptop with UniFood" />
+        <!-- <img class="apps-showcase__image" src="../server/static/images/landing/devices.png" alt="PC, phone and laptop with UniFood" /> -->
+        <img class="apps-showcase__image" src="{{ url_for('static', filename='images/landing/devices.png') }}" alt="PC, phone and laptop with UniFood" />
       </section>
     </main>
 

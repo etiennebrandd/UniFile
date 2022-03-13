@@ -4,9 +4,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../../server/static/css/global.css" />
-    <link rel="stylesheet" href="../../server/static/css/portal.css" />
-    <script src="../js/portalApp.js" defer></script>
+    <!-- <link rel="stylesheet" href="../../server/static/css/global.css" /> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}" />
+
+    <!-- <link rel="stylesheet" href="../../server/static/css/portal.css" /> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/portal.css') }}" />
+
+    <!-- <script src="../js/portalApp.js" defer></script> -->
+    <script src="{{ url_for('static', filename='js/portalApp.js') }}" defer></script>
     <title>UniFood Account</title>
   </head>
   <body>
@@ -16,8 +21,12 @@
       </div>
 
       <div class="signin-image">
-        <img
+        <!-- <img
           src="../../server/static/images/landing/signInFood.jpg"
+          alt="An appetizing image of vegetables"
+        /> -->
+        <img
+          src="{{ url_for('static', filename='images/landing/signInFood.jpg') }}"
           alt="An appetizing image of vegetables"
         />
       </div>
