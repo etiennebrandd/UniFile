@@ -43,10 +43,15 @@ def index():
 
 #         return    
 
+@app.route('/portalsignin')
+def portalsignin():
 
-@app.route('/portal')
-def portal():
-    return render_template('pages/portal.html')
+    return render_template('pages/portal.html', x = None)
+
+@app.route('/portalregister')
+def portalregister():
+
+    return render_template('pages/portal.html', x = 1 )
 
 ############################################################
 ## Route logic for dashboard page

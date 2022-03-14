@@ -16,6 +16,7 @@
   </head>
   <body>
     <main>
+
       <div class="green-background">
         <h1 class="page-title">UniFood</h1>
       </div>
@@ -32,7 +33,15 @@
       </div>
 
       <div class="card">
+
+        {% if not x %}
         <div id="login" class="shown">
+
+        {% else %}
+        <div id="login" class="hidden">
+        
+        {% endif %}
+
           <div class="card--top">
             <h2 class="card__title">Login</h2>
             <p class="card__tagline">Log back in to UniFood</p>
@@ -51,7 +60,14 @@
           </div>
         </div>
 
+        {% if not x %}
         <div id="register" class="hidden">
+
+        {% else %}
+        <div id="register" class="shown">
+
+        {% endif %}
+
           <div class="card--top">
             <h2 class="card__title">Register</h2>
             <p class="card__tagline">Sign up for a UniFood account</p>
@@ -83,6 +99,59 @@
             <p class="card__swap">Already have an account? Log in!</p>
           </div>
         </div>
+
+        <!-- <div id="login" class="hidden">
+          <div class="card--top">
+            <h2 class="card__title">Login</h2>
+            <p class="card__tagline">Log back in to UniFood</p>
+            <form class="card__login-form" action="">
+              <label for="email" class="card__label">Email</label>
+              <input type="text" name="email" class="card__input" />
+
+              <label for="password" class="card__label">Password</label>
+              <input type="password" name="password" class="card__input" />
+            </form>
+            <p class="card__forgot">Forgotten your password?</p>
+          </div>
+          <div class="card-bottom">
+            <button class="card__submit">Log in</button>
+            <p class="card__swap">Don't have an account? Sign up!</p>
+          </div>
+        </div> -->
+
+        <!-- <div id="register" class="shown">
+          <div class="card--top">
+            <h2 class="card__title">Register</h2>
+            <p class="card__tagline">Sign up for a UniFood account</p>
+            <form class="card__login-form" action="">
+              <label for="fname" class="card__label">First Name</label>
+              <input type="text" name="fname" class="card__input" />
+
+              <label for="lname" class="card__label">Last Name</label>
+              <input type="text" name="lname" class="card__input" />
+
+              <label for="email" class="card__label">Email</label>
+              <input type="text" name="email" class="card__input" />
+
+              <label for="password" class="card__label">Password</label>
+              <input type="password" name="password" class="card__input" />
+
+              <label for="confirm-password" class="card__label"
+                >Confirm Password</label
+              >
+              <input
+                type="password"
+                name="confirm-password"
+                class="card__input"
+              />
+            </form>
+          </div>
+          <div class="card-bottom">
+            <button class="card__submit">Sign Up</button>
+            <p class="card__swap">Already have an account? Log in!</p>
+          </div>
+        </div> -->
+
       </div>
     </main>
   </body>
