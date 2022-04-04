@@ -1,6 +1,5 @@
 import json
 import security
-import re
 
 def dbRegister(user):
 
@@ -34,12 +33,32 @@ def dbRegister(user):
     f.close
 
     # Generate the JWT to pass back to the user
-    jwt = security.generateJWT(user)
+    jwt, exp, sig = security.generateJWT(user)
 
     # Store the new JWT details
-    storeJWTDetails()
+    storeJWTDetails(sig, exp)
 
-    # security.generateJWT(user)
+    return jwt
+
+
+# Store the signature and expiration time of the token in the database
+def storeJWTDetails(sig, exp):
+
+    f = open("../database/jwt.json", "r")
+    tokens = json.loads(f.read())
+
+    deets = {
+    "sig": sig,
+    "exp": exp
+    }
+
+    tokens.append(deets)
+    newData = json.dumps(tokens, indent=4)
+
+    f = open("../database/jwt.json", "w")
+    f.write(newData)
+    f.close()
+
 
 # def dbRegister(user):
 
@@ -198,24 +217,6 @@ def dbRegister(user):
 # splitJWT = re.split("\.", userJWT)
 # sig = splitJWT[2]
 
-
-# Store the signature and expiration time of the token in the database
-def storeJWTDetails(sig, exp):
-
-    f = open("../database/jwt.json", "r")
-    tokens = json.loads(f.read())
-
-    deets = {
-    "sig": sig,
-    "exp": exp
-    }
-
-    tokens.append(deets)
-    newData = json.dumps(tokens, indent=4)
-
-    f = open("../database/jwt.json", "w")
-    f.write(newData)
-    f.close()
 
 
 # deets = {

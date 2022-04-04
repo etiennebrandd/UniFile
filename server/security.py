@@ -3,6 +3,7 @@ import uuid
 from cryptography.fernet import Fernet
 import time
 import jwt
+import re
 
 # Generate a  for any encryption
 # key = Fernet.generate_key()
@@ -57,17 +58,17 @@ def uid():
 
 
 # Encrypt a plaintext
-def encrypt(plaintext):
+# def encrypt(plaintext):
     
-    ciphertext = fernet.encrypt(str.encode(plaintext))
-    return ciphertext
+#     ciphertext = fernet.encrypt(str.encode(plaintext))
+#     return ciphertext
 
 
-# Decrypt a ciphertext
-def decrypt(ciphertext):
+# # Decrypt a ciphertext
+# def decrypt(ciphertext):
 
-    plaintext = fernet.decrypt(ciphertext).decode()
-    return plaintext
+#     plaintext = fernet.decrypt(ciphertext).decode()
+#     return plaintext
 
 
 def generateJWT(userDetails):
@@ -89,16 +90,8 @@ def generateJWT(userDetails):
 
     # Assemble the JWT
     encodedJWT = jwt.encode(payload, key, algorithm="HS256")
-    # print(encodedJWT)
+    splitJWT = re.split("\.", encodedJWT)
+    sig = splitJWT[2]
 
-    
-    return encodedJWT, expTime
-
-
-# userDetails = {
-#     "name": "Etienne Brand",
-#     "tier": "Premium",
-#     "timezone": "GMT+2:00",
-#     "theme": 1
-# }
-# generateJWT(userDetails)
+    # Return whole JWT, expiry time, and signature
+    return encodedJWT, expTime, sig
