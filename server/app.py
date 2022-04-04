@@ -43,15 +43,24 @@ def index():
 
 #         return    
 
-@app.route('/portalsignin')
+@app.route('/portalsignin', methods = ["GET", "POST"])
 def portalsignin():
 
-    return render_template('pages/portal.html', x = None)
+    if request.method == "GET":
+        return render_template('pages/portal.html', x = None)
 
-@app.route('/portalregister')
+    else: 
+        return redirect(url_for('dashboard'))
+
+@app.route('/portalregister', methods = ["GET", "POST"])
 def portalregister():
 
-    return render_template('pages/portal.html', x = 1 )
+    if request.method == "GET":
+        return render_template('pages/portal.html', x = 1 )
+
+    else:
+        dataAccess.dbRegister(request.form)
+        return redirect(url_for('dashboard'))
 
 ############################################################
 ## Route logic for dashboard page

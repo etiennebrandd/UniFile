@@ -1,6 +1,8 @@
 import hashlib
 import uuid
 from cryptography.fernet import Fernet
+import time
+import jwt
 
 # Generate a  for any encryption
 # key = Fernet.generate_key()
@@ -66,3 +68,37 @@ def decrypt(ciphertext):
 
     plaintext = fernet.decrypt(ciphertext).decode()
     return plaintext
+
+
+def generateJWT(userDetails):
+
+    # UserDetails dict of details to store in jwt
+
+    # Need to fetch current time and add 6 hours
+    currentTime = int(time.time())
+    expTime = currentTime + 21600
+
+    # Assemble the payload
+    payload = {
+        "usr": userDetails["fname"] + " " + userDetails["lname"],
+        "lvl": userDetails["tier"],
+        "tmz": userDetails["timezone"],
+        "thm": userDetails["theme"],
+        "exp": expTime
+    }
+
+    # Assemble the JWT
+    encodedJWT = jwt.encode(payload, key, algorithm="HS256")
+    # print(encodedJWT)
+
+    
+    return encodedJWT, expTime
+
+
+# userDetails = {
+#     "name": "Etienne Brand",
+#     "tier": "Premium",
+#     "timezone": "GMT+2:00",
+#     "theme": 1
+# }
+# generateJWT(userDetails)
