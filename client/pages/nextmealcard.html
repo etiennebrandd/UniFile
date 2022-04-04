@@ -1,0 +1,50 @@
+<div class="meal__card">
+    <div class="meal__image">
+      <!-- <img
+        src="../../server/static/images/dashboard/placeholder-image-1.jpg"
+        alt="CHANGE THIS TO GENERATED ALT"
+        class="meal__img"
+      /> -->
+      <img
+        src="{{ url_for('static', filename='images/dashboard/placeholder-image-1.jpg') }}"
+        alt="CHANGE THIS TO GENERATED ALT"
+        class="meal__img"
+      />
+    </div>
+    <div class="meal__text">
+      <h6 class="meal__heading">Whatever the hell this is</h6>
+      <div class="meal__info margin-0">
+        <!-- <img
+          src="../../server/static/images/dashboard/placeholder-stars.png"
+          alt="4 star rating"
+        /> -->
+        <img
+          src="{{ url_for('static', filename='images/dashboard/placeholder-stars.png') }}"
+          alt="4 star rating"
+        />
+      </div>
+      <div class="meal__info">
+        <!-- <img
+          src="../../server/static/images/dashboard/time.svg"
+          alt="Time"
+        /> -->
+        <img
+          src="{{ url_for('static', filename='images/dashboard/time.svg') }}"
+          alt="Time"
+        />
+        <p class="meal__p">1 hour</p>
+      </div>
+      <div class="meal__info">
+        <!-- <img
+          src="../../server/static/images/dashboard/serves.svg"
+          alt="Serves"
+        /> -->
+        <img
+          src="{{ url_for('static', filename='images/dashboard/serves.svg') }}"
+          alt="Serves"
+        />
+        <p class="meal__p">Serves 4</p>
+      </div>
+    </div>
+  </div>
+</div>
