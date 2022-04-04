@@ -13,45 +13,55 @@ app.secret_key = "0519f8cb9ecc4c0a8781d07512c795c8"
 ############################################################
 ## Route logic for landing page
 ############################################################
-@app.route('/', methods = ['GET', 'POST'])
+@app.route('/')
 def index():
-    # If route receives a POST request (a user has registered)
-    if request.method == 'POST':
 
-        # Call the register method and return the inserted row count
-        registered, id = dataAccess.dbRegister(request.form)
+    # If a session exists, we need to remove it
+    if "Token" in session:
+        return redirect(url_for('logout'))
 
-        # If false returned, signup failed - redirect to registration form
-        if registered == False:
-            return render_template('index.html', message = "Registration failed. Please try again")
-
-        # # If true returned, signup successful, return dashboard
-        else:
-            return redirect(url_for('dashboard', user = id))
-
-    else:
-        
-        return render_template('index.html')
+    return render_template('index.html')
 
 
 ############################################################
 ## Route logic for when login button is clicked
 ############################################################
-# @app.route('/login', methods = ['POST'])
-# def login():
-#     if request.method == 'POST':
-
-#         return    
-
-@app.route('/portalsignin')
+@app.route('/portalsignin', methods = ["GET", "POST"])
 def portalsignin():
 
-    return render_template('pages/portal.html', x = None)
+    if request.method == "GET":
+        return render_template('pages/portal.html', x = None)
 
-@app.route('/portalregister')
+    else: 
+
+        # Validate login and if a JWT is found, forward to dashboard
+        jwt = dataAccess.dbLogin(request.form)
+
+        if jwt != None: 
+            session['Token'] = jwt
+            return redirect(url_for('dashboard'))
+
+        # Login error
+        else: return redirect(url_for('portalsignin'))
+
+
+############################################################
+## Route logic for when register button is clicked
+############################################################
+@app.route('/portalregister', methods = ["GET", "POST"])
 def portalregister():
 
-    return render_template('pages/portal.html', x = 1 )
+    if request.method == "GET":
+        return render_template('pages/portal.html', x = 1 )
+
+    else:
+        # Register the user and return JWT for session
+        jwt = dataAccess.dbRegister(request.form)
+
+        # Store JWT client-side
+        session['Token'] = jwt
+        return redirect(url_for('dashboard'))
+
 
 ############################################################
 ## Route logic for dashboard page
@@ -60,6 +70,22 @@ def portalregister():
 def dashboard():
 
     return render_template('pages/dashboard.html')
+
+
+############################################################
+## Route logic for when logout button is clicked
+############################################################
+@app.route('/logout')
+def logout():
+
+    # Remove JWT from the client-side cookie and details from server
+    if "Token" in session:
+
+        dataAccess.dbLogout(session["Token"])
+        session.pop('Token')
+
+    # Return homepage
+    return redirect(url_for('index'))
 
 
 # Starting the server
