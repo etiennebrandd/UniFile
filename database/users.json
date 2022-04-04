@@ -1,24 +1,12 @@
 [
     {
-        "fname": "Eleanor",
-        "lname": "Tunick",
-        "email": "e@t.com",
-        "password": "da906172774b1fc77606b6a5869f3a197132d881ab9ea75d755119de374c5178",
-        "salt": "f172b7911a8f4b38b6d985410c25799a",
-        "username": "etunick",
-        "id": "3ee058",
-        "tier": 0,
-        "timezone": "GMT+0:00",
-        "theme": 0
-    },
-    {
         "fname": "Etienne",
         "lname": "Brand",
         "email": "e@b.com",
-        "password": "53e966fd573d973d306585711ddbe3910ecd4b965a61369fdb09746c618e7071",
-        "salt": "067337bfdcdf4ff7bccb488033fe799d",
+        "password": "2976de53a56dc5963ed443d6482606e4976e44609f85ed70f338f172e8216f95",
+        "salt": "cf22c98b1d3b48528c822abc089b1a7a",
         "username": "ebrand",
-        "id": "f56059",
+        "id": "398ef7",
         "tier": 0,
         "timezone": "GMT+0:00",
         "theme": 0

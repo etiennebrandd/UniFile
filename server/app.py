@@ -18,7 +18,7 @@ def index():
 
     # If a session exists, we need to remove it
     if "Token" in session:
-        session.pop("Token")
+        return redirect(url_for('logout'))
 
     return render_template('index.html')
 
@@ -36,7 +36,10 @@ def portalsignin():
 
         # Validate login and if a JWT is found, forward to dashboard
         jwt = dataAccess.dbLogin(request.form)
-        if jwt != None: return redirect(url_for('dashboard'))
+
+        if jwt != None: 
+            session['Token'] = jwt
+            return redirect(url_for('dashboard'))
 
         # Login error
         else: return redirect(url_for('portalsignin'))
@@ -75,8 +78,10 @@ def dashboard():
 @app.route('/logout')
 def logout():
 
-    # Remove JWT from the client-side cookie
+    # Remove JWT from the client-side cookie and details from server
     if "Token" in session:
+
+        dataAccess.dbLogout(session["Token"])
         session.pop('Token')
 
     # Return homepage
