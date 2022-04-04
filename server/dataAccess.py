@@ -16,21 +16,8 @@ def dbRegister(user):
     # Get rid of the duplicate password fielf
     user.pop("confirm-password")
 
-    # Get the user data
-    f = open("../database/users.json", "r")
-    data = json.loads(f.read())
-    f.close()
-
-    # Add the user data
-    data.append(user)
-
-    # JSONify the user data
-    newData = json.dumps(data, indent=4)
-
-    # Write the data to the file
-    f = open("../database/users.json", "w")
-    f.write(newData)
-    f.close
+    # Insert user information into database
+    insertInto("../database/users.json", user)
 
     # Generate the JWT to pass back to the user
     jwt, exp, sig = security.generateJWT(user)
@@ -41,22 +28,67 @@ def dbRegister(user):
     return jwt
 
 
+def dbLogin(user):
+
+    creds = (user.to_dict())
+
+    # Open users for reading
+    f = open("../database/users.json", "r")
+    users = json.loads(f.read())
+    f.close()
+
+    # Loop through each user
+    for user in users:
+
+        # If entered email matches user record
+        if creds["email"] == user["email"]:
+            
+            # Hash entered password with salt of found user record
+            passwordAttempt = security.hash(creds["password"], False, user["salt"])
+
+            # If entered password matches user record
+            if passwordAttempt == user["password"]:
+
+                # Generate the JWT to pass back to the user
+                jwt, exp, sig = security.generateJWT(user)
+
+                # Store the new JWT details and return to client
+                storeJWTDetails(sig, exp)
+                return jwt
+
+            # Else wrong password
+            else: return
+
+        # Else no match found yet so continue looping
+        else: continue
+
+    # No match found
+    return
+
 # Store the signature and expiration time of the token in the database
 def storeJWTDetails(sig, exp):
 
-    f = open("../database/jwt.json", "r")
-    tokens = json.loads(f.read())
-
-    deets = {
+    # Structure the JWT data
+    details = {
     "sig": sig,
     "exp": exp
     }
 
-    tokens.append(deets)
-    newData = json.dumps(tokens, indent=4)
+    # Insert JWT details into file
+    insertInto("../database/jwt.json", details)
 
-    f = open("../database/jwt.json", "w")
-    f.write(newData)
+
+def insertInto(filepath, value):
+
+    f = open(filepath, "r")
+    data = json.loads(f.read())
+    f.close()
+
+    data.append(value)
+    data = json.dumps(data, indent=4)
+
+    f = open(filepath, "w")
+    f.write(data)
     f.close()
 
 

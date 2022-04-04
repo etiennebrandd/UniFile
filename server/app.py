@@ -17,8 +17,8 @@ app.secret_key = "0519f8cb9ecc4c0a8781d07512c795c8"
 def index():
 
     # If a session exists, we need to remove it
-    if session['Token']:
-        session.pop('Token')
+    if "Token" in session:
+        session.pop("Token")
 
     return render_template('index.html')
 
@@ -33,7 +33,13 @@ def portalsignin():
         return render_template('pages/portal.html', x = None)
 
     else: 
-        return redirect(url_for('dashboard'))
+
+        # Validate login and if a JWT is found, forward to dashboard
+        jwt = dataAccess.dbLogin(request.form)
+        if jwt != None: return redirect(url_for('dashboard'))
+
+        # Login error
+        else: return redirect(url_for('portalsignin'))
 
 
 ############################################################
@@ -70,7 +76,8 @@ def dashboard():
 def logout():
 
     # Remove JWT from the client-side cookie
-    session.pop('Token')
+    if "Token" in session:
+        session.pop('Token')
 
     # Return homepage
     return redirect(url_for('index'))
