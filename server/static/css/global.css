@@ -106,6 +106,10 @@ body {
 }
 
 @media only screen and (min-width: 1280px) {
+  html {
+    font-size: 11px;
+  }
+
   :root {
     --fs-header: 6rem;
     --fs-sub-heading: 3rem;
