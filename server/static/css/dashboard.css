@@ -1,8 +1,4 @@
 /* page-wide layout and styles */
-html {
-  font-size: 12px;
-}
-
 body {
   display: grid;
   grid-template-columns: max-content 1fr;
@@ -121,26 +117,23 @@ main {
   grid-area: meal;
   min-height: 0;
   margin: 1rem 1rem 1rem 0;
-  overflow: hidden;
-  grid-template-rows: min-content auto;
 }
 
 .meal__card {
-  max-height: 100%;
+  min-height: 0;
+  overflow: clip;
 }
 
 .meal__image {
-  display: inline-block;
-  box-shadow: inset 300px 0px 150px -50px rgba(0, 0, 0, 0.75);
-  max-height: 100%;
+  box-shadow: inset 350px 0px 150px -50px rgba(0, 0, 0, 0.75);
+  height: 100%;
 }
 
 .meal__img {
-  object-fit: cover;
-  height: 100%;
   width: 100%;
   z-index: -1;
   position: relative;
+  height: 100%;
 }
 
 .coming-up {
@@ -162,4 +155,5 @@ main {
 .nutrition,
 .coming-up {
   background-color: red;
+  z-index: -5;
 }
