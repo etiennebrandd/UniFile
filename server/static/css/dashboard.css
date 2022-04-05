@@ -1,4 +1,8 @@
 /* page-wide layout and styles */
+html {
+  font-size: 12px;
+}
+
 body {
   display: grid;
   grid-template-columns: max-content 1fr;

@@ -107,7 +107,11 @@ body {
 
 @media only screen and (min-width: 1280px) {
   html {
+<<<<<<< Updated upstream
     font-size: 11px;
+=======
+    font-size: 12px;
+>>>>>>> Stashed changes
   }
 
   :root {
