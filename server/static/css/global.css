@@ -105,11 +105,13 @@ body {
   margin: 0;
 }
 
-@media only screen and (min-width: 1280px) {
+@media only screen and (max-width: 1300px) {
   html {
     font-size: 11px;
   }
+}
 
+@media only screen and (min-width: 1280px) {
   :root {
     --fs-header: 6rem;
     --fs-sub-heading: 3rem;

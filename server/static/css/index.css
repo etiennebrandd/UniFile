@@ -1,7 +1,7 @@
 /* local styles */
-header,
-main {
+body {
   max-width: 800px;
+  margin: 0 auto;
 }
 
 main {
@@ -510,8 +510,7 @@ footer {
 }
 
 @media only screen and (min-width: 1280px) {
-  header,
-  main {
+  body {
     max-width: 2000px;
   }
 
