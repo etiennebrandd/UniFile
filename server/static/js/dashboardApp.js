@@ -1,16 +1,8 @@
 let config = {
   type: 'slider',
-  startAt: 0,
   perView: 3,
-  gap: -150,
-  rewind: false,
   bound: true,
-  breakpoints: {
-    1800: {
-      perView: 2,
-      gap: 0,
-    },
-  },
+  peek: { before: 0, after: 70 },
 };
 
 new Glide('.glide', config).mount();
