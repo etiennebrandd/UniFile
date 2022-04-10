@@ -4,6 +4,15 @@ import re
 
 def dbRegister(user):
 
+    f = open("../database/users.json", "r")
+    users = json.loads(f.read())
+    f.close()
+
+    for u in users:
+        if user["email"] == u["email"]:
+            return
+        else: continue
+
     # Turn form data into dictionary & generate id, hashed pword, and default info
     user = (user.to_dict())
 
@@ -72,6 +81,9 @@ def dbLogin(user):
 def dbLogout(jwt):
 
     # Find signature of JWT
+    if jwt == None:
+        return
+
     splitJWT = re.split("\.", jwt)
     sig = splitJWT[2]
 

@@ -4,6 +4,8 @@ from cryptography.fernet import Fernet
 import time
 import jwt
 import re
+from io import StringIO
+from html.parser import HTMLParser
 
 # Generate a  for any encryption
 # key = Fernet.generate_key()
@@ -95,3 +97,38 @@ def generateJWT(userDetails):
 
     # Return whole JWT, expiry time, and signature
     return encodedJWT, expTime, sig
+
+
+# Decode token
+def decodeJWT(token):
+
+    decodedJWT = jwt.decode(token, key, algorithms=["HS256"])
+    
+    name = re.split(" ", decodedJWT["usr"])
+
+    return name[0]
+
+
+# Class to strip HTML
+class MLStripper(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.reset()
+        self.strict = False
+        self.convert_charrefs = True
+        self.text = StringIO()
+
+    def handle_data(self, d):
+        self.text.write(d)
+
+    def get_data(self):
+        return self.text.getvalue()
+
+
+def inputValidator(data):
+
+    s = MLStripper()
+    s.feed(data)
+    data = s.get_data()
+
+    return data
