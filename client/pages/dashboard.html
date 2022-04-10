@@ -62,11 +62,12 @@
           type="text"
           placeholder="Search for recipes, ingredients or menu item"
           class="searchbar-input"
+          name="query"
         />
       </div>
 
       <div class="welcome">
-        <h3 class="welcome__heading">Good Morning, User!</h3>
+        <h3 class="welcome__heading">Good Morning, {{ name }}</h3>
       </div>
 
       <div class="meal">

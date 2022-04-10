@@ -96,6 +96,10 @@ main {
   text-align: right;
 }
 
+.card__error {
+  text-align: left;
+}
+
 .card__submit {
   margin: 2rem 0 0.5rem 0;
   color: var(--clr-light);

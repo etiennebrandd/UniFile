@@ -1,7 +1,7 @@
-from security import uid
+from security import decodeJWT
 from flask import Flask, render_template, request, redirect, url_for, session
 import dataAccess
-from foodAPI import foodProcessor
+import dboard
 
 # Configure server and folder to fetch pages from
 app = Flask(__name__, template_folder='../client/')
@@ -58,18 +58,31 @@ def portalregister():
         # Register the user and return JWT for session
         jwt = dataAccess.dbRegister(request.form)
 
-        # Store JWT client-side
-        session['Token'] = jwt
-        return redirect(url_for('dashboard'))
+        if jwt != None: 
+            session['Token'] = jwt
+            return redirect(url_for('dashboard'))
+
+        else: return redirect(url_for('portalregister'))
 
 
 ############################################################
 ## Route logic for dashboard page
 ############################################################
-@app.route('/dashboard')
+@app.route('/dashboard', methods = ["GET", "POST"])
 def dashboard():
 
-    return render_template('pages/dashboard.html')
+    if request.method == "GET":
+        if "Token" in session:
+            name = decodeJWT(session["Token"])
+
+        else: name = "Guest"
+
+        return render_template('pages/dashboard.html', name = name)
+
+    else:
+        results = dboard.simpleSearch(request.form)
+
+        return redirect(url_for('dashboard'))
 
 
 ############################################################

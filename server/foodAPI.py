@@ -16,11 +16,11 @@ api_key = "f163cdaa932542509e6f18bb466b4c14"
 
 # Search Recipes
 # https://spoonacular.com/food-api/docs#Search-Recipes-Complex
-def getRecipesBySearch(payload, number):
+def getRecipesBySearch(query, number):
 
-    endpoint = "https://api.spoonacular.com/recipes/complexSearch?apiKey=" + api_key + "&number=" + str(number)
+    endpoint = "https://api.spoonacular.com/recipes/complexSearch?&query=" + query + "&number=" + str(number) + "&apiKey=" + api_key
 
-    r = requests.get(endpoint, params=payload)
+    r = requests.get(endpoint)
     results = r.json()
 
     print("** POINTS USED THIS REQUEST: ", r.headers["X-API-Quota-Request"], " **")
