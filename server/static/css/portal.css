@@ -64,6 +64,7 @@ main {
 }
 
 .card__tagline {
+  margin-bottom: 2rem;
   font-family: var(--ff-body);
   font-size: var(--fs-600);
 }
@@ -75,6 +76,8 @@ main {
 }
 
 .card__label {
+  display: block;
+  width: 100%;
   color: var(--clr-primary);
   font-family: var(--ff-body);
   font-weight: 600;
