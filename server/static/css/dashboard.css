@@ -116,7 +116,6 @@ main {
 
 /* meal cards */
 .meal {
-  display: grid;
   grid-area: meal;
   min-height: 0;
   margin: 1rem 1rem 1rem 0;
@@ -219,13 +218,4 @@ main {
 .nutrition {
   grid-area: nutrition;
   margin: 1rem 0 1rem 3rem;
-}
-
-.search,
-.welcome,
-.meal,
-.nutrition,
-.coming-up {
-  background-color: red;
-  z-index: -5;
 }
