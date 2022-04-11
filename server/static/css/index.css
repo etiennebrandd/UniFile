@@ -1,11 +1,13 @@
 /* local styles */
-body {
+header,
+main {
   max-width: 800px;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-main {
-  margin: 0 3rem;
+section {
+  margin: 6rem 0;
 }
 
 section {
@@ -18,7 +20,7 @@ section {
   text-align: center;
   font-weight: 500;
   line-height: 1;
-  margin: 3rem 2rem 1rem 2rem;
+  margin: 3rem 2rem;
 }
 
 /* header, intro and navigation */
@@ -510,7 +512,8 @@ footer {
 }
 
 @media only screen and (min-width: 1280px) {
-  body {
+  header,
+  main {
     max-width: 2000px;
   }
 
@@ -587,7 +590,7 @@ footer {
 
   #recipes {
     display: grid;
-    max-width: 1400px;
+    max-width: 100rem;
     margin: 5rem auto 0rem auto;
     grid-template-columns: 1fr 2fr 2fr 2fr;
     grid-template-rows: 1fr;
@@ -643,7 +646,8 @@ footer {
   }
 
   .pricing__card {
-    max-width: 350px;
+    max-width: 25rem;
+    min-height: 37rem;
   }
 
   #apps {
