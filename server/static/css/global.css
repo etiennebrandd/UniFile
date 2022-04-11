@@ -85,6 +85,10 @@
   padding: 0;
 }
 
+html {
+  font-size: 18px;
+}
+
 html,
 body {
   width: 100%;
@@ -109,23 +113,31 @@ img {
   margin: 0;
 }
 
-@media only screen and (max-height: 1000px) {
+@media only screen and (max-width: 1700px) {
   html {
-    font-size: 14.5px;
+    font-size: 17px;
+  }
+}
+
+@media only screen and (max-width: 1500px) {
+  html {
+    font-size: 15px;
   }
 }
 
 @media only screen and (max-width: 1300px) {
   html {
-    font-size: 11px;
+    font-size: 12px;
   }
 }
 
-@media only screen and (min-width: 1280px) {
-  :root {
-    --fs-header: 6rem;
-    --fs-sub-heading: 3rem;
-
-    --fs-600: 1.5rem;
+@media only screen and (max-height: 950px) {
+  html {
+    font-size: 14px;
+  }
+}
+@media only screen and (max-height: 800px) {
+  html {
+    font-size: 12px;
   }
 }
