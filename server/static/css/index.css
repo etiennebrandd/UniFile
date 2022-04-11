@@ -1,9 +1,11 @@
 /* local styles */
-header,
-main {
+body {
   max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
+}
+
+main {
+  margin: 0 3rem;
 }
 
 section {
@@ -328,7 +330,7 @@ header {
 .recipe-showcase__recipes {
   display: flex;
   align-content: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
   flex-flow: wrap row;
   height: max-content;
   gap: 2.5rem;
@@ -508,8 +510,7 @@ footer {
 }
 
 @media only screen and (min-width: 1280px) {
-  header,
-  main {
+  body {
     max-width: 2000px;
   }
 
@@ -544,7 +545,6 @@ footer {
     height: calc(100vh - 10rem);
     width: 55%;
     padding: 0;
-    min-height: 700px;
   }
 
   .intro-header,

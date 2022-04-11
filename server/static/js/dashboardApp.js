@@ -1,8 +1,9 @@
-new Glide('.glide', {
+let config = {
   type: 'slider',
-  startAt: 0,
   perView: 3,
-  gap: -150,
-  rewind: false,
   bound: true,
-}).mount();
+  gap: 20,
+  peek: { before: 0, after: 70 },
+};
+
+new Glide('.glide', config).mount();
