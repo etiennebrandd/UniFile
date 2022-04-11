@@ -229,3 +229,10 @@ main {
   background-color: red;
   z-index: -5;
 }
+
+@media only screen and (max-width: 1300px) {
+  .meal__icon {
+    width: 3rem;
+    height: 3rem;
+  }
+}
