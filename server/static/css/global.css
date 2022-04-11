@@ -97,6 +97,10 @@ body {
   scroll-behavior: smooth;
 }
 
+img {
+  display: block;
+}
+
 .color-primary {
   color: var(--clr-primary);
 }

@@ -528,6 +528,7 @@ footer {
   }
 
   .header-nav__signin,
+  .guest-access,
   .header-image {
     display: block;
   }
@@ -535,10 +536,6 @@ footer {
   .account-buttons {
     display: flex;
     gap: 5rem;
-  }
-
-  .guest-access {
-    display: block;
   }
 
   .intro {
