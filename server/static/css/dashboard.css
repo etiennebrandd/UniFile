@@ -178,8 +178,8 @@ main {
 }
 
 .meal__icon {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 3rem;
+  height: 3rem;
 }
 
 .meal__rating--dimensions {
@@ -228,11 +228,4 @@ main {
 .coming-up {
   background-color: red;
   z-index: -5;
-}
-
-@media only screen and (max-width: 1300px) {
-  .meal__icon {
-    width: 3rem;
-    height: 3rem;
-  }
 }
