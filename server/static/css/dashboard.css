@@ -157,7 +157,7 @@ main {
 }
 
 .meal__heading {
-  font-size: var(--fs-sub-heading);
+  font-size: var(--fs-900);
   font-family: var(--ff-body);
   font-weight: 300;
 }
@@ -175,6 +175,16 @@ main {
 
 .meal__rating {
   margin-top: 0;
+}
+
+.meal__icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.meal__rating--dimensions {
+  width: 9rem;
+  height: 2rem;
 }
 
 .upcoming__card {
