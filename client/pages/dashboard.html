@@ -5,24 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- <link
-      rel="stylesheet"
-      href="../../node_modules/@glidejs/glide/dist/css/glide.core.min.css"
-    /> -->
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='node_modules/@glidejs/glide/dist/css/glide.core.min.css') }}"
     />
-    <!-- <link rel="stylesheet" href="../../server/static/css/global.css" /> -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/global.css') }}"
+    />
 
-    <!-- <link rel="stylesheet" href="../../server/static/css/dashboard.css" /> -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/dashboard.css') }}"
+    />
 
-    <!-- <script src="../../node_modules/@glidejs/glide/dist/glide.min.js"></script> -->
     <script src="{{ url_for('static', filename='node_modules/@glidejs/glide/dist/glide.min.js') }}"></script>
-    <!-- <script src="../js/dashboardApp.js" defer></script> -->
-    <script src="{{ url_for('static', filename='js/dashboardApp.js') }}" defer></script>
+    <script
+      src="{{ url_for('static', filename='js/dashboardApp.js') }}"
+      defer
+    ></script>
 
     <title>UniFood Dashboard</title>
   </head>
@@ -30,11 +31,9 @@
   <body>
     <aside>
       <div class="aside__heading-wrapper">
-        <!-- <a href="{{ url_for('index') }}"> -->
-          <h1 class="aside__heading">
-            Uni<span class="color-primary">Food</span>
-          </h1>
-        <!-- </a> -->
+        <h1 class="aside__heading">
+          Uni<span class="color-primary">Food</span>
+        </h1>
       </div>
       <nav class="aside__nav">
         <ul class="aside__ul">
@@ -51,7 +50,9 @@
           <li class="aside__li"><a>Profile</a></li>
           <li class="aside__li"><a>Settings</a></li>
           <li class="aside__li"><a>Help</a></li>
-          <li class="aside__li"><a href="{{ url_for('logout') }}">Log Out</a></li>
+          <li class="aside__li">
+            <a href="{{ url_for('logout') }}">Log Out</a>
+          </li>
         </ul>
       </nav>
     </aside>
@@ -75,11 +76,6 @@
 
         <div class="meal__card">
           <div class="meal__image">
-            <!-- <img
-              src="../../server/static/images/dashboard/placeholder-image-1.jpg"
-              alt="CHANGE THIS TO GENERATED ALT"
-              class="meal__img"
-            /> -->
             <img
               src="{{ url_for('static', filename='images/dashboard/placeholder-image-1.jpg') }}"
               alt="CHANGE THIS TO GENERATED ALT"
@@ -89,20 +85,12 @@
           <div class="meal__text">
             <h6 class="meal__heading">Whatever the hell this is</h6>
             <div class="meal__info margin-0">
-              <!-- <img
-                src="../../server/static/images/dashboard/placeholder-stars.png"
-                alt="4 star rating"
-              /> -->
               <img
                 src="{{ url_for('static', filename='images/dashboard/placeholder-stars.png') }}"
                 alt="4 star rating"
               />
             </div>
             <div class="meal__info">
-              <!-- <img
-                src="../../server/static/images/dashboard/time.svg"
-                alt="Time"
-              /> -->
               <img
                 src="{{ url_for('static', filename='images/dashboard/time.svg') }}"
                 alt="Time"
@@ -110,10 +98,6 @@
               <p class="meal__p">1 hour</p>
             </div>
             <div class="meal__info">
-              <!-- <img
-                src="../../server/static/images/dashboard/serves.svg"
-                alt="Serves"
-              /> -->
               <img
                 src="{{ url_for('static', filename='images/dashboard/serves.svg') }}"
                 alt="Serves"
@@ -137,11 +121,6 @@
                 <li class="glide__slide">
                   <div class="meal__card">
                     <div class="meal__image">
-                      <!-- <img
-                        src="../../server/static/images/dashboard/placeholder-image-2.jpg"
-                        alt="CHANGE THIS TO GENERATED ALT"
-                        class="meal__img"
-                      /> -->
                       <img
                         src="{{ url_for('static', filename='images/dashboard/placeholder-image-2.jpg') }}"
                         alt="CHANGE THIS TO GENERATED ALT"
@@ -152,20 +131,12 @@
                       <h5 class="meal__type">Dinner</h5>
                       <h6 class="meal__heading">Parmasean and Penne</h6>
                       <div class="meal__info margin-0">
-                        <!-- <img
-                          src="../../server/static/images/dashboard/placeholder-stars.png"
-                          alt="4 star rating"
-                        /> -->
                         <img
                           src="{{ url_for('static', filename='images/dashboard/placeholder-stars.png') }}"
                           alt="4 star rating"
                         />
                       </div>
                       <div class="meal__info">
-                        <!-- <img
-                          src="../../server/static/images/dashboard/time.svg"
-                          alt="Time"
-                        /> -->
                         <img
                           src="{{ url_for('static', filename='images/dashboard/time.svg') }}"
                           alt="CHANGE THIS TO GENERATED ALT"
@@ -174,10 +145,6 @@
                         <p class="meal__p">45 mins</p>
                       </div>
                       <div class="meal__info">
-                        <!-- <img
-                          src="../../server/static/images/dashboard/serves.svg"
-                          alt="Serves"
-                        /> -->
                         <img
                           src="{{ url_for('static', filename='images/dashboard/serves.svg') }}"
                           alt="CHANGE THIS TO GENERATED ALT"
@@ -192,11 +159,6 @@
                 <li class="glide__slide" id="new-day">
                   <div class="meal__card">
                     <div class="meal__image">
-                      <!-- <img
-                        src="../../server/static/images/dashboard/placeholder-image-3.jpg"
-                        alt="CHANGE THIS TO GENERATED ALT"
-                        class="meal__img"
-                      /> -->
                       <img
                         src="{{ url_for('static', filename='images/dashboard/placeholder-image-3.jpg') }}"
                         alt="CHANGE THIS TO GENERATED ALT"
@@ -207,20 +169,12 @@
                       <h5 class="meal__type">Breakfast</h5>
                       <h6 class="meal__heading">Granola in a Cup</h6>
                       <div class="meal__info margin-0">
-                        <!-- <img
-                          src="../../server/static/images/dashboard/placeholder-stars.png"
-                          alt="4 star rating"
-                        /> -->
                         <img
                           src="{{ url_for('static', filename='images/dashboard/placeholder-stars.png') }}"
                           alt="4 star rating"
                         />
                       </div>
                       <div class="meal__info">
-                        <!-- <img
-                          src="../../server/static/images/dashboard/time.svg"
-                          alt="Time"
-                        /> -->
                         <img
                           src="{{ url_for('static', filename='images/dashboard/time.svg') }}"
                           alt="Time"
@@ -228,10 +182,6 @@
                         <p class="meal__p">5 mins</p>
                       </div>
                       <div class="meal__info">
-                        <!-- <img
-                          src="../../server/static/images/dashboard/serves.svg"
-                          alt="Serves"
-                        /> -->
                         <img
                           src="{{ url_for('static', filename='images/dashboard/serves.svg') }}"
                           alt="Serves"
@@ -245,11 +195,6 @@
                 <li class="glide__slide">
                   <div class="meal__card">
                     <div class="meal__image">
-                      <!-- <img
-                        src="../../server/static/images/dashboard/placeholder-image-4.jpg"
-                        alt="CHANGE THIS TO GENERATED ALT"
-                        class="meal__img"
-                      /> -->
                       <img
                         src="{{ url_for('static', filename='images/dashboard/placeholder-image-4.jpg') }}"
                         alt="CHANGE THIS TO GENERATED ALT"
@@ -260,20 +205,12 @@
                       <h5 class="meal__type">Lunch</h5>
                       <h6 class="meal__heading">Bell Pepper Couscous</h6>
                       <div class="meal__info margin-0">
-                        <!-- <img
-                          src="../../server/static/images/dashboard/placeholder-stars.png"
-                          alt="4 star rating"
-                        /> -->
                         <img
                           src="{{ url_for('static', filename='images/dashboard/placeholder-stars.png') }}"
                           alt="4 star rating"
                         />
                       </div>
                       <div class="meal__info">
-                        <!-- <img
-                          src="../../server/static/images/dashboard/time.svg"
-                          alt="Time"
-                        /> -->
                         <img
                           src="{{ url_for('static', filename='images/dashboard/time.svg') }}"
                           alt="Time"
@@ -281,10 +218,6 @@
                         <p class="meal__p">20 mins</p>
                       </div>
                       <div class="meal__info">
-                        <!-- <img
-                          src="../../server/static/images/dashboard/serves.svg"
-                          alt="Serves"
-                        /> -->
                         <img
                           src="{{ url_for('static', filename='images/dashboard/serves.svg') }}"
                           alt="Serves"
@@ -297,11 +230,6 @@
                 <li class="glide__slide">
                   <div class="meal__card">
                     <div class="meal__image">
-                      <!-- <img
-                        src="../../server/static/images/dashboard/placeholder-image-5.jpg"
-                        alt="CHANGE THIS TO GENERATED ALT"
-                        class="meal__img"
-                      /> -->
                       <img
                         src="{{ url_for('static', filename='images/dashboard/placeholder-image-5.jpg') }}"
                         alt="CHANGE THIS TO GENERATED ALT"
@@ -312,20 +240,12 @@
                       <h5 class="meal__type">Dinner</h5>
                       <h6 class="meal__heading">Greek Tacos</h6>
                       <div class="meal__info margin-0">
-                        <!-- <img
-                          src="../../server/static/images/dashboard/placeholder-stars.png"
-                          alt="4 star rating"
-                        /> -->
                         <img
                           src="{{ url_for('static', filename='images/dashboard/placeholder-stars.png') }}"
                           alt="4 star rating"
                         />
                       </div>
                       <div class="meal__info">
-                        <!-- <img
-                          src="../../server/static/images/dashboard/time.svg"
-                          alt="Time"
-                        /> -->
                         <img
                           src="{{ url_for('static', filename='images/dashboard/time.svg') }}"
                           alt="Time"
@@ -333,10 +253,6 @@
                         <p class="meal__p">25 mins</p>
                       </div>
                       <div class="meal__info">
-                        <!-- <img
-                          src="../../server/static/images/dashboard/serves.svg"
-                          alt="Serves"
-                        /> -->
                         <img
                           src="{{ url_for('static', filename='images/dashboard/serves.svg') }}"
                           alt="Serves"
