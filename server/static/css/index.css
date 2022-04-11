@@ -392,10 +392,6 @@ header {
   background: linear-gradient(to bottom, #d4af37 0%, #ebc138 100%);
 }
 
-#pricing {
-  margin: 0 2rem;
-}
-
 .pricing-wrapper {
   display: flex;
   flex-flow: wrap row;
@@ -522,6 +518,11 @@ footer {
     justify-content: space-between;
   }
 
+  section {
+    max-width: 100rem;
+    margin: 10rem auto 0 auto;
+  }
+
   .header-intro-wrapper {
     height: 100vh;
     padding: 0 2rem;
@@ -571,12 +572,6 @@ footer {
     color: white;
   }
 
-  #about {
-    padding: 5rem 0 0 0;
-    max-width: 1400px;
-    margin-right: auto;
-    margin-left: auto;
-  }
   .feature-tab {
     display: none;
   }
@@ -587,8 +582,6 @@ footer {
 
   #recipes {
     display: grid;
-    max-width: 100rem;
-    margin: 5rem auto 0rem auto;
     grid-template-columns: 1fr 2fr 2fr 2fr;
     grid-template-rows: 1fr;
     grid-template-areas:
@@ -615,10 +608,6 @@ footer {
     height: fit-content;
     padding: 0.6rem 4rem;
     border-radius: 75px;
-  }
-
-  #pricing {
-    margin: 10rem 0 0 0;
   }
 
   #bronze-card {
@@ -648,7 +637,6 @@ footer {
   }
 
   #apps {
-    margin: 10rem 0 0 0;
     display: grid;
   }
 
