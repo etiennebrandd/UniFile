@@ -13,8 +13,6 @@ def simpleSearch(query):
     query = query.to_dict()
 
     results = foodAPI.getRecipesBySearch(query["query"], 20)
-    print(results)
-
     return results
 
 
