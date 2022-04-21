@@ -1,4 +1,5 @@
 import hashlib
+from posixpath import split
 import uuid
 from cryptography.fernet import Fernet
 import time
@@ -6,6 +7,7 @@ import jwt
 import re
 from io import StringIO
 from html.parser import HTMLParser
+import json
 
 # Generate a  for any encryption
 # key = Fernet.generate_key()
@@ -99,7 +101,7 @@ def generateJWT(userDetails):
     return encodedJWT, expTime, sig
 
 
-# Decode token
+# Decode token and return name
 def decodeJWT(token):
 
     decodedJWT = jwt.decode(token, key, algorithms=["HS256"])
@@ -132,3 +134,27 @@ def inputValidator(data):
     data = s.get_data()
 
     return data
+
+
+def validateJWT(token):
+
+    # Get the JWTs
+    f = open("../database/jwt.json", "r")
+    jwts = json.loads(f.read())
+    f.close()
+
+    # Split the JWT to retrieve the signature
+    splitJWT = re.split("\.", token)
+    sig = splitJWT[2]
+
+    # Loop through JWTs
+    for j in jwts:
+
+        # Return True if the signature matches and the expiry time has not passed
+        if sig == j["sig"] and int(time.time()) < j["exp"]:
+            return True
+        else:
+            continue
+        
+    # If all JWTs have been checked and there is no valid one, return False
+    return False

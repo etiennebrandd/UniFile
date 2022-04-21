@@ -64,7 +64,7 @@
 
     <main>
       <div class="search">
-        <form class="search__form" action="POST">
+        <form class="search__form" action="{{ url_for('dashboard') }}" method="POST">
           <input
             type="text"
             placeholder="Search for recipes, ingredients or menu item"

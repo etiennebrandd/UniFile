@@ -1,4 +1,4 @@
-from security import decodeJWT
+from security import decodeJWT, validateJWT
 from flask import Flask, render_template, request, redirect, url_for, session
 import dataAccess
 import dboard
@@ -71,16 +71,33 @@ def portalregister():
 @app.route('/dashboard', methods = ["GET", "POST"])
 def dashboard():
 
+    # GET
     if request.method == "GET":
+
+        # Validate JWT
+        valid = validateJWT(session["Token"])
+        if valid == False: 
+            return redirect(url_for('logout'))
+
+        # Find the name of the user if they have one.. guest if not!
         if "Token" in session:
             name = decodeJWT(session["Token"])
-
         else: name = "Guest"
 
+        # Render the dashboard with the user's name
         return render_template('pages/dashboard.html', name = name)
 
+    # POST
     else:
+
+        # Validate JWT
+        valid = validateJWT(session["Token"])
+        if valid == False: 
+            return redirect(url_for('logout'))
+
+        # Use searchbar input as API query
         results = dboard.simpleSearch(request.form)
+        print(results)
 
         return redirect(url_for('dashboard'))
 
