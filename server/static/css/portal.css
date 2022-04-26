@@ -111,6 +111,7 @@ main {
   border: none;
   font-size: var(--fs-800);
   border-radius: 50px;
+  cursor: pointer;
 }
 
 .card__swap {
