@@ -46,8 +46,8 @@
           />
         </div>
         <div class="account-buttons">
-          <button class="primary-button"><a href="{{ url_for('portalsignin') }}">Sign in</a></button>
-          <button class="outline-button"><a href="{{ url_for('portalregister') }}">Register</a></button>
+          <button class="portal-button primary-button"><a href="{{ url_for('portalsignin') }}">Sign in</a></button>
+          <button class="portal-button outline-button"><a href="{{ url_for('portalregister') }}">Register</a></button>
         </div>
         <div class="guest-access">
           <p>Visiting from one of our portfoilos, and just want to test what we've done? <a href="{{ url_for('dashboard') }}">Click here!</a></p>
@@ -187,7 +187,8 @@
         <div class="pricing-wrapper">
           <div class="pricing__card" id="bronze-card">
             <div class="pricing__card__header" id="bronze">
-              <h2 class="pricing__card__title">UniFood Free</h2>
+              <h2 class="pricing__card__title">UniFood</h2>
+              <h3 class="pricing__card__price">Free</h3>
             </div>
             <ul class="pricing__card__ul">
               <li class="pricing__card__li">Lorem ipsum</li>
