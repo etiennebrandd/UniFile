@@ -2,10 +2,6 @@ const featureTabButtons = document.getElementsByClassName(
   'feature-tab__button'
 );
 
-const recipeShowcaseButtons = document.getElementsByClassName(
-  'recipe-showcase__button'
-);
-
 const desktopFeatureButtons = document.getElementsByClassName(
   'desktop-features__tab'
 );
@@ -50,18 +46,6 @@ for (const btn of featureTabButtons) {
       btn.querySelector('p').textContent = '-';
     } else {
       btn.querySelector('p').textContent = '+';
-    }
-  });
-}
-
-for (const btn of recipeShowcaseButtons) {
-  btn.addEventListener('click', () => {
-    if (!btn.classList.contains('recipe-showcase--active')) {
-      for (const btn of recipeShowcaseButtons) {
-        btn.classList.remove('recipe-showcase--active');
-      }
-
-      btn.classList.add('recipe-showcase--active');
     }
   });
 }

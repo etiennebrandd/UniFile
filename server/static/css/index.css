@@ -344,6 +344,21 @@ header {
   max-width: 15rem;
 }
 
+.recipe-card__animation {
+  animation: slideUp 0.75s;
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(10%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .recipe-card__info {
   display: grid;
   padding: 1rem;
