@@ -2,9 +2,10 @@ import requests
 from io import StringIO
 from html.parser import HTMLParser
 import json
+from config import api_key
 
 # API key used to allow us to call the API (this needs to be hidden eventually)
-api_key = "f163cdaa932542509e6f18bb466b4c14"
+api_key = api_key
 
 ############################################################
 ## View the page linked in comment before each function to see

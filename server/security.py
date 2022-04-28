@@ -102,13 +102,15 @@ def generateJWT(userDetails):
 
 
 # Decode token and return name
-def decodeJWT(token):
+# def decodeJWT(token):
 
-    decodedJWT = jwt.decode(token, key, algorithms=["HS256"])
+#     decodedJWT = jwt.decode(token, key, algorithms=["HS256"])
     
-    name = re.split(" ", decodedJWT["usr"])
+#     name = re.split(" ", decodedJWT["usr"])
 
-    return name[0]
+#     print(name)
+
+#     return name[0]
 
 
 # Class to strip HTML

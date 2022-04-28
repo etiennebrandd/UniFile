@@ -3,12 +3,12 @@
         "fname": "Etienne",
         "lname": "Brand",
         "email": "e@b.com",
-        "password": "7ba0ad031ca1f82d21af4f050f537ec6935e40c913f46e893fab7015b8c9eafc",
-        "salt": "192594c1cee04b14888800a0d44f26d5",
+        "password": "eaffb2ad6626e999d77d084316ffae394621c21084f0ce53a99b2ad6310af7fa",
+        "salt": "8fcd3cee3f7b448cbf9933cb2d2f6bf1",
         "username": "ebrand",
-        "id": "980645",
+        "id": "400a02",
         "tier": 0,
-        "timezone": "GMT+0:00",
+        "timezone": "Europe/London",
         "theme": 0
     }
 ]
