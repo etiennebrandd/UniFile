@@ -1,4 +1,4 @@
-from security import decodeJWT, validateJWT
+from security import validateJWT
 from flask import Flask, render_template, request, redirect, url_for, session
 import dataAccess
 import dboard
@@ -82,7 +82,7 @@ def dashboard():
 
         # Find the name of the user if they have one.. guest if not!
         if "Token" in session:
-            name = decodeJWT(session["Token"])
+            name = dboard.decodeJWT(session["Token"])
         else: name = "Guest"
 
         # Render the dashboard with the user's name
@@ -100,6 +100,19 @@ def dashboard():
         results = dboard.simpleSearch(request.form)
         print(results)
 
+        return redirect(url_for('dashboard'))
+
+
+@app.route('/settings', methods = ['GET', 'POST'])
+def settings():
+
+    if request.method == "GET":
+        r = dboard.regions
+
+        return render_template('pages/settings.html', regions = r)
+
+    else:
+        dboard.updateUser(session["Token"], request.form)
         return redirect(url_for('dashboard'))
 
 

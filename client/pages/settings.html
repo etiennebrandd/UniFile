@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<body>
+    <form action="{{ url_for('settings') }}" method="POST">
+        <label for="region">Select your region:</label>
+        <select id="region" name="region">
+        {% for region in regions %}
+            <option value="{{ region }}">{{ region }}</option>
+        {% endfor %}
+        </select>
+
+        <br>
+        <input type="radio" id="light" name="light" value="Light">
+        <label for="light">Light</label><br>
+        <input type="radio" id="dark" name="dark" value="Dark">
+        <label for="dark">Dark</label><br>
+        <button type="submit">Save</button>
+    </form>
+</body>

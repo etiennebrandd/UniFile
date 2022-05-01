@@ -20,7 +20,7 @@ def dbRegister(user):
     user["username"] = user["fname"][0].lower() + user["lname"].lower()
     user["id"] = security.uid()[:6]
     user["tier"] = 0
-    user["timezone"] = "GMT+0:00"
+    user["timezone"] = "Europe/London"
     user["theme"] = 0
 
     # Get rid of the duplicate password fielf
