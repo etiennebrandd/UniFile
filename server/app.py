@@ -76,9 +76,14 @@ def dashboard():
     if request.method == "GET":
 
         # Validate JWT
-        valid = validateJWT(session["Token"])
-        if valid == False: 
-            return redirect(url_for('logout'))
+        try:
+            valid = validateJWT(session["Token"])
+
+            if valid == False: 
+                return redirect(url_for('logout'))
+                
+        except:
+            pass
 
         # Find the name of the user if they have one.. guest if not!
         if "Token" in session:
@@ -113,7 +118,7 @@ def settings():
 
     else:
         dboard.updateUser(session["Token"], request.form)
-        return redirect(url_for('dashboard'))
+        return redirect(url_for('logout'))
 
 
 ############################################################
