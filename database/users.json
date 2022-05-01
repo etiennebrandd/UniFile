@@ -10,5 +10,29 @@
         "tier": 0,
         "timezone": "Europe/London",
         "theme": 0
+    },
+    {
+        "fname": "Ethan",
+        "lname": "Hawes",
+        "email": "e@e.com",
+        "password": "b18082a46616c5816db80a302abf42f089b4b9f4eeec767edaf4b0645a06112b",
+        "salt": "31ba0395176a43b2b003f03376171665",
+        "username": "ehawes",
+        "id": "a6ac1a",
+        "tier": 0,
+        "timezone": "GMT+0:00",
+        "theme": 0
+    },
+    {
+        "fname": "Ethan",
+        "lname": "Hawes",
+        "email": "e@e",
+        "password": "402790d0b396a8e8c7cb0797cae8fa7f2efc4f933b5660eed27dd38f02d10914",
+        "salt": "dde6b66c3a4144cfa380df3bd8541dd0",
+        "username": "ehawes",
+        "id": "c664f1",
+        "tier": 0,
+        "timezone": "GMT+0:00",
+        "theme": 0
     }
 ]
