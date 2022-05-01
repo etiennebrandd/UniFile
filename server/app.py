@@ -2,10 +2,11 @@ from security import decodeJWT, validateJWT
 from flask import Flask, render_template, request, redirect, url_for, session
 import dataAccess
 import dboard
+from config import secret_key
 
 # Configure server and folder to fetch pages from
 app = Flask(__name__, template_folder='../client/')
-app.secret_key = "0519f8cb9ecc4c0a8781d07512c795c8"
+app.secret_key = secret_key
 
 
 # Routes

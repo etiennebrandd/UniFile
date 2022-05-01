@@ -34,5 +34,17 @@
         "tier": 0,
         "timezone": "GMT+0:00",
         "theme": 0
+    },
+    {
+        "fname": "Ethan",
+        "lname": "Hawes",
+        "email": "e@h.com",
+        "password": "50a4d26c9beac41cb91d427370354f093063444e2d14879ab0b16eb5da3e8773",
+        "salt": "4b320197e84e42178f8125a937aa3bae",
+        "username": "ehawes",
+        "id": "7ceadf",
+        "tier": 0,
+        "timezone": "GMT+0:00",
+        "theme": 0
     }
 ]
