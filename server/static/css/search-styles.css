@@ -4,6 +4,7 @@ body {
   grid-template-columns: max-content 1fr;
   z-index: -1;
   position: relative;
+  height: 100%;
 }
 
 aside {
@@ -16,17 +17,17 @@ aside {
 
 main {
   display: grid;
-  padding-left: 1rem;
-  height: 100vh;
-  grid-template-rows: min-content min-content 3fr minmax(0, 3fr);
-  grid-template-columns: 1fr 2fr;
+  margin-left: 2rem;
+  height: 100%;
+  grid-template-rows: min-content auto;
+  grid-template-columns: 4fr 1fr;
   grid-template-areas:
-    'search search search search search'
-    'welcome welcome welcome welcome welcome'
-    'meal nutrition nutrition nutrition nutrition'
-    'coming-up coming-up coming-up coming-up coming-up';
+    'search search'
+    'results filters';
   z-index: -1;
 }
+
+/* aside navigation */
 
 .aside__heading-wrapper {
   margin: 1rem 0;
@@ -99,4 +100,77 @@ main {
   font-family: var(--ff-body);
   font-weight: 300;
   outline: none;
+}
+
+/* results */
+.results {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  margin-right: 2rem;
+  grid-area: results;
+  gap: 3rem;
+  min-width: 0;
+  min-height: 0;
+}
+
+.results-card {
+  box-shadow: -2px 2px 24px rgba(0, 0, 0, 0.25);
+  width: min-content;
+  height: min-content;
+  padding-bottom: 0.6rem;
+  min-width: 0;
+  overflow: hidden;
+  animation: slideUp 1s;
+}
+
+.results-card__text {
+  margin: 0 1rem;
+}
+
+.results-card__title,
+.results-card__type {
+  text-align: center;
+  font-size: var(--fs-600);
+}
+
+.results-card__title {
+  font-weight: 500;
+}
+
+.results-card__type {
+  font-weight: 300;
+  font-style: italic;
+}
+
+.results-card__stats {
+  display: flex;
+  justify-content: space-between;
+  margin: 1.5rem;
+}
+
+.results-card__statistic {
+  display: flex;
+  align-items: center;
+}
+
+.results-card__statistic > p {
+  margin-left: 0.5rem;
+}
+
+.results-card__actions {
+  display: flex;
+  justify-content: space-around;
+  font-size: var(--fs-600);
+  font-weight: 300;
+}
+
+.results-card__actions > a:hover {
+  color: var(--clr-primary);
+  transition: color 0.3s ease-out;
+  cursor: pointer;
+}
+
+/* filters */
+.filters {
+  grid-area: filters;
 }
