@@ -81,17 +81,17 @@ def dashboard():
 
             if valid == False: 
                 return redirect(url_for('logout'))
-                
+
         except:
             pass
 
         # Find the name of the user if they have one.. guest if not!
         if "Token" in session:
-            name = dboard.decodeJWT(session["Token"])
-        else: name = "Guest"
+            welcome = dboard.decodeJWT(session["Token"])
+        else: welcome = "Welcome, guest!"
 
         # Render the dashboard with the user's name
-        return render_template('pages/dashboard.html', name = name)
+        return render_template('pages/dashboard.html', name = welcome)
 
     # POST
     else:
@@ -112,6 +112,15 @@ def dashboard():
 def settings():
 
     if request.method == "GET":
+
+        if not "Token" in session:
+            return redirect(url_for('dashboard'))
+
+        valid = validateJWT(session["Token"])
+
+        if valid == False: 
+            return redirect(url_for('logout'))
+
         r = dboard.regions
 
         return render_template('pages/settings.html', regions = r)
