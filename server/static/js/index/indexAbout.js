@@ -23,7 +23,7 @@ const featureData = [
     id: 'meal-tab',
     title: 'Meal planning. Done right.',
     // image: '../server/static/images/landing/meal-feature-image.jpg',
-    image: 'static/images/landing/meal-feature-image.jpg',
+    image: 'static/images/landing/prep-feature-image.jpg',
     imageAlt: 'An image of something',
     text: "Meal planning is a proven way to eat healthily, waste less and meet your nutritional goals. UniFood gives you all the tools you need to create your own awesome meal plans, fitting any dietary needs. Don't want to make your own? We can do it for you, after a few simple clicks.",
   },

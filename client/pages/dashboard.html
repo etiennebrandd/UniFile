@@ -4,15 +4,18 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='favicon.ico') }}"
+    />
 
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='node_modules/@glidejs/glide/dist/css/glide.core.min.css') }}"
+      href="{{ url_for('static', filename='js/node_modules/@glidejs/glide/dist/css/glide.core.min.css') }}"
     />
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='node_modules/@glidejs/glide/dist/css/glide.theme.min.css') }}"
+      href="{{ url_for('static', filename='js/node_modules/@glidejs/glide/dist/css/glide.theme.min.css') }}"
     />
     <link
       rel="stylesheet"
@@ -24,7 +27,7 @@
     />
 
     <script
-      src="{{ url_for('static', filename='node_modules/@glidejs/glide/dist/glide.min.js')}}"
+      src="{{ url_for('static', filename='js/node_modules/@glidejs/glide/dist/glide.min.js')}}"
       defer
     ></script>
     <script
@@ -55,7 +58,9 @@
         <ul class="aside__ul">
           <h2 class="aside__subheading"><a>Account</a></h2>
           <li class="aside__li"><a>Profile</a></li>
-          <li class="aside__li"><a href="{{ url_for('settings') }}">Settings</a></li>
+          <li class="aside__li">
+            <a href="{{ url_for('settings') }}">Settings</a>
+          </li>
           <li class="aside__li"><a>Help</a></li>
           <li class="aside__li">
             <a href="{{ url_for('logout') }}">Log Out</a>
