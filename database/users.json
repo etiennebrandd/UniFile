@@ -1,14 +1,2 @@
 [
-    {
-        "fname": "Etienne",
-        "lname": "Brand",
-        "email": "e@b.com",
-        "password": "59076fb2769133fc6e6509395965c8b479b3e7ec30c4a3b94f5cf7908769af99",
-        "salt": "7b5d91b3c41a4a87ada4e82925813188",
-        "username": "ebrand",
-        "id": "89437f",
-        "tier": 0,
-        "timezone": "Europe/London",
-        "theme": 0
-    }
 ]
