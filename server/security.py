@@ -89,6 +89,8 @@ def generateJWT(userDetails):
         "lvl": userDetails["tier"],
         "tmz": userDetails["timezone"],
         "thm": userDetails["theme"],
+        "api": userDetails["apiUsername"],
+        "hsh": userDetails["apiHash"],
         "exp": expTime
     }
 

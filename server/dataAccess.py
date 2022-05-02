@@ -1,6 +1,7 @@
 import json
 import security
 import re
+from foodAPI import mealPlanConnectUser
 
 def dbRegister(user):
 
@@ -16,9 +17,11 @@ def dbRegister(user):
     # Turn form data into dictionary & generate id, hashed pword, and default info
     user = (user.to_dict())
 
+    apiUsername, apiHash = mealPlanConnectUser(user)
+
     user["password"], user["salt"] = security.hash(user["password"], True, "")
-    user["username"] = user["fname"][0].lower() + user["lname"].lower()
-    user["id"] = security.uid()[:6]
+    user["apiUsername"] = apiUsername
+    user["apiHash"] = apiHash
     user["tier"] = 0
     user["timezone"] = "Europe/London"
     user["theme"] = 0

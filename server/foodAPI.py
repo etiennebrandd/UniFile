@@ -244,7 +244,7 @@ def mealPlanConnectUser(user):
     print("** POINTS USED THIS REQUEST: ", r.headers["X-API-Quota-Request"], " **")
     print("** API QUOTA USED: ", r.headers["X-API-Quota-Used"], " **")
 
-    return userDetails
+    return userDetails["username"], userDetails["hash"]
 
 
 # Get Meal Plan Templates
@@ -279,11 +279,11 @@ def mealPlanGetTemplate(username, hash, mealPlanID):
 
 # Generate Meal Plan
 # https://spoonacular.com/food-api/docs#Generate-Meal-Plan
-def mealPlanGenerate(payload):
+def mealPlanGenerate(timePeriod):
 
-    endpoint = "https://api.spoonacular.com/mealplanner/generate?apiKey=" + api_key
+    endpoint = "https://api.spoonacular.com/mealplanner/generate?timeFrame=" + str(timePeriod) + "&apiKey=" + api_key
 
-    r = requests.get(endpoint, params=payload)
+    r = requests.get(endpoint)
     plan = r.json()
 
     print("** POINTS USED THIS REQUEST: ", r.headers["X-API-Quota-Request"], " **")
