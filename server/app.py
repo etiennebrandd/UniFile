@@ -8,7 +8,6 @@ from config import secret_key
 app = Flask(__name__, template_folder='../client/')
 app.secret_key = secret_key
 
-
 # Routes
 
 ############################################################
