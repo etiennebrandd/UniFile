@@ -31,7 +31,11 @@
       defer
     ></script>
     <script
-      src="{{ url_for('static', filename='js/dashboardApp.js')}}"
+      src="{{ url_for('static', filename='js/dashboard/dashboardApp.js')}}"
+      defer
+    ></script>
+    <script
+      src="{{ url_for('static', filename='js/dashboard/searchbar.js')}}"
       defer
     ></script>
 
@@ -47,8 +51,8 @@
       </div>
       <nav class="aside__nav">
         <ul class="aside__ul">
-          <h2 class="aside__subheading">Dashboard</h2>
-          <li class="aside__li aside__active"><a>Overview</a></li>
+          <h2 class="aside__subheading">Meals</h2>
+          <li class="aside__li"><a id="current-page">Dashboard</a></li>
           <li class="aside__li"><a>Meal Plan</a></li>
           <li class="aside__li"><a>Favourites</a></li>
           <li class="aside__li"><a>Pantry</a></li>
@@ -72,6 +76,7 @@
     <main>
       <div class="search">
         <form
+          id="search-form"
           class="search__form"
           action="{{ url_for('dashboard') }}"
           method="POST"
@@ -80,6 +85,7 @@
             type="text"
             placeholder="Search for recipes, ingredients or menu item"
             class="searchbar-input"
+            id="search-input"
             name="query"
           />
         </form>

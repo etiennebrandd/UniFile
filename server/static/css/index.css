@@ -348,25 +348,21 @@ header {
   animation: slideUp 0.75s;
 }
 
-@keyframes slideUp {
-  0% {
-    opacity: 0;
-    transform: translateY(10%);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 .recipe-card__info {
   display: grid;
   padding: 1rem;
   font-size: var(--fs-400);
   grid-template-areas:
-    'title title'
-    'description description'
-    'small-info large-info';
+    'title'
+    'description'
+    'small-info'
+    'large-info';
+  height: fit-content;
+}
+
+.recipe-card__info > hr {
+  margin-bottom: 1rem;
+  color: var(--clr-primary);
 }
 
 .recipe-card__title {
@@ -389,7 +385,6 @@ header {
 .recipe-card__linfo {
   font-weight: 700;
   grid-area: large-info;
-  text-align: right;
 }
 
 /* pricing */

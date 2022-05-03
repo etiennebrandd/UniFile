@@ -66,6 +66,10 @@ main {
   padding: 0.5rem 0;
 }
 
+#current-page {
+  color: var(--clr-primary);
+}
+
 .aside__li > a {
   font-size: var(--fs-800);
   font-weight: 300;
@@ -78,10 +82,6 @@ main {
   color: var(--clr-primary);
   transition: color 0.3s ease-out;
   cursor: pointer;
-}
-
-.aside__active {
-  color: var(--clr-primary);
 }
 
 /* searchbar */
