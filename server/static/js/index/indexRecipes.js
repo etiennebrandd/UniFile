@@ -140,7 +140,7 @@ for (const btn of recipeShowcaseButtons) {
       for (const item of list) {
         let html = `<div class="recipe-card recipe-card__animation">
         <div class="recipe-card__image">
-          <img src="{{ url_for('static', filename='${item.img}') }}">
+          <img src="${item.img}">
 
         </div>
         <div class="recipe-card__info">
@@ -158,3 +158,5 @@ for (const btn of recipeShowcaseButtons) {
     }
   });
 }
+
+// <img src="{{ url_for('static', filename='${item.img}') }}">
