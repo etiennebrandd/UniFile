@@ -5,12 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <script
+      src="../../server/static/js/search/filtersAccordian.js"
+      defer
+    ></script>
+
     <link rel="stylesheet" href="../../server/static/css/global.css" />
     <link rel="stylesheet" href="../../server/static/css/search-styles.css" />
     <title>Searches</title>
   </head>
   <body>
-    <aside>
+    <aside class="aside-navigation">
       <div class="aside__heading-wrapper">
         <h1 class="aside__heading">
           Uni<span class="color-primary">Food</span>
@@ -18,10 +23,8 @@
       </div>
       <nav class="aside__nav">
         <ul class="aside__ul">
-          <h2 class="aside__subheading">Dashboard</h2>
-          <li class="aside__li aside__active">
-            <a href="{{ url_for('search-test') }}">Overview</a>
-          </li>
+          <h2 class="aside__subheading">Meals</h2>
+          <li class="aside__li"><a>Dashboard</a></li>
           <li class="aside__li"><a>Meal Plan</a></li>
           <li class="aside__li"><a>Favourites</a></li>
           <li class="aside__li"><a>Pantry</a></li>
@@ -42,168 +45,312 @@
       </nav>
     </aside>
 
-    <main>
-      <div class="search">
-        <form
-          id="search-form"
-          class="search__form"
-          action="{{ url_for('dashboard') }}"
-          method="POST"
-        >
-          <input
-            type="text"
-            placeholder="Search for recipes, ingredients or menu item"
-            class="searchbar-input"
-            id="search-input"
-            name="query"
+    <header class="search">
+      <form
+        id="search-form"
+        class="search__form"
+        action="{{ url_for('dashboard') }}"
+        method="POST"
+      >
+        <input
+          type="text"
+          placeholder="Search for recipes, ingredients or menu item"
+          class="searchbar-input"
+          id="search-input"
+          name="query"
+        />
+      </form>
+    </header>
+
+    <main class="results">
+      <div class="results-card">
+        <div class="results-card__image">
+          <img
+            src="../../server/static/images/searches/test-image-1.jpg"
+            alt="image"
           />
-        </form>
-      </div>
-
-      <div class="results">
-        <div class="results-card">
-          <div class="results-card__image">
-            <img
-              src="../../server/static/images/searches/test-image-1.jpg"
-              alt="image"
-            />
-          </div>
-          <div class="results-card__text">
-            <h3 class="results-card__title">
-              Spaghetti, Squash, Tomato and Basil
-            </h3>
-            <h4 class="results-card__type">Main</h4>
-            <div class="results-card__stats">
-              <div class="results-card__statistic">
-                <img
-                  src="../../server/static/images/searches/time.svg"
-                  alt="Time"
-                />
-                <p>1 hour</p>
-              </div>
-              <div class="results-card__statistic">
-                <img
-                  src="../../server/static/images/searches/serves.svg"
-                  alt="Serves 4"
-                />
-                <p>Serves 4</p>
-              </div>
-            </div>
-            <div class="results-card__actions">
-              <a>View</a>
-              <a>Favourite</a>
-            </div>
-          </div>
         </div>
-
-        <div class="results-card">
-          <div class="results-card__image">
-            <img
-              src="../../server/static/images/searches/test-image-1.jpg"
-              alt="image"
-            />
-          </div>
-          <div class="results-card__text">
-            <h3 class="results-card__title">
-              Spaghetti, Squash, Tomato and Basil
-            </h3>
-            <h4 class="results-card__type">Main</h4>
-            <div class="results-card__stats">
-              <div class="results-card__statistic">
-                <img
-                  src="../../server/static/images/searches/time.svg"
-                  alt="Time"
-                />
-                <p>1 hour</p>
-              </div>
-              <div class="results-card__statistic">
-                <img
-                  src="../../server/static/images/searches/serves.svg"
-                  alt="Serves 4"
-                />
-                <p>Serves 4</p>
-              </div>
+        <div class="results-card__text">
+          <h3 class="results-card__title">
+            Spaghetti, Squash, Tomato and Basil
+          </h3>
+          <h4 class="results-card__type">Dinner</h4>
+          <div class="results-card__stats">
+            <div class="results-card__statistic">
+              <img
+                src="../../server/static/images/searches/time.svg"
+                alt="Time"
+              />
+              <p>1 hour</p>
             </div>
-            <div class="results-card__actions">
-              <a>View</a>
-              <a>Favourite</a>
+            <div class="results-card__statistic">
+              <img
+                src="../../server/static/images/searches/serves.svg"
+                alt="Serves 4"
+              />
+              <p>Serves 4</p>
             </div>
           </div>
-        </div>
-
-        <div class="results-card">
-          <div class="results-card__image">
-            <img
-              src="../../server/static/images/searches/test-image-1.jpg"
-              alt="image"
-            />
-          </div>
-          <div class="results-card__text">
-            <h3 class="results-card__title">
-              Spaghetti, Squash, Tomato and Basil
-            </h3>
-            <h4 class="results-card__type">Main</h4>
-            <div class="results-card__stats">
-              <div class="results-card__statistic">
-                <img
-                  src="../../server/static/images/searches/time.svg"
-                  alt="Time"
-                />
-                <p>1 hour</p>
-              </div>
-              <div class="results-card__statistic">
-                <img
-                  src="../../server/static/images/searches/serves.svg"
-                  alt="Serves 4"
-                />
-                <p>Serves 4</p>
-              </div>
-            </div>
-            <div class="results-card__actions">
-              <a>View</a>
-              <a>Favourite</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="results-card">
-          <div class="results-card__image">
-            <img
-              src="../../server/static/images/searches/test-image-1.jpg"
-              alt="image"
-            />
-          </div>
-          <div class="results-card__text">
-            <h3 class="results-card__title">
-              Spaghetti, Squash, Tomato and Basil
-            </h3>
-            <h4 class="results-card__type">Main</h4>
-            <div class="results-card__stats">
-              <div class="results-card__statistic">
-                <img
-                  src="../../server/static/images/searches/time.svg"
-                  alt="Time"
-                />
-                <p>1 hour</p>
-              </div>
-              <div class="results-card__statistic">
-                <img
-                  src="../../server/static/images/searches/serves.svg"
-                  alt="Serves 4"
-                />
-                <p>Serves 4</p>
-              </div>
-            </div>
-            <div class="results-card__actions">
-              <a>View</a>
-              <a>Favourite</a>
-            </div>
+          <div class="results-card__actions">
+            <a>View</a>
+            <a>Favourite</a>
           </div>
         </div>
       </div>
-      <div class="filters">
-        <h2>Filters</h2>
+      <div class="results-card">
+        <div class="results-card__image">
+          <img
+            src="../../server/static/images/searches/test-image-1.jpg"
+            alt="image"
+          />
+        </div>
+        <div class="results-card__text">
+          <h3 class="results-card__title">
+            Spaghetti, Squash, Tomato and Basil
+          </h3>
+          <h4 class="results-card__type">Dinner</h4>
+          <div class="results-card__stats">
+            <div class="results-card__statistic">
+              <img
+                src="../../server/static/images/searches/time.svg"
+                alt="Time"
+              />
+              <p>1 hour</p>
+            </div>
+            <div class="results-card__statistic">
+              <img
+                src="../../server/static/images/searches/serves.svg"
+                alt="Serves 4"
+              />
+              <p>Serves 4</p>
+            </div>
+          </div>
+          <div class="results-card__actions">
+            <a>View</a>
+            <a>Favourite</a>
+          </div>
+        </div>
+      </div>
+      <div class="results-card">
+        <div class="results-card__image">
+          <img
+            src="../../server/static/images/searches/test-image-1.jpg"
+            alt="image"
+          />
+        </div>
+        <div class="results-card__text">
+          <h3 class="results-card__title">
+            Spaghetti, Squash, Tomato and Basil
+          </h3>
+          <h4 class="results-card__type">Dinner</h4>
+          <div class="results-card__stats">
+            <div class="results-card__statistic">
+              <img
+                src="../../server/static/images/searches/time.svg"
+                alt="Time"
+              />
+              <p>1 hour</p>
+            </div>
+            <div class="results-card__statistic">
+              <img
+                src="../../server/static/images/searches/serves.svg"
+                alt="Serves 4"
+              />
+              <p>Serves 4</p>
+            </div>
+          </div>
+          <div class="results-card__actions">
+            <a>View</a>
+            <a>Favourite</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="results-card">
+        <div class="results-card__image">
+          <img
+            src="../../server/static/images/searches/test-image-1.jpg"
+            alt="image"
+          />
+        </div>
+        <div class="results-card__text">
+          <h3 class="results-card__title">
+            Spaghetti, Squash, Tomato and Basil
+          </h3>
+          <h4 class="results-card__type">Dinner</h4>
+          <div class="results-card__stats">
+            <div class="results-card__statistic">
+              <img
+                src="../../server/static/images/searches/time.svg"
+                alt="Time"
+              />
+              <p>1 hour</p>
+            </div>
+            <div class="results-card__statistic">
+              <img
+                src="../../server/static/images/searches/serves.svg"
+                alt="Serves 4"
+              />
+              <p>Serves 4</p>
+            </div>
+          </div>
+          <div class="results-card__actions">
+            <a>View</a>
+            <a>Favourite</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="results-card">
+        <div class="results-card__image">
+          <img
+            src="../../server/static/images/searches/test-image-1.jpg"
+            alt="image"
+          />
+        </div>
+        <div class="results-card__text">
+          <h3 class="results-card__title">
+            Spaghetti, Squash, Tomato and Basil
+          </h3>
+          <h4 class="results-card__type">Dinner</h4>
+          <div class="results-card__stats">
+            <div class="results-card__statistic">
+              <img
+                src="../../server/static/images/searches/time.svg"
+                alt="Time"
+              />
+              <p>1 hour</p>
+            </div>
+            <div class="results-card__statistic">
+              <img
+                src="../../server/static/images/searches/serves.svg"
+                alt="Serves 4"
+              />
+              <p>Serves 4</p>
+            </div>
+          </div>
+          <div class="results-card__actions">
+            <a>View</a>
+            <a>Favourite</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="results-card">
+        <div class="results-card__image">
+          <img
+            src="../../server/static/images/searches/test-image-1.jpg"
+            alt="image"
+          />
+        </div>
+        <div class="results-card__text">
+          <h3 class="results-card__title">
+            Spaghetti, Squash, Tomato and Basil
+          </h3>
+          <h4 class="results-card__type">Dinner</h4>
+          <div class="results-card__stats">
+            <div class="results-card__statistic">
+              <img
+                src="../../server/static/images/searches/time.svg"
+                alt="Time"
+              />
+              <p>1 hour</p>
+            </div>
+            <div class="results-card__statistic">
+              <img
+                src="../../server/static/images/searches/serves.svg"
+                alt="Serves 4"
+              />
+              <p>Serves 4</p>
+            </div>
+          </div>
+          <div class="results-card__actions">
+            <a>View</a>
+            <a>Favourite</a>
+          </div>
+        </div>
       </div>
     </main>
+
+    <aside class="filters">
+      <form action="">
+        <h2 class="filters-header">Filters</h2>
+        <hr />
+        <button class="filters-button" type="button">
+          <h4 class="filters-subheader">Sort by</h4>
+          <p>+</p>
+        </button>
+        <div class="filters-content">
+          <input
+            type="radio"
+            id="alphabetical"
+            name="meal-type"
+            value="Alphabetical"
+          />
+          <label for="alphabetical">Alphabetical</label><br />
+          <input
+            type="radio"
+            id="price-high"
+            name="meal-type"
+            value="Price: High to Low"
+          />
+          <label for="price-high">Price: High to Low</label><br />
+          <input
+            type="radio"
+            id="price-low"
+            name="meal-type"
+            value="Price: Low to High"
+          />
+          <label for="price-low">Price: Low to High</label><br />
+          <input type="radio" id="time" name="meal-type" value="Time" />
+          <label for="time">Time</label><br />
+          <input type="radio" id="servings" name="meal-type" value="Servings" />
+          <label for="servings">Servings</label><br />
+        </div>
+        <hr />
+        <button class="filters-button" type="button">
+          <h4 class="filters-subheader">Meal Type</h4>
+          <p>+</p>
+        </button>
+        <div class="filters-content">
+          <input
+            type="radio"
+            id="breakfast"
+            name="meal-type"
+            value="Breakfast"
+          />
+          <label for="breakfast">Breakfast</label><br />
+          <input type="radio" id="lunch" name="meal-type" value="Lunch" />
+          <label for="lunch">Lunch</label><br />
+          <input type="radio" id="dinner" name="meal-type" value="Dinner" />
+          <label for="dinner">Dinner</label><br />
+          <input type="radio" id="snacks" name="meal-type" value="Snacks" />
+          <label for="snacks">Snacks</label><br />
+          <input type="radio" id="deserts" name="meal-type" value="Deserts" />
+          <label for="deserts">Deserts</label><br />
+        </div>
+        <hr />
+        <button class="filters-button" type="button">
+          <h4 class="filters-subheader">Time</h4>
+          <p>+</p>
+        </button>
+        <hr />
+        <button class="filters-button" type="button">
+          <h4 class="filters-subheader">Serves</h4>
+          <p>+</p>
+        </button>
+        <hr />
+        <button class="filters-button" type="button">
+          <h4 class="filters-subheader">Cost</h4>
+          <p>+</p>
+        </button>
+        <hr />
+        <button class="filters-button" type="button">
+          <h4 class="filters-subheader">Dietry Requirements</h4>
+          <p>+</p>
+        </button>
+        <hr />
+      </form>
+    </aside>
   </body>
 </html>

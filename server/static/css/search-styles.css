@@ -1,7 +1,12 @@
 /* page-wide layout and styles */
 body {
   display: grid;
-  grid-template-columns: max-content 1fr;
+  grid-template-rows: min-content auto;
+  grid-template-columns: min-content 4fr 1fr;
+  grid-template-areas:
+    'nav search search'
+    'nav results filters';
+
   z-index: -1;
   position: relative;
   height: 100%;
@@ -13,21 +18,15 @@ aside {
   background: var(--clr-dark);
   color: white;
   padding: 1rem;
-}
-
-main {
-  display: grid;
-  margin-left: 2rem;
-  height: 100%;
-  grid-template-rows: min-content auto;
-  grid-template-columns: 4fr 1fr;
-  grid-template-areas:
-    'search search'
-    'results filters';
-  z-index: -1;
+  height: 100vh;
 }
 
 /* aside navigation */
+.aside-navigation {
+  grid-area: nav;
+  position: sticky;
+  top: 0;
+}
 
 .aside__heading-wrapper {
   margin: 1rem 0;
@@ -82,9 +81,9 @@ main {
 .search {
   display: flex;
   grid-area: search;
-  margin: 1rem 0;
+  margin: 1rem 2rem;
   padding: 1rem 1rem 1rem 0;
-  width: 100%;
+  width: 85vw;
 }
 
 .search__form {
@@ -104,13 +103,12 @@ main {
 
 /* results */
 .results {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  margin-right: 2rem;
+  display: flex;
+  flex-flow: wrap row;
+  margin: 0 2rem 2rem 0;
   grid-area: results;
-  gap: 3rem;
-  min-width: 0;
-  min-height: 0;
+  justify-content: center;
+  gap: 5rem;
 }
 
 .results-card {
@@ -118,8 +116,6 @@ main {
   width: min-content;
   height: min-content;
   padding-bottom: 0.6rem;
-  min-width: 0;
-  overflow: hidden;
   animation: slideUp 1s;
 }
 
@@ -173,4 +169,55 @@ main {
 /* filters */
 .filters {
   grid-area: filters;
+  box-shadow: -2px 2px 24px rgba(0, 0, 0, 0.25);
+  background: white;
+  margin: 0 2rem 2rem 0;
+  color: black;
+  height: fit-content;
+}
+
+.filters-header {
+  font-size: var(--fs-800);
+  font-family: var(--ff-body);
+  font-weight: 600;
+}
+
+.filters hr {
+  margin: 2rem 0;
+  color: rgba(0, 0, 0, 0.35);
+}
+
+.filters-subheader {
+  font-size: var(--fs-600);
+}
+
+.filters-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 0.5rem;
+  padding: 0.5rem 0;
+  color: rgba(0, 0, 0, 0.65);
+  font-size: var(--fs-600);
+  cursor: pointer;
+  border: none;
+  background: none;
+  width: 95%;
+}
+
+.filters-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  margin: 0 0.5rem;
+  font-size: var(--fs-600);
+  font-family: var(--ff-body);
+  font-weight: 300;
+}
+
+.filters-content > input[type='radio'],
+.filters-content > label {
+  margin: 1rem 0.2rem;
+  vertical-align: middle;
+  cursor: pointer;
 }
