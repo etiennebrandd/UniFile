@@ -8,8 +8,8 @@
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" />
-    <script src="{{ url_for('static', filename='js/index/indexAbout.js') }}" defer></script>
     <script src="{{ url_for('static', filename='js/index/indexRecipes.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/index/indexAbout.js') }}" defer></script>
     <title>UniFood</title>
   </head>
 
@@ -139,46 +139,49 @@
       <section id="recipes">
         <h2 class="section-title" id="recipe-title">Some of our delicious recipes...</h2>
         <div class="recipe-showcase__buttons">
-          <button class="recipe-showcase__button recipe-showcase--active">
+          <button id="breakfast" class="recipe-showcase__button recipe-showcase--active">
             Breakfast
           </button>
-          <button class="recipe-showcase__button">Lunch</button>
-          <button class="recipe-showcase__button">Dinner</button>
-          <button class="recipe-showcase__button">Deserts</button>
+          <button id="lunch" class="recipe-showcase__button">Lunch</button>
+          <button id="dinner" class="recipe-showcase__button">Dinner</button>
+          <button id="deserts" class="recipe-showcase__button">Deserts</button>
         </div>
         <div class="recipe-showcase__recipes">
           <div class="recipe-card recipe-card__animation">
             <div class="recipe-card__image">
-              <img src="{{ url_for('static', filename='images/landing/example-stew.jpg') }}" alt="">
+              <img class="recipe-card__img" src="{{ url_for('static', filename='images/landing/breakfast-1.jpg') }}">
 
             </div>
             <div class="recipe-card__info">
-              <h3 class="recipe-card__title">Recipe Title</h3>
-              <p class="recipe-card__description">Sample description that extends over a number of lines</p>
-              <p class="recipe-card__sinfo">Small info</p>
-              <p class="recipe-card__linfo">BIG INFO</p>
+              <h3 class="recipe-card__title">Berry Banana Breakfast Smoothie</h3>
+              <p class="recipe-card__description">If you have around 5 minutes to spend in the kitchen, Berry Banana Breakfast Smoothie might be a tremendous lacto ovo vegetarian recipe to try.</p>
+              <hr>
+              <p class="recipe-card__sinfo">£2.04/serving</p>
+              <p class="recipe-card__linfo">5 mins</p>
             </div>
           </div>
           <div class="recipe-card recipe-card__animation">
             <div class="recipe-card__image">
-              <img src="{{ url_for('static', filename='images/landing/example-stew.jpg') }}" alt="">
+              <img class="recipe-card__img" src="{{ url_for('static', filename='images/landing/breakfast-2.jpg') }}">
             </div>
             <div class="recipe-card__info">
-              <h3 class="recipe-card__title">Recipe Title</h3>
-              <p class="recipe-card__description">Sample description that extends over a number of lines</p>
-              <p class="recipe-card__sinfo">Small info</p>
-              <p class="recipe-card__linfo">BIG INFO</p>
+              <h3 class="recipe-card__title">Homemade Muesli Breakfast Cereal</h3>
+              <p class="recipe-card__description">Homemade Muesli Breakfast Cereal might be just the morn meal you are searching for.</p>
+              <hr>
+              <p class="recipe-card__sinfo">£0.88/serving</p>
+              <p class="recipe-card__linfo">1 hour 3 mins</p>
             </div>
           </div>
           <div class="recipe-card recipe-card__animation">
             <div class="recipe-card__image">
-              <img src="{{ url_for('static', filename='images/landing/example-stew.jpg') }}" alt="">
+              <img class="recipe-card__img" src="{{ url_for('static', filename='images/landing/breakfast-3.jpg') }}">
             </div>
             <div class="recipe-card__info">
-              <h3 class="recipe-card__title">Recipe Title</h3>
-              <p class="recipe-card__description">Sample description that extends over a number of lines</p>
-              <p class="recipe-card__sinfo">Small info</p>
-              <p class="recipe-card__linfo">BIG INFO</p>
+              <h3 class="recipe-card__title">Mini Quinoa Egg Breakfast Casserole</h3>
+              <p class="recipe-card__description">Mini Quinoan Egg Breakfast Casserole might be a good recipe to expand your hor d'oeuvre collection.</p>
+              <hr>
+              <p class="recipe-card__sinfo">£1.46/serving</p>
+              <p class="recipe-card__linfo">30 mins</p>
             </div>
           </div>
         </div>
