@@ -134,27 +134,31 @@ for (const btn of recipeShowcaseButtons) {
         list = recipes.deserts;
       }
 
-      let recipeArea = document.querySelector('.recipe-showcase__recipes');
-      let newRecipeHTML = '';
+      let recipeCards = document.getElementsByClassName('recipe-card');
 
-      for (const item of list) {
-        let html = `<div class="recipe-card recipe-card__animation">
-        <div class="recipe-card__image">
-          <img src="${item.img}">
+      // card elements are changed individually rather than making a whole new set of cards, and inserting them in the recipe-showcase
+      // reason for this is due to the jittery-ness from rerendered a whole new card
+      for (let i = 0; i < recipeCards.length; i++) {
+        let img = recipeCards[i].querySelector('.recipe-card__img');
+        let title = recipeCards[i].querySelector('.recipe-card__title');
+        let description = recipeCards[i].querySelector(
+          '.recipe-card__description'
+        );
+        let cost = recipeCards[i].querySelector('.recipe-card__sinfo');
+        let time = recipeCards[i].querySelector('.recipe-card__linfo');
 
-        </div>
-        <div class="recipe-card__info">
-          <h3 class="recipe-card__title">${item.title}</h3>
-          <p class="recipe-card__description">${item.description}</p>
-          <hr>
-          <p class="recipe-card__sinfo">£${item.cost}/serving</p>
-          <p class="recipe-card__linfo">${item.time}</p>
-        </div>
-      </div>`;
-        newRecipeHTML += html;
+        img.src = list[i].img;
+        title.innerHTML = list[i].title;
+        description.innerHTML = list[i].description;
+        cost.innerHTML = list[i].cost;
+        time.innerHTML = list[i].time;
+
+        // using reflow through selecting the offsetHeight - easy but resource expensive
+        // index page is fairly lightweight, so no worries for the expense
+        recipeCards[i].style.animation = 'none';
+        recipeCards[i].offsetHeight;
+        recipeCards[i].style.animation = null;
       }
-
-      recipeArea.innerHTML = newRecipeHTML;
     }
   });
 }

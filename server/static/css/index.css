@@ -528,7 +528,7 @@ footer {
 
   section {
     max-width: 100rem;
-    margin: 10rem auto 0 auto;
+    margin: 0 auto;
   }
 
   .header-intro-wrapper {
@@ -597,6 +597,7 @@ footer {
       'buttons recipes recipes recipes'
       'buttons recipes recipes recipes'
       'buttons recipes recipes recipes';
+    margin: 15rem auto;
   }
 
   .recipe-card {
@@ -646,6 +647,7 @@ footer {
 
   #apps {
     display: grid;
+    margin: 10rem auto;
   }
 
   .apps-showcase__image {
