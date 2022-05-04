@@ -3,6 +3,7 @@ from flask import Flask, render_template, request, redirect, url_for, session
 import dataAccess
 import dboard
 from config import secret_key
+from foodAPI import getRecipeInformation
 
 # Configure server and folder to fetch pages from
 app = Flask(__name__, template_folder='../client/')
@@ -127,6 +128,17 @@ def search():
         results = dboard.simpleSearch(request.form)
 
         return render_template('pages/search.html', results = results["results"])
+
+
+############################################################
+## Route logic for item page
+############################################################
+@app.route('/item/<id>', methods = ['GET', 'POST'])
+def item(id):
+
+    recipeInfo = getRecipeInformation(id, False)
+    # print(recipeInfo)
+    return render_template('pages/item.html', info = recipeInfo)
 
 
 ############################################################
