@@ -1,3 +1,4 @@
 *.pyc
 config.py
 node_modules/
+installation_instructions.txt
