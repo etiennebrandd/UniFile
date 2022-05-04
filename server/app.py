@@ -96,17 +96,42 @@ def dashboard():
     else:
 
         # Validate JWT
+        # valid = validateJWT(session["Token"])
+        # if valid == False: 
+        #     return redirect(url_for('logout'))
+
+        # # Use searchbar input as API query
+        # results = dboard.simpleSearch(request.form)
+        # print(results)
+
+        return redirect(url_for('dashboard'))
+
+
+############################################################
+## Route logic for search results page
+############################################################
+@app.route('/search', methods = ['GET', 'POST'])
+def search():
+
+    if request.method == 'GET':
+        return redirect(url_for('dashboard'))
+
+    else:
+
+        # Validate JWT
         valid = validateJWT(session["Token"])
         if valid == False: 
             return redirect(url_for('logout'))
 
         # Use searchbar input as API query
         results = dboard.simpleSearch(request.form)
-        print(results)
 
-        return redirect(url_for('dashboard'))
+        return render_template('pages/search-test.html', results = results["results"])
 
 
+############################################################
+## Route logic for settings page
+############################################################
 @app.route('/settings', methods = ['GET', 'POST'])
 def settings():
 
