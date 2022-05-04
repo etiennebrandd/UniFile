@@ -7,9 +7,11 @@ for (const anchor of actionAnchors) {
   anchor.addEventListener('mouseover', () => {
     let tooltipText = anchor.dataset.tooltip;
     tooltipDisplay.innerHTML = tooltipText;
+    tooltipDisplay.style.opacity = '1';
   });
 
   anchor.addEventListener('mouseout', () => {
+    tooltipDisplay.style.opacity = '0';
     tooltipDisplay.innerHTML = '';
   });
 }

@@ -165,7 +165,7 @@ aside {
   display: inline;
   vertical-align: middle;
   margin-right: 0.5rem;
-  transition: filter 0.25s;
+  transition: filter 0.15s;
 }
 
 .recipe-card__tooltip {
@@ -179,6 +179,8 @@ aside {
 
 .recipe-card__tooltip > p {
   font-size: var(--fs-600);
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
 /* filters */
