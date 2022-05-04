@@ -141,7 +141,7 @@ main {
 }
 
 .meal__image {
-  box-shadow: inset 350px 0px 150px -50px rgba(0, 0, 0, 0.75);
+  box-shadow: inset 300px 0px 150px -50px rgba(0, 0, 0, 0.75);
 }
 
 .meal__img {
@@ -199,7 +199,7 @@ main {
 }
 
 .upcoming__image {
-  box-shadow: inset 350px 0px 150px -50px rgba(0, 0, 0, 0.75);
+  box-shadow: inset 300px 0px 150px -50px rgba(0, 0, 0, 0.75);
 }
 
 .upcoming__img {

@@ -1,0 +1,7 @@
+flask
+cryptography
+pyjwt
+jwt
+requests
+pytz
+encode

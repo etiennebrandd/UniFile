@@ -22,5 +22,17 @@
         "tier": 0,
         "timezone": "Europe/London",
         "theme": 0
+    },
+    {
+        "fname": "John",
+        "lname": "Doe",
+        "email": "johndoe@email.com",
+        "password": "3773c155139c532f721e3d05294514ca97624012998785f13743794a84743b34",
+        "salt": "6b5e74e89a1b49dba4d4cfa87053aa3d",
+        "apiUsername": "053ce886-758d-4688-b644-74ee6afd6cd2",
+        "apiHash": "e082c0b1359aeab00d99b3e3f8dcfbe4ac712a57",
+        "tier": 0,
+        "timezone": "Europe/London",
+        "theme": 0
     }
 ]

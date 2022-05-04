@@ -272,7 +272,7 @@ header {
 
 .desktop-features__body {
   padding: 2rem;
-  height: 500px;
+  height: fit-content;
 }
 
 .desktop-features__body > h3 {
@@ -578,6 +578,10 @@ footer {
 
   .header-nav__item > a {
     color: white;
+  }
+
+  #about {
+    padding: 5rem 1rem;
   }
 
   .feature-tab {
