@@ -126,7 +126,7 @@ def search():
         # Use searchbar input as API query
         results = dboard.simpleSearch(request.form)
 
-        return render_template('pages/search-test.html', results = results["results"])
+        return render_template('pages/search.html', results = results["results"])
 
 
 ############################################################

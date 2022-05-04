@@ -119,6 +119,11 @@ aside {
   animation: slideUp 1s;
 }
 
+.results-card hr {
+  margin: 1rem 0;
+  color: rgba(0, 0, 0, 0.2);
+}
+
 .results-card__text {
   margin: 0 1rem;
 }
@@ -138,32 +143,42 @@ aside {
   font-style: italic;
 }
 
-.results-card__stats {
-  display: flex;
-  justify-content: space-between;
-  margin: 1.5rem;
-}
-
-.results-card__statistic {
-  display: flex;
-  align-items: center;
-}
-
-.results-card__statistic > p {
-  margin-left: 0.5rem;
-}
-
 .results-card__actions {
   display: flex;
+  flex-direction: row;
   justify-content: space-around;
   font-size: var(--fs-600);
   font-weight: 300;
 }
 
-.results-card__actions > a:hover {
-  color: var(--clr-primary);
-  transition: color 0.3s ease-out;
-  cursor: pointer;
+.results-card__action {
+  margin: 0.2rem 0;
+}
+
+.results-card__action img:hover {
+  filter: invert(33%) sepia(99%) saturate(1494%) hue-rotate(96deg)
+    brightness(102%) contrast(88%);
+}
+
+.results-card__action img {
+  height: 2rem;
+  display: inline;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+  transition: filter 0.25s;
+}
+
+.recipe-card__tooltip {
+  height: var(--fs-600);
+  margin: 0.5rem;
+  font-family: var(--ff-body);
+  font-size: var(--fs-600);
+  font-weight: 300;
+  text-align: center;
+}
+
+.recipe-card__tooltip > p {
+  font-size: var(--fs-600);
 }
 
 /* filters */

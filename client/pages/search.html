@@ -9,9 +9,19 @@
       src="{{ url_for('static', filename='js/search/filtersAccordian.js') }} "
       defer
     ></script>
+    <script
+      src="{{ url_for('static', filename='js/search/tooltip.js') }} "
+      defer
+    ></script>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/search-styles.css') }}" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/global.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/search.css') }}"
+    />
     <title>Searches</title>
   </head>
   <body>
@@ -63,44 +73,66 @@
     </header>
 
     <main class="results">
-
       {% for result in results %}
       <div class="results-card">
         <div class="results-card__image">
-          <img
-            src="{{ result['image'] }}"
-            alt="image"
-          />
+          <img src="{{ result['image'] }}" alt="image" />
         </div>
         <div class="results-card__text">
-          <h3 class="results-card__title">
-            {{ result["title"] }}
-          </h3>
+          <h3 class="results-card__title">{{ result["title"] }}</h3>
           <h4 class="results-card__type">Dinner</h4>
-          <div class="results-card__stats">
-            <div class="results-card__statistic">
-              <img
-                src="{{ url_for('static', filename='images/searches/time.svg') }}"
-                alt="Time"
-              />
-              <p>1 hour</p>
+          <hr />
+          <div class="results-card__actions">
+            <div class="results-card__action">
+              <a
+                class="results-card__anchor"
+                data-tooltip="View Recipe"
+                href="/"
+              >
+                <img
+                  src="{{ url_for('static', filename='images/searches/view.png') }}"
+                  alt="View Recipe"
+              /></a>
             </div>
-            <div class="results-card__statistic">
-              <img
-                src="{{ url_for('static', filename='images/searches/serves.svg') }}"
-                alt="Serves 4"
-              />
-              <p>Serves 4</p>
+            <div class="results-card__action">
+              <a class="results-card__anchor" data-tooltip="Favourite" href="/">
+                <img
+                  src="{{ url_for('static', filename='images/searches/favourite.png') }}"
+                  alt="Favourite"
+                />
+              </a>
+            </div>
+            <div class="results-card__action">
+              <a
+                class="results-card__anchor"
+                data-tooltip="Add to Meal Plan"
+                href="/"
+              >
+                <img
+                  src="{{ url_for('static', filename='images/searches/plan.png') }}"
+                  alt="Add to Meal Plan"
+                />
+              </a>
+            </div>
+            <div class="results-card__action">
+              <a
+                class="results-card__anchor"
+                data-tooltip="Add to Shopping Cart"
+                href="/"
+              >
+                <img
+                  src="{{ url_for('static', filename='images/searches/cart.png') }}"
+                  alt="Add to Shopping Cart"
+              /></a>
             </div>
           </div>
-          <div class="results-card__actions">
-            <a>View</a>
-            <a>Favourite</a>
+          <hr />
+          <div class="recipe-card__tooltip">
+            <p id="tooltip"></p>
           </div>
         </div>
       </div>
       {% endfor %}
-      
     </main>
 
     <aside class="filters">
