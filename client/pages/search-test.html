@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <script
-      src="../../server/static/js/search/filtersAccordian.js"
+      src="{{ url_for('static', filename='js/search/filtersAccordian.js') }} "
       defer
     ></script>
 
-    <link rel="stylesheet" href="../../server/static/css/global.css" />
-    <link rel="stylesheet" href="../../server/static/css/search-styles.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/search-styles.css') }}" />
     <title>Searches</title>
   </head>
   <body>
@@ -49,7 +49,7 @@
       <form
         id="search-form"
         class="search__form"
-        action="{{ url_for('dashboard') }}"
+        action="{{ url_for('search') }}"
         method="POST"
       >
         <input
@@ -63,132 +63,31 @@
     </header>
 
     <main class="results">
-      <div class="results-card">
-        <div class="results-card__image">
-          <img
-            src="../../server/static/images/searches/test-image-1.jpg"
-            alt="image"
-          />
-        </div>
-        <div class="results-card__text">
-          <h3 class="results-card__title">
-            Spaghetti, Squash, Tomato and Basil
-          </h3>
-          <h4 class="results-card__type">Dinner</h4>
-          <div class="results-card__stats">
-            <div class="results-card__statistic">
-              <img
-                src="../../server/static/images/searches/time.svg"
-                alt="Time"
-              />
-              <p>1 hour</p>
-            </div>
-            <div class="results-card__statistic">
-              <img
-                src="../../server/static/images/searches/serves.svg"
-                alt="Serves 4"
-              />
-              <p>Serves 4</p>
-            </div>
-          </div>
-          <div class="results-card__actions">
-            <a>View</a>
-            <a>Favourite</a>
-          </div>
-        </div>
-      </div>
-      <div class="results-card">
-        <div class="results-card__image">
-          <img
-            src="../../server/static/images/searches/test-image-1.jpg"
-            alt="image"
-          />
-        </div>
-        <div class="results-card__text">
-          <h3 class="results-card__title">
-            Spaghetti, Squash, Tomato and Basil
-          </h3>
-          <h4 class="results-card__type">Dinner</h4>
-          <div class="results-card__stats">
-            <div class="results-card__statistic">
-              <img
-                src="../../server/static/images/searches/time.svg"
-                alt="Time"
-              />
-              <p>1 hour</p>
-            </div>
-            <div class="results-card__statistic">
-              <img
-                src="../../server/static/images/searches/serves.svg"
-                alt="Serves 4"
-              />
-              <p>Serves 4</p>
-            </div>
-          </div>
-          <div class="results-card__actions">
-            <a>View</a>
-            <a>Favourite</a>
-          </div>
-        </div>
-      </div>
-      <div class="results-card">
-        <div class="results-card__image">
-          <img
-            src="../../server/static/images/searches/test-image-1.jpg"
-            alt="image"
-          />
-        </div>
-        <div class="results-card__text">
-          <h3 class="results-card__title">
-            Spaghetti, Squash, Tomato and Basil
-          </h3>
-          <h4 class="results-card__type">Dinner</h4>
-          <div class="results-card__stats">
-            <div class="results-card__statistic">
-              <img
-                src="../../server/static/images/searches/time.svg"
-                alt="Time"
-              />
-              <p>1 hour</p>
-            </div>
-            <div class="results-card__statistic">
-              <img
-                src="../../server/static/images/searches/serves.svg"
-                alt="Serves 4"
-              />
-              <p>Serves 4</p>
-            </div>
-          </div>
-          <div class="results-card__actions">
-            <a>View</a>
-            <a>Favourite</a>
-          </div>
-        </div>
-      </div>
 
+      {% for result in results %}
       <div class="results-card">
         <div class="results-card__image">
           <img
-            src="../../server/static/images/searches/test-image-1.jpg"
+            src="{{ result['image'] }}"
             alt="image"
           />
         </div>
         <div class="results-card__text">
           <h3 class="results-card__title">
-            Spaghetti, Squash, Tomato and Basil
+            {{ result["title"] }}
           </h3>
           <h4 class="results-card__type">Dinner</h4>
           <div class="results-card__stats">
             <div class="results-card__statistic">
               <img
-                src="../../server/static/images/searches/time.svg"
+                src="{{ url_for('static', filename='images/searches/time.svg') }}"
                 alt="Time"
               />
               <p>1 hour</p>
             </div>
             <div class="results-card__statistic">
               <img
-                src="../../server/static/images/searches/serves.svg"
+                src="{{ url_for('static', filename='images/searches/serves.svg') }}"
                 alt="Serves 4"
               />
               <p>Serves 4</p>
@@ -200,76 +99,8 @@
           </div>
         </div>
       </div>
-
-      <div class="results-card">
-        <div class="results-card__image">
-          <img
-            src="../../server/static/images/searches/test-image-1.jpg"
-            alt="image"
-          />
-        </div>
-        <div class="results-card__text">
-          <h3 class="results-card__title">
-            Spaghetti, Squash, Tomato and Basil
-          </h3>
-          <h4 class="results-card__type">Dinner</h4>
-          <div class="results-card__stats">
-            <div class="results-card__statistic">
-              <img
-                src="../../server/static/images/searches/time.svg"
-                alt="Time"
-              />
-              <p>1 hour</p>
-            </div>
-            <div class="results-card__statistic">
-              <img
-                src="../../server/static/images/searches/serves.svg"
-                alt="Serves 4"
-              />
-              <p>Serves 4</p>
-            </div>
-          </div>
-          <div class="results-card__actions">
-            <a>View</a>
-            <a>Favourite</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="results-card">
-        <div class="results-card__image">
-          <img
-            src="../../server/static/images/searches/test-image-1.jpg"
-            alt="image"
-          />
-        </div>
-        <div class="results-card__text">
-          <h3 class="results-card__title">
-            Spaghetti, Squash, Tomato and Basil
-          </h3>
-          <h4 class="results-card__type">Dinner</h4>
-          <div class="results-card__stats">
-            <div class="results-card__statistic">
-              <img
-                src="../../server/static/images/searches/time.svg"
-                alt="Time"
-              />
-              <p>1 hour</p>
-            </div>
-            <div class="results-card__statistic">
-              <img
-                src="../../server/static/images/searches/serves.svg"
-                alt="Serves 4"
-              />
-              <p>Serves 4</p>
-            </div>
-          </div>
-          <div class="results-card__actions">
-            <a>View</a>
-            <a>Favourite</a>
-          </div>
-        </div>
-      </div>
+      {% endfor %}
+      
     </main>
 
     <aside class="filters">
