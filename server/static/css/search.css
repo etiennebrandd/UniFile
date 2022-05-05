@@ -197,15 +197,17 @@ aside {
   font-size: var(--fs-800);
   font-family: var(--ff-body);
   font-weight: 600;
+  margin: 1rem 0;
 }
 
 .filters hr {
   margin: 2rem 0;
-  color: rgba(0, 0, 0, 0.35);
+  color: rgba(0, 0, 0, 0.2);
 }
 
 .filters-subheader {
   font-size: var(--fs-600);
+  font-weight: 400;
 }
 
 .filters-button {
