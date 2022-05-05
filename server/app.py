@@ -5,6 +5,8 @@ import dboard
 from config import secret_key
 from foodAPI import getRecipeInformation
 from security import inputValidator
+# from dataAccess import storeJWTDetails
+# from security import generateGuestJWT
 
 # Configure server and folder to fetch pages from
 app = Flask(__name__, template_folder='../client/')
@@ -83,13 +85,13 @@ def dashboard():
             if valid == False: 
                 return redirect(url_for('logout'))
 
-        except:
-            pass
+        except: pass
 
         # Find the name of the user if they have one.. guest if not!
         if "Token" in session:
             welcome = dboard.decodeJWT(session["Token"])
-        else: welcome = "Welcome, guest!"
+        else:
+            welcome = "Welcome, guest!"
 
         # Render the dashboard with the user's name
         return render_template('pages/dashboard.html', name = welcome)
@@ -121,9 +123,11 @@ def search():
     else:
 
         # Validate JWT
-        valid = validateJWT(session["Token"])
-        if valid == False: 
-            return redirect(url_for('logout'))
+        try:
+            valid = validateJWT(session["Token"])
+            if valid == False: 
+                return redirect(url_for('logout'))
+        except: pass
 
         # Use searchbar input as API query
         results = dboard.simpleSearch(request.form)
@@ -141,12 +145,13 @@ def item(id):
         return redirect(url_for('search'))
 
     # Validate JWT
-    if not "Token" in session:
-        return redirect(url_for('dashboard'))
-        
-    valid = validateJWT(session["Token"])
-    if valid == False: 
-        return redirect(url_for('logout'))
+    # if not "Token" in session:
+    #     return redirect(url_for('dashboard'))
+    try:
+        valid = validateJWT(session["Token"])
+        if valid == False: 
+            return redirect(url_for('logout'))
+    except: pass
 
     # Perform recipe information collection
     recipeInfo = getRecipeInformation(id, False)

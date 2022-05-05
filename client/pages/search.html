@@ -34,7 +34,7 @@
       <nav class="aside__nav">
         <ul class="aside__ul">
           <h2 class="aside__subheading">Meals</h2>
-          <li class="aside__li"><a>Dashboard</a></li>
+          <li class="aside__li"><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
           <li class="aside__li"><a>Meal Plan</a></li>
           <li class="aside__li"><a>Favourites</a></li>
           <li class="aside__li"><a>Pantry</a></li>
@@ -43,9 +43,9 @@
 
         <ul class="aside__ul">
           <h2 class="aside__subheading"><a>Account</a></h2>
-          <li class="aside__li"><a>Profile</a></li>
+          <li class="aside__li"><a href="{{ url_for('settings') }}">Profile</a></li>
           <li class="aside__li">
-            <a href="{{ url_for('settings') }}">Settings</a>
+            <a>Settings</a>
           </li>
           <li class="aside__li"><a>Help</a></li>
           <li class="aside__li">
