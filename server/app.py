@@ -141,6 +141,9 @@ def item(id):
         return redirect(url_for('search'))
 
     # Validate JWT
+    if not "Token" in session:
+        return redirect(url_for('dashboard'))
+        
     valid = validateJWT(session["Token"])
     if valid == False: 
         return redirect(url_for('logout'))
