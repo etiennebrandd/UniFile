@@ -43,7 +43,24 @@
   </head>
 
   <body>
-    <aside>
+    <header class="search">
+      <form
+        id="search-form"
+        class="search__form"
+        action="{{ url_for('search') }}"
+        method="POST"
+      >
+        <input
+          type="text"
+          placeholder="Search for recipes, ingredients or menu item"
+          class="searchbar-input"
+          id="search-input"
+          name="query"
+        />
+      </form>
+    </header>
+
+    <aside class="aside-navigation">
       <div class="aside__heading-wrapper">
         <h1 class="aside__heading">
           Uni<span class="color-primary">Food</span>
@@ -74,23 +91,6 @@
     </aside>
 
     <main>
-      <div class="search">
-        <form
-          id="search-form"
-          class="search__form"
-          action="{{ url_for('search') }}"
-          method="POST"
-        >
-          <input
-            type="text"
-            placeholder="Search for recipes, ingredients or menu item"
-            class="searchbar-input"
-            id="search-input"
-            name="query"
-          />
-        </form>
-      </div>
-
       <div class="welcome">
         <h3 class="welcome__heading">{{ name }}</h3>
       </div>

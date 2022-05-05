@@ -1,0 +1,11 @@
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+}
+
+.recipe-card {
+  background-color: red;
+  height: 100%;
+  margin: 1rem;
+}

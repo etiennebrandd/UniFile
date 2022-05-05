@@ -6,6 +6,10 @@ main {
   margin-right: auto;
 }
 
+body {
+  display: block;
+}
+
 section {
   margin: 6rem 0;
 }
