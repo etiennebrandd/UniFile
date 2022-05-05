@@ -67,6 +67,7 @@ Future plans involve fleshing out the foundation of what we have done so far. Mo
 
 ## Credits
 <a name="credits" />
+
 ***Etienne Brand** - Backend developer. Creating the server and database, handling user accounts and authentication, implemented JWTs.*
 
 ***Ethan Hawes** - Frontend developer. Designed and developed web pages.*
