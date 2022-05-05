@@ -87,7 +87,7 @@
               <a
                 class="results-card__anchor"
                 data-tooltip="View Recipe"
-                href="/"
+                href="{{ url_for('item', id = result['id']) }}"
               >
                 <img
                   src="{{ url_for('static', filename='images/searches/view.png') }}"

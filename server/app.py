@@ -3,6 +3,8 @@ from flask import Flask, render_template, request, redirect, url_for, session
 import dataAccess
 import dboard
 from config import secret_key
+from foodAPI import getRecipeInformation
+from security import inputValidator
 
 # Configure server and folder to fetch pages from
 app = Flask(__name__, template_folder='../client/')
@@ -130,6 +132,33 @@ def search():
 
 
 ############################################################
+## Route logic for item page
+############################################################
+@app.route('/item/<id>', methods = ['GET', 'POST'])
+def item(id):
+
+    if id == None:
+        return redirect(url_for('search'))
+
+    # Validate JWT
+    if not "Token" in session:
+        return redirect(url_for('dashboard'))
+        
+    valid = validateJWT(session["Token"])
+    if valid == False: 
+        return redirect(url_for('logout'))
+
+    # Perform recipe information collection
+    recipeInfo = getRecipeInformation(id, False)
+    print(recipeInfo)
+
+    # Strip the summary of an HTML tags
+    recipeSummary = inputValidator(recipeInfo["summary"])
+
+    return render_template('pages/item.html', info = recipeInfo, summary = recipeSummary)
+
+
+############################################################
 ## Route logic for settings page
 ############################################################
 @app.route('/settings', methods = ['GET', 'POST'])
@@ -168,6 +197,11 @@ def logout():
 
     # Return homepage
     return redirect(url_for('index'))
+
+
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template('pages/page-not-found.html'), 404
 
 
 # Starting the server
