@@ -103,16 +103,21 @@ def generateJWT(userDetails):
     return encodedJWT, expTime, sig
 
 
-# Decode token and return name
-# def decodeJWT(token):
+# def generateGuestJWT():
 
-#     decodedJWT = jwt.decode(token, key, algorithms=["HS256"])
-    
-#     name = re.split(" ", decodedJWT["usr"])
+#     currentTime = int(time.time())
+#     expTime = currentTime + 21600
 
-#     print(name)
+#     payload = {
+#         "nil": "nil"
+#     }
 
-#     return name[0]
+#     encodedJWT = jwt.encode(payload, key, algorithm="HS256")
+#     splitJWT = re.split("\.", encodedJWT)
+#     sig = splitJWT[2]
+
+#     # Return whole JWT, expiry time, and signature
+#     return encodedJWT, expTime, sig
 
 
 # Class to strip HTML
