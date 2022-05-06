@@ -1,9 +1,9 @@
-from security import validateJWT
+from core.security import validateJWT
 from flask import Flask, render_template, request, redirect, url_for, session
-import dataAccess
-import dboard
+from core.dataAccess import dbLogin, dbRegister, dbLogout
+from dashboard.dboard import decodeJWT, simpleSearch, regions, updateUser
 from config import secret_key
-from item import recipeInfo, relatedRecipes
+from recipes.item import recipeInfo, relatedRecipes
 
 # Configure server and folder to fetch pages from
 app = Flask(__name__, template_folder='../client/')
@@ -36,7 +36,7 @@ def portalsignin():
     else: 
 
         # Validate login and if a JWT is found, forward to dashboard
-        jwt = dataAccess.dbLogin(request.form)
+        jwt = dbLogin(request.form)
 
         if jwt != None: 
             session['Token'] = jwt
@@ -57,7 +57,7 @@ def portalregister():
 
     else:
         # Register the user and return JWT for session
-        jwt = dataAccess.dbRegister(request.form)
+        jwt = dbRegister(request.form)
 
         if jwt != None: 
             session['Token'] = jwt
@@ -86,7 +86,7 @@ def dashboard():
 
         # Find the name of the user if they have one.. guest if not!
         if "Token" in session:
-            welcome = dboard.decodeJWT(session["Token"])
+            welcome = decodeJWT(session["Token"])
         else:
             welcome = "Welcome, guest!"
 
@@ -128,7 +128,7 @@ def search():
 
         # Use searchbar input as API query
         global results
-        results = dboard.simpleSearch(request.form)
+        results = simpleSearch(request.form)
 
         return render_template('pages/search.html', results = results["results"])
 
@@ -176,12 +176,12 @@ def settings():
         if valid == False: 
             return redirect(url_for('logout'))
 
-        r = dboard.regions
+        r = regions
 
         return render_template('pages/settings.html', regions = r)
 
     else:
-        dboard.updateUser(session["Token"], request.form)
+        updateUser(session["Token"], request.form)
         return redirect(url_for('logout'))
 
 
@@ -194,7 +194,7 @@ def logout():
     # Remove JWT from the client-side cookie and details from server
     if "Token" in session:
 
-        dataAccess.dbLogout(session["Token"])
+        dbLogout(session["Token"])
         session.pop('Token')
 
     # Return homepage

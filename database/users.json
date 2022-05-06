@@ -34,5 +34,17 @@
         "tier": 0,
         "timezone": "Europe/London",
         "theme": 0
+    },
+    {
+        "fname": "John",
+        "lname": "Cena",
+        "email": "j@c.com",
+        "password": "3771dd2c3d91caad439348027e1796baf44f3106be819d36656872a66f497f18",
+        "salt": "288431fa30dc437eb1c89cdf0b3c3130",
+        "apiUsername": "01f43e6b-80c6-494d-b2a6-9a34cba419a3",
+        "apiHash": "5f806707e05c5356cc6f7acd1987e04be2179ca1",
+        "tier": 0,
+        "timezone": "Europe/London",
+        "theme": 0
     }
 ]

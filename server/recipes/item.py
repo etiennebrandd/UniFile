@@ -1,5 +1,5 @@
-from foodAPI import getRecipeInformation
-from security import inputValidator
+from core.foodAPI import getRecipeInformation
+from core.security import inputValidator
 import random
 
 def recipeInfo(id):
@@ -41,7 +41,7 @@ def relatedRecipes(recipes, id):
     # Convert images to 240x150
     rel1["image"] = imageResize(rel1["image"])
     rel2["image"] = imageResize(rel2["image"])
-    
+
     return rel1, rel2
 
 

@@ -1,12 +1,11 @@
 # import jwt
 from datetime import datetime
-from security import key
-import foodAPI
+from core.security import key
+from core.foodAPI import getRecipesBySearch
 import jwt
 import re
 import pytz
 import json
-from dataAccess import insertInto
 
 regions = []
 
@@ -39,7 +38,7 @@ def decodeJWT(token):
 def simpleSearch(query):
     query = query.to_dict()
 
-    results = foodAPI.getRecipesBySearch(query["query"], 20)
+    results = getRecipesBySearch(query["query"], 20)
     return results
 
 
