@@ -3,10 +3,7 @@ from flask import Flask, render_template, request, redirect, url_for, session
 import dataAccess
 import dboard
 from config import secret_key
-from foodAPI import getRecipeInformation
-from security import inputValidator
-# from dataAccess import storeJWTDetails
-# from security import generateGuestJWT
+from item import recipeInfo, relatedRecipes
 
 # Configure server and folder to fetch pages from
 app = Flask(__name__, template_folder='../client/')
@@ -130,6 +127,7 @@ def search():
         except: pass
 
         # Use searchbar input as API query
+        global results
         results = dboard.simpleSearch(request.form)
 
         return render_template('pages/search.html', results = results["results"])
@@ -145,8 +143,6 @@ def item(id):
         return redirect(url_for('search'))
 
     # Validate JWT
-    # if not "Token" in session:
-    #     return redirect(url_for('dashboard'))
     try:
         valid = validateJWT(session["Token"])
         if valid == False: 
@@ -154,14 +150,14 @@ def item(id):
     except: pass
 
     # Perform recipe information collection
-    recipeInfo = getRecipeInformation(id, False)
-    # print(recipeInfo)
-    print(recipeInfo['analyzedInstructions'][0]['steps'])
+    info = recipeInfo(id)
 
-    # Strip the summary of an HTML tags
-    recipeSummary = inputValidator(recipeInfo["summary"])
+    # Fetch related recipes
+    if len(results["results"]) > 2:
+        rel1, rel2 = relatedRecipes(results, id)
+    else: rel1, rel2 = None, None
 
-    return render_template('pages/item.html', info = recipeInfo, summary = recipeSummary)
+    return render_template('pages/item.html', info = info, rel1 = rel1, rel2 = rel2)
 
 
 ############################################################
