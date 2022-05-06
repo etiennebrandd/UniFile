@@ -1,3 +1,8 @@
+body {
+  height: auto;
+  grid-template-rows: min-content auto;
+}
+
 main {
   display: grid;
   grid-template-columns: 4fr 1fr;
@@ -24,7 +29,6 @@ main {
 
 .results-card hr {
   margin: 1rem 0;
-  color: rgba(0, 0, 0, 0.2);
 }
 
 .results-card__text {
@@ -58,17 +62,17 @@ main {
   margin: 0.2rem 0;
 }
 
-.results-card__action img:hover {
-  filter: invert(33%) sepia(99%) saturate(1494%) hue-rotate(96deg)
-    brightness(102%) contrast(88%);
-}
-
 .results-card__action img {
   height: 2rem;
   display: inline;
   vertical-align: middle;
   margin-right: 0.5rem;
   transition: filter 0.15s;
+}
+
+.results-card__action img:hover {
+  filter: invert(33%) sepia(99%) saturate(1494%) hue-rotate(96deg)
+    brightness(102%) contrast(88%);
 }
 
 .recipe-card__tooltip {
@@ -105,7 +109,6 @@ main {
 
 .filters hr {
   margin: 2rem 0;
-  color: rgba(0, 0, 0, 0.2);
 }
 
 .filters-subheader {
