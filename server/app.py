@@ -155,7 +155,8 @@ def item(id):
 
     # Perform recipe information collection
     recipeInfo = getRecipeInformation(id, False)
-    print(recipeInfo)
+    # print(recipeInfo)
+    print(recipeInfo['analyzedInstructions'][0]['steps'])
 
     # Strip the summary of an HTML tags
     recipeSummary = inputValidator(recipeInfo["summary"])

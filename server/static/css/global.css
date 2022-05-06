@@ -110,11 +110,12 @@ body {
 
   scroll-behavior: smooth;
   height: 100%;
+  overflow-x: clip;
 }
 
 body {
   display: grid;
-  grid-template-rows: min-content 1fr;
+  grid-template-rows: min-content 90vh;
   grid-template-columns: min-content auto;
   grid-template-areas:
     'nav search'
@@ -129,6 +130,10 @@ main {
 
 img {
   display: block;
+}
+
+hr {
+  color: rgba(0, 0, 0, 0.2);
 }
 
 .color-primary {
@@ -212,8 +217,7 @@ aside {
 .search {
   display: flex;
   grid-area: search;
-  margin: 1rem 2rem;
-  padding: 1rem 1rem 1rem 0;
+  margin: 1rem;
   width: 85vw;
 }
 
