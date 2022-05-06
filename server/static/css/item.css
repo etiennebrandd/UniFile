@@ -107,7 +107,7 @@ main {
 
 .result-card__ingredients li {
   font-size: var(--fs-400);
-  margin: 0.5rem;
+  margin: 0.5rem 2rem;
 }
 
 /* instructions card */
@@ -129,7 +129,7 @@ main {
   font-size: var(--fs-600);
   font-weight: 300;
   margin: 1.5rem 0;
-  line-height: 1.3;
+  line-height: 1.5;
 }
 
 .result-card__instructions li::marker {
