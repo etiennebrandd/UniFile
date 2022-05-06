@@ -201,9 +201,16 @@ def logout():
     return redirect(url_for('index'))
 
 
+############################################################
+## Route logic for custom error pages
+############################################################
 @app.errorhandler(404)
 def page_not_found(error):
-    return render_template('pages/page-not-found.html'), 404
+    return render_template('pages/errors/page-not-found.html'), 404
+
+@app.errorhandler(500)
+def server_error(error):
+    return render_template('pages/errors/server-error.html'), 500
 
 
 # Starting the server
