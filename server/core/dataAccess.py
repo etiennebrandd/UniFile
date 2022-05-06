@@ -1,7 +1,7 @@
 import json
-import security
+from core.security import hash, generateJWT
 import re
-from foodAPI import mealPlanConnectUser
+from core.foodAPI import mealPlanConnectUser
 
 def dbRegister(user):
 
@@ -19,7 +19,7 @@ def dbRegister(user):
 
     apiUsername, apiHash = mealPlanConnectUser(user)
 
-    user["password"], user["salt"] = security.hash(user["password"], True, "")
+    user["password"], user["salt"] = hash(user["password"], True, "")
     user["apiUsername"] = apiUsername
     user["apiHash"] = apiHash
     user["tier"] = 0
@@ -33,7 +33,7 @@ def dbRegister(user):
     insertInto("../database/users.json", user)
 
     # Generate the JWT to pass back to the user
-    jwt, exp, sig = security.generateJWT(user)
+    jwt, exp, sig = generateJWT(user)
 
     # Store the new JWT details
     storeJWTDetails(sig, exp)
@@ -58,13 +58,13 @@ def dbLogin(user):
         if creds["email"] == user["email"]:
             
             # Hash entered password with salt of found user record
-            passwordAttempt = security.hash(creds["password"], False, user["salt"])
+            passwordAttempt = hash(creds["password"], False, user["salt"])
 
             # If entered password matches user record
             if passwordAttempt == user["password"]:
 
                 # Generate the JWT to pass back to the user
-                jwt, exp, sig = security.generateJWT(user)
+                jwt, exp, sig = generateJWT(user)
 
                 # Store the new JWT details and return to client
                 storeJWTDetails(sig, exp)
