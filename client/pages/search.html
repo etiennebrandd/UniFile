@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <script
-      src="{{ url_for('static', filename='js/search/filtersAccordian.js') }} "
+      src="{{ url_for('static', filename='js/search/accordian.js') }} "
       defer
     ></script>
     <script
@@ -51,7 +51,9 @@
       <nav class="aside__nav">
         <ul class="aside__ul">
           <h2 class="aside__subheading">Meals</h2>
-          <li class="aside__li"><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+          <li class="aside__li">
+            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+          </li>
           <li class="aside__li"><a>Meal Plan</a></li>
           <li class="aside__li"><a>Favourites</a></li>
           <li class="aside__li"><a>Pantry</a></li>
@@ -60,7 +62,9 @@
 
         <ul class="aside__ul">
           <h2 class="aside__subheading"><a>Account</a></h2>
-          <li class="aside__li"><a href="{{ url_for('settings') }}">Profile</a></li>
+          <li class="aside__li">
+            <a href="{{ url_for('settings') }}">Profile</a>
+          </li>
           <li class="aside__li">
             <a>Settings</a>
           </li>
@@ -143,7 +147,7 @@
         <form action="">
           <h2 class="filters-header">Filters</h2>
           <hr />
-          <button class="filters-button" type="button">
+          <button class="accordian-button" type="button">
             <h4 class="filters-subheader">Sort by</h4>
             <p>+</p>
           </button>
@@ -180,7 +184,7 @@
             <label for="servings">Servings</label><br />
           </div>
           <hr />
-          <button class="filters-button" type="button">
+          <button class="accordian-button" type="button">
             <h4 class="filters-subheader">Meal Type</h4>
             <p>+</p>
           </button>
@@ -202,22 +206,22 @@
             <label for="deserts">Deserts</label><br />
           </div>
           <hr />
-          <button class="filters-button" type="button">
+          <button class="accordian-button" type="button">
             <h4 class="filters-subheader">Time</h4>
             <p>+</p>
           </button>
           <hr />
-          <button class="filters-button" type="button">
+          <button class="accordian-button" type="button">
             <h4 class="filters-subheader">Serves</h4>
             <p>+</p>
           </button>
           <hr />
-          <button class="filters-button" type="button">
+          <button class="accordian-button" type="button">
             <h4 class="filters-subheader">Cost</h4>
             <p>+</p>
           </button>
           <hr />
-          <button class="filters-button" type="button">
+          <button class="accordian-button" type="button">
             <h4 class="filters-subheader">Dietry Requirements</h4>
             <p>+</p>
           </button>
