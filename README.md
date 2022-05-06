@@ -14,6 +14,7 @@ Design files for everything shown can be found in the github/designs folder
   - [User Accounts](#features-accounts)
   - [Dashboard](#features-dashboard)
   - [Search for Recipes](#features-search)
+  - [Recipe View](#features-recipe)
 - [Plans for the Future](#plans)
 - [Credits](#credits)
 
@@ -57,6 +58,13 @@ An overview of the users meals, providing information on upcoming meals and nutr
 Results from the spoonacular API are provided, allowing the user to view the recipe, favourite it or add it to their meal plan or shopping list.
 
 ![Search results](./github/search.png)
+
+### Recipe View
+
+<a name="features-recipe" />
+Clicking view on a recipe takes you to the recipe page, where an overview about the recipe can be seen. In all, the user can see the ingredients, instructions, nutritional information and any other important dietry information about the recipe. Recommendations are also included
+
+![Search results](./github/recipe.png)
 
 ## Plans for the Future
 
