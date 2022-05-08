@@ -181,7 +181,8 @@ def settings():
         return render_template('pages/settings.html', regions = r)
 
     else:
-        updateUser(session["Token"], request.form)
+        updateUser(session["Token"], request.form, request.files)
+
         return redirect(url_for('logout'))
 
 
