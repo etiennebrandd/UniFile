@@ -42,7 +42,7 @@ def simpleSearch(query):
     return results
 
 
-def updateUser(token, form):
+def updateUser(token, form, file):
 
     # Turn form into dictionary
     form = form.to_dict()
@@ -65,7 +65,9 @@ def updateUser(token, form):
 
             # Update values
             user["timezone"] = form["region"]
-            user["theme"] = int(form["theme"])
+
+            if "theme" in form:
+                user["theme"] = int(form["theme"])
 
             break
             # user["theme"] == form["theme"]
@@ -77,5 +79,19 @@ def updateUser(token, form):
     f = open("../database/users.json", "w")
     f.write(users)
     f.close()
+
+    # Upload user's profile picture if there is one
+    if "profpic" in file:
+
+        allowedExtensions = {'png', 'jpg', 'jpeg', 'gif'}
+        profilePic = file["profpic"]
+
+        decodedJWT = jwt.decode(token, key, algorithms=["HS256"])
+        hash = decodedJWT["hsh"]
+
+        if profilePic.filename.split('.')[1].lower() in allowedExtensions:
+
+            dst = '../database/userImages/' + hash + "." + profilePic.filename.split('.')[1].lower()
+            profilePic.save(f"{dst}")
 
     return

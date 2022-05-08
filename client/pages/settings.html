@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <body>
-    <form action="{{ url_for('settings') }}" method="POST">
+    <form action="{{ url_for('settings') }}" method="POST" enctype=multipart/form-data>
         <label for="region">Select your region:</label>
         <select id="region" name="region">
         {% for region in regions %}
@@ -13,6 +13,10 @@
         <label for="theme">Light</label><br>
         <input type="radio" id="theme" name="theme" value="1">
         <label for="theme">Dark</label><br>
+
+        <p>Upload profile picture:</p>
+        <input type="file" id="profpic" name="profpic">
+        <br><br>
 
         <button type="submit">Save</button>
     </form>
