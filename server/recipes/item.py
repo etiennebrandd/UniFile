@@ -9,8 +9,9 @@ def recipeInfo(id):
 
     # Capitalise first letter of each ingredient
     for ingredient in recipeInfo["extendedIngredients"]:
-        ingredient["name"] = ingredient["name"].capitalize()
-        
+        ingredient["name"] = ingredient["name"].capitalize() + " ({} {})"
+        ingredient["name"] = ingredient["name"].format(ingredient["amount"], ingredient["unit"])
+
     # Strip summary of HTML tags
     recipeInfo["summary"] = inputValidator(recipeInfo["summary"])
 

@@ -2,6 +2,7 @@ import json
 from core.security import hash, generateJWT
 import re
 from core.foodAPI import mealPlanConnectUser
+from flask import flash
 
 def dbRegister(user):
 
@@ -17,7 +18,15 @@ def dbRegister(user):
     # Turn form data into dictionary & generate id, hashed pword, and default info
     user = (user.to_dict())
 
-    apiUsername, apiHash = mealPlanConnectUser(user)
+    # Ensure that the password and confirm password fields match; return if not.
+    if user["password"] != user["confirm-password"]:
+        return
+
+    # Generate spoonacular API credentials and return if there is an error (quota exceeded)
+    try:
+        apiUsername, apiHash = mealPlanConnectUser(user)
+    except:
+        return
 
     user["password"], user["salt"] = hash(user["password"], True, "")
     user["apiUsername"] = apiUsername
@@ -137,135 +146,3 @@ def insertInto(filepath, value):
     f = open(filepath, "w")
     f.write(data)
     f.close()
-
-
-
-# def dbLogin(credentials):
-
-#     # Define credentials as variables
-#     email = (credentials.to_dict()["email"])
-#     password = (credentials.to_dict()["password"])
-    
-#     # Open users file for reading and convert to dict
-#     f = open("../database/users.json", "r")
-#     data = json.loads(f.read())
-#     f.close()
-
-#     # Extract users
-#     userData = data["users"]
-
-#     for user in userData:
-
-#         encoded = str.encode(user)
-#         decrypted = security.decrypt(encoded)
-
-#         x = decrypted.replace("'", "\"")
-#         decrypted = json.loads(x)
-
-#         i = userData.index(user)
-#         userData[i] = decrypted
-
-#     # Iterate through each user object to see if credential email matches record
-#     for user in userData:
-
-#         if email == user["email"]:
-
-#             # Hash the input password using the retrieved salt for found user
-#             checkpwd = security.hash(password, False, user["salt"])
-
-#             # Check hashed input password matches what is in database
-#             if checkpwd == user["password"]:
-                
-#                 # csrf = dbSession(user["id"])
-#                 userJWT, exp = security.generateJWT(user)
-#                 splitJWT = re.split("\.", userJWT)
-#                 sig = splitJWT[2]
-
-#                 storeJWTDetails(sig, exp)
-#                 return True, user["id"], userJWT
-
-
-#             else:
-#                 return False, "", ""
-
-#         # Keep iterating if not match
-#         else:
-#             continue
-
-#     return False, "", ""
-
-
-# def dbCheckToken(id):
-    
-#     # Get encrypted sessions and decrypt
-#     f = open("../database/sessions.json", "r")
-#     data = json.loads(f.read())
-#     f.close()
-
-#     sessionData = data["sessions"]
-    
-#     for session in sessionData:
-
-#         encoded = str.encode(session)
-#         decrypted = security.decrypt(encoded)
-
-#         x = decrypted.replace("'", "\"")
-#         decrypted = json.loads(x)
-
-#         i = sessionData.index(session)
-#         sessionData[i] = decrypted
-
-#     # Check if the token exists for the user
-#     for i in sessionData:
-
-#         if i["user_id"] == id:
-#             if i["csrf_token"]:
-
-#                 return True
-
-#             else: return False
-        
-#     else: return False
-
-
-# def dbLogout(id):
-
-#     # Get encrypted sessions and decrypt
-#     f = open("../database/sessions.json", "r")
-#     data = json.loads(f.read())
-#     f.close()
-
-#     sessionData = data["sessions"]
-    
-#     for session in sessionData:
-
-#         encoded = str.encode(session)
-#         decrypted = security.decrypt(encoded)
-
-#         x = decrypted.replace("'", "\"")
-#         decrypted = json.loads(x)
-
-#         i = sessionData.index(session)
-#         sessionData[i] = decrypted
-
-#     # Loop through each session and delete the appropriate session
-#     for i in sessionData:
-
-#         if i["user_id"] == id:
-#             sessionData.pop(sessionData.index(i))
-#             break
-
-#     # Encrypt remaining sessions and write back to file
-#     for session in sessionData:
-
-#         encrypted = security.encrypt(str(session))
-#         decoded = encrypted.decode()
-#         i = sessionData.index(session)
-#         sessionData[i] = decoded
-
-#     data["sessions"] = sessionData
-#     newData = json.dumps(data, indent=4)
-    
-#     f = open("../database/sessions.json", "w")
-#     f.write(newData)
-#     f.close()
