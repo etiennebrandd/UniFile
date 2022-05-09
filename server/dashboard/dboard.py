@@ -38,7 +38,11 @@ def decodeJWT(token):
 def simpleSearch(query):
     query = query.to_dict()
 
-    results = getRecipesBySearch(query["query"], 20)
+    try:
+        results = getRecipesBySearch(query["query"], 20)
+    except:
+        return {}
+        
     return results
 
 

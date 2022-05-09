@@ -5,7 +5,9 @@ import random
 def recipeInfo(id):
 
     # Fetch recipe info by calling API
-    recipeInfo = getRecipeInformation(id, False)
+    try:
+        recipeInfo = getRecipeInformation(id, False)
+    except: return {}
 
     # Capitalise first letter of each ingredient
     for ingredient in recipeInfo["extendedIngredients"]:
