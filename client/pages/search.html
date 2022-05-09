@@ -111,7 +111,7 @@
                 <a
                   class="results-card__anchor"
                   data-tooltip="Add to Meal Plan"
-                  href="/"
+                  href="{{ url_for('planner', action = 'add', id = result['id']) }}"
                 >
                   <img
                     src="{{ url_for('static', filename='images/searches/plan.png') }}"

@@ -102,10 +102,12 @@
             src="{{ url_for('static', filename='images/searches/favourite.png') }}"
             alt="favourite"
           />
-          <img
-            src="{{ url_for('static', filename='images/searches/plan.png') }}"
-            alt="plan"
-          />
+          <a href="{{ url_for('planner', action = 'add', id = info['id']) }}">
+            <img
+              src="{{ url_for('static', filename='images/searches/plan.png') }}"
+              alt="plan"
+            />
+          </a>
           <img
             src="{{ url_for('static', filename='images/searches/cart.png') }}"
             alt="cart"

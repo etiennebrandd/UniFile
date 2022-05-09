@@ -161,6 +161,15 @@ def item(id):
 
 
 ############################################################
+## Route logic for meal planning page
+############################################################
+@app.route('/planner/<action>/<id>', methods = ["GET", "POST"])
+def planner(action, id):
+
+    print(action, id)
+    return render_template('pages/dashboard.html')
+
+############################################################
 ## Route logic for settings page
 ############################################################
 @app.route('/settings', methods = ['GET', 'POST'])
