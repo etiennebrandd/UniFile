@@ -31,7 +31,7 @@ def relatedRecipes(recipes, id):
             recipes["results"].pop(recipes["results"].index(recipe))
 
     # Generate random index between 0 and length of list, and assign recipe of that index to rel1
-    rel1 = recipes["results"][random.randint(0, len(recipes["results"]))]
+    rel1 = recipes["results"][random.randint(0, len(recipes["results"])) - 1]
 
     # Remove the recipe assigned as rel1 from the list so it cannot be picked again
     for recipe in recipes["results"]:
@@ -39,7 +39,7 @@ def relatedRecipes(recipes, id):
             recipes["results"].pop(recipes["results"].index(rel1))
 
     # Generate random index between 0 and length of list, and assign recipe of that index to rel2
-    rel2 = recipes["results"][random.randint(0, len(recipes["results"]))]
+    rel2 = recipes["results"][random.randint(0, len(recipes["results"])) - 1]
 
     # Convert images to 240x150
     rel1["image"] = imageResize(rel1["image"])
