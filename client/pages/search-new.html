@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="../../server/static/css/global.css" />
+    <link rel="stylesheet" href="../../server/static/css/search.css" />
+
+    <script src="../../server/static/js/navigation.js" defer></script>
+
+    <title>UniFood - Results</title>
+  </head>
+  <body>
+    <header class="page-header">
+      <div class="page-header__title">
+        <h1>Uni<span class="color-primary">Food</span></h1>
+      </div>
+      <div class="page-header__searchbar">
+        <form
+          id="search-form"
+          class="search__form"
+          action="{{ url_for('search') }}"
+          method="POST"
+        >
+          <input
+            type="text"
+            placeholder="Search for recipes, ingredients or menu item"
+            class="searchbar-input"
+            id="search-input"
+            name="query"
+          />
+        </form>
+      </div>
+    </header>
+
+    <aside id="site-nav" class="site-nav site-nav__hidden">
+      <div class="site-nav__menu">
+        <img
+          src="../../server/static/images/searches/hamburger.svg"
+          alt="Menu"
+        />
+      </div>
+      <nav>
+        <ul class="site-nav__pages">
+          <li>
+            <img
+              class="site-nav__icon"
+              src="../../server/static/images/searches/dashboard.svg"
+              alt=""
+            />
+            <a href="#">Dashboard</a>
+          </li>
+          <li>
+            <img
+              class="site-nav__icon"
+              src="../../server/static/images/searches/meal-plan.svg"
+              alt=""
+            />
+            <a href="#">Meal Plan</a>
+          </li>
+          <li>
+            <img
+              class="site-nav__icon"
+              src="../../server/static/images/searches/favourite.svg"
+              alt=""
+            />
+            <a href="#">Favourites</a>
+          </li>
+          <li>
+            <img
+              class="site-nav__icon"
+              src="../../server/static/images/searches/pantry.svg"
+              alt=""
+            />
+            <a href="#">Pantry</a>
+          </li>
+          <li>
+            <img
+              class="site-nav__icon"
+              src="../../server/static/images/searches/nutrition.svg"
+              alt=""
+            />
+            <a href="#">Nutrition</a>
+          </li>
+        </ul>
+        <ul class="site-nav__account">
+          <li>
+            <img
+              class="site-nav__icon"
+              src="../../server/static/images/searches/profile.svg"
+              alt=""
+            />
+            <a href="#">Profile</a>
+          </li>
+          <li>
+            <img
+              class="site-nav__icon"
+              src="../../server/static/images/searches/help.svg"
+              alt=""
+            />
+            <a href="#">Help</a>
+          </li>
+          <li>
+            <img
+              class="site-nav__icon"
+              src="../../server/static/images/searches/log-out.svg"
+              alt=""
+            />
+            <a href="#">Log Out</a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- <aside class="results-sidebar">
+      <div class="results-sidebar__meals">
+        <h2>Meal Plan</h2>
+      </div>
+      <div class="results-sidebar__shopping">
+        <h2>Shopping List</h2>
+      </div>
+    </aside> -->
+
+    <main></main>
+  </body>
+</html>
