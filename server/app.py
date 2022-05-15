@@ -1,3 +1,4 @@
+from email.policy import default
 from core.security import validateJWT, extractFromJWT
 from flask import Flask, render_template, request, redirect, url_for, session
 from core.dataAccess import dbLogin, dbRegister, dbLogout
@@ -166,9 +167,9 @@ def item(id):
 ############################################################
 ## Route logic for meal planning page
 ############################################################
-@app.route('/planner/<action>', methods = ["GET", "POST"])
+# @app.route('/planner/<action>', default = {} methods = ["GET", "POST"])
 @app.route('/planner/<action>/<int:id>', methods = ["GET", "POST"])
-def planner(action, *id):
+def planner(action, id):
 
     if action == 'add':
         info = recipeInfo(id)
