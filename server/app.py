@@ -1,9 +1,12 @@
-from core.security import validateJWT
+from core.security import validateJWT, extractFromJWT
 from flask import Flask, render_template, request, redirect, url_for, session
 from core.dataAccess import dbLogin, dbRegister, dbLogout
 from dashboard.dboard import decodeJWT, simpleSearch, regions, updateUser
 from config import secret_key
 from recipes.item import recipeInfo, relatedRecipes
+from mealplanning.mealPlanning import addToMealPlan, viewMealPlan
+import datetime
+import time
 
 # Configure server and folder to fetch pages from
 app = Flask(__name__, template_folder='../client/')
@@ -163,11 +166,56 @@ def item(id):
 ############################################################
 ## Route logic for meal planning page
 ############################################################
-@app.route('/planner/<action>/<id>', methods = ["GET", "POST"])
-def planner(action, id):
+@app.route('/planner/<action>', methods = ["GET", "POST"])
+@app.route('/planner/<action>/<int:id>', methods = ["GET", "POST"])
+def planner(action, *id):
 
-    print(action, id)
-    return render_template('pages/dashboard.html')
+    if action == 'add':
+        info = recipeInfo(id)
+        dateOp = int(input("Date to add meal to: (OPTIONS = '2022, 5, 16' (1), '2022, 5, 17' (2), '2022, 5, 18' (3), '2022, 5, 19' (4), '2022, 5, 20' (5))"))
+        if dateOp == 1:
+            date = datetime.datetime(2022, 5, 16)
+        elif dateOp == 2:
+            date = datetime.datetime(2022, 5, 17)
+        elif dateOp == 3:
+            date = datetime.datetime(2022, 5, 18)
+        elif dateOp == 4:
+            date = datetime.datetime(2022, 5, 19)
+        else: date = datetime.datetime(2022, 5, 20)
+
+        slot = input("Breakfast (1), Lunch (2), or Dinner (3)?")
+        type = "RECIPE"
+
+        timestamp = time.mktime(date.timetuple()) + 3600
+
+        val = {
+            "id": info["id"],
+            "title": info["title"],
+            "servings": info["servings"],
+            "image": info["image"]
+        }
+
+        uname, hash = extractFromJWT(session["Token"], keys=["api", "hsh"])
+        print(uname, hash)
+
+        addToMealPlan(uname, hash, timestamp, slot, type, val)
+
+        return render_template('pages/dashboard.html')
+
+    elif action == 'view':
+
+        uname, hash = extractFromJWT(session["Token"], keys=["api", "hsh"])
+
+        date = input("What date would you like to view? (yyyy-mm-dd)")
+        viewMealPlan(uname, hash, date)
+        return render_template('pages/dashboard.html')
+
+    elif action == 'delete':
+        return render_template('pages/dashboard.html')
+
+    else: return render_template('pages/dashboard.html')
+
+
 
 ############################################################
 ## Route logic for settings page

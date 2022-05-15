@@ -1,5 +1,4 @@
 import hashlib
-from posixpath import split
 import uuid
 from cryptography.fernet import Fernet
 import time
@@ -167,3 +166,15 @@ def validateJWT(token):
         
     # If all JWTs have been checked and there is no valid one, return False
     return False
+
+
+def extractFromJWT(token, keys: list):
+
+    jwtPayload = jwt.decode(token, key, algorithms=["HS256"])
+
+    values = []
+    for k in keys:
+        if k in jwtPayload:
+            values.append(jwtPayload[k])
+
+    return values
