@@ -19,7 +19,7 @@ Design files for everything shown can be found in the github/designs folder
 - [Credits](#credits)
 
 ## Installation Instructions
-
+[
 <a name="installation" />
 Please contact one of the contributors to get instructions on how to install and load up the website. This is to maintain the security of our API and secret keys. Screenshots for every major feature are found in the next section
 
